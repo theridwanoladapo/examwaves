@@ -6,31 +6,47 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/Jost.css') }}" type="text/css">
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="gray-simple">
+        <!-- Preloader -->
+        {{-- <div id="preloader">
+            <div class="preloader"><span></span><span></span></div>
+        </div> --}}
+
+        <div id="main-wrapper">
             <livewire:layout.navigation />
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            {{ $slot }}
         </div>
+
+
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+		<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+		<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+		<script src="{{ asset('assets/js/rangeslider.js') }}"></script>
+		<script src="{{ asset('assets/js/slick.js') }}"></script>
+		<script src="{{ asset('assets/js/counterup.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+		<script src="{{ asset('assets/js/shuffle.min.js') }}"></script>
+		<script src="{{ asset('assets/js/wow.js') }}"></script>
+		<script src="{{ asset('assets/js/lunar.js') }}"></script>
+
+		<script src="{{ asset('assets/js/custom.js') }}"></script>
+
+		<!-- Morris.js charts -->
+		<script src="{{ asset('assets/js/raphael/raphael.min.js') }}"></script>
+		<script src="{{ asset('assets/js/morris.js/morris.min.js') }}"></script>
+		<!-- Custom Chart JavaScript -->
+		<script src="{{ asset('assets/js/custom/dashboard.js') }}"></script>
     </body>
 </html>

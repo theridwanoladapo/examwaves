@@ -40,52 +40,60 @@ $register = function () {
 ?>
 
 <div>
-    <form wire:submit="register">
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+    <div class="d-lg-flex position-relative h-100 bg-white">
+        <a class="circle bg-white text-primary border square--40 position-absolute top-0 end-0 mt-3 me-3" href="index.html" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Back to home" data-bs-original-title="Back to home"><i class="fa-solid fa-house-user"></i></a>
+
+        <!-- Signup Form -->
+        <div class="d-flex flex-column align-items-center w-50 h-100 px-4 px-md-5 py-5">
+            <div class="w-100 mt-auto py-4 px-xl-4 px-lg-3">
+                <div class="d-flex mb-3">
+                    <img src="assets/img/logo.png" class="img-fluid" width="120" alt="logo">
+                </div>
+
+                <h1 class="fs-1">Create An Account</h1>
+                <p class="pb-3 mb-3 mb-lg-4">Register to get started</p>
+                <form wire:submit="register">
+
+                    <div class="row row-cols-1 row-cols-sm-2">
+                        <div class="col mb-4">
+                          <input wire:model="name" id="name" class="form-control lg" type="text" name="name" required autofocus autocomplete="name" placeholder="Your name">
+                          <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                        </div>
+                        <div class="col mb-4">
+                          <input wire:model="email" id="email" class="form-control lg" type="email" name="email" required autocomplete="username" placeholder="Email address">
+                          <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
+                    </div>
+
+                    <div class="mb-4 position-relative">
+                        <input wire:model="password" id="password" class="form-control lg" type="password" name="password" required autocomplete="new-password" placeholder="Password">
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-4 position-relative">
+                        <input wire:model="password_confirmation" id="password-field" class="form-control lg" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                        <span class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+
+                    <button class="btn btn-lg btn-primary w-100" type="submit">Sign Up</button>
+
+                    {{-- <h2 class="h6 font--medium text-muted text-center py-4">Or sign in with your social account</h2> --}}
+
+                    {{-- <div class="row row-cols-1 row-cols-sm-2 gy-3">
+                        <div class="col"><a class="btn btn--googleplus w-100 font--medium" href="#"><i class="fa-brands fa-google-plus-g me-2"></i>Google</a></div>
+                        <div class="col"><a class="btn btn--facebook w-100 font--medium" href="#"><i class="fa-brands fa-facebook me-2"></i>Facebook</a></div>
+                    </div> --}}
+
+                    <p class="pt-4 text-center">
+                        <span class="text-muted">Have an account already?</span>
+                        <a class="text-primary font--medium" href="{{ route('login') }}" wire:navigate>Login Your Account</a>
+                    </p>
+
+                </form>
+            </div>
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
+        <div class="w-50 bg-cover bg-repeat-0 bg-position-center" style="background-image: url(assets/img/blog-2.jpg);"></div>
+    </div>
 </div>
