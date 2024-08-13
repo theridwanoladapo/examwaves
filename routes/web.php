@@ -14,6 +14,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+
+// Admin
 Route::get('admin/dashboard', [HomeController::class, 'index'])
     ->name('admin');
 

@@ -2816,7 +2816,7 @@ nav a:hover {
     font-weight: 600;
     letter-spacing: 0.2px;
     text-transform: capitalize;
-    font-size: 13px;
+    font-size: 14px;
 }
 .nav-menu.nav-menu-social li a {
     color: #0f393b;
@@ -2830,7 +2830,7 @@ nav a:hover {
 .nav-menu>.active>a,
 .nav-menu>.focus>a,
 .nav-menu>li:hover>a {
-    color:#04bfef !important;
+    color:#0172e2 !important;
 }
 
 .navigation-portrait .nav-menu.nav-menu-social {
@@ -3005,7 +3005,7 @@ nav a:hover {
 }
 .nav-dropdown>li>a:hover, .nav-dropdown>li>a:focus {
     padding-left: 20px;
-	color:#04bfef;
+	color:#0172e2;
 }
 .social-icon a i,
 .social-icons a i {

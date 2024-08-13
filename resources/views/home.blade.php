@@ -54,62 +54,32 @@
 								<ul class="nav-dropdown nav-submenu xxl-menu">
 									<li>
 										<a href="/">
-											<div class="mega-advance-menu">
-												<div class="mega-first square--50 rounded-2 bg-light-success text-success fs-4"><i class="fa-brands fa-microsoft"></i></div>
-												<div class="mega-last ps-2">
-													<h6 class="lh-base fs-6 font--bold m-0">Microsoft</h6>
-												</div>
-											</div>
+                                            <span class="lh-base font--bold m-0">Microsoft</span>
 										</a>
 									</li>
 									<li>
 										<a href="/">
-											<div class="mega-advance-menu">
-												<div class="mega-first square--50 rounded-2 bg-light-warning text-warning fs-4"><i class="fa-brands fa-amazon"></i></div>
-												<div class="mega-last ps-2">
-													<h6 class="lh-base fs-6 font--bold m-0">Amazon</h6>
-												</div>
-											</div>
+                                            <span class="lh-base font--bold m-0">Amazon</span>
 										</a>
 									</li>
 									<li>
 										<a href="/">
-											<div class="mega-advance-menu">
-												<div class="mega-first square--50 rounded-2 bg-light-info text-info fs-4"><i class="fa-solid fa-envelope-open-text"></i></div>
-												<div class="mega-last ps-2">
-													<h6 class="lh-base fs-6 font--bold m-0">CompTIA</h6>
-												</div>
-											</div>
+                                            <span class="lh-base font--bold m-0">CompTIA</span>
 										</a>
 									</li>
 									<li>
 										<a href="/">
-											<div class="mega-advance-menu">
-												<div class="mega-first square--50 rounded-2 bg-light-purple text-purple fs-4"><i class="fa-solid fa-eye"></i></div>
-												<div class="mega-last ps-2">
-													<h6 class="lh-base fs-6 font--bold m-0">Cisco</h6>
-												</div>
-											</div>
+                                            <span class="lh-base font--bold m-0">Cisco</span>
 										</a>
 									</li>
 									<li>
 										<a href="/">
-											<div class="mega-advance-menu">
-												<div class="mega-first square--50 rounded-2 bg-light-seegreen text-seegreen fs-4"><i class="fa-brands fa-google"></i></div>
-												<div class="mega-last ps-2">
-													<h6 class="lh-base fs-6 font--bold m-0">Google</h6>
-												</div>
-											</div>
+                                            <span class="lh-base font--bold m-0">Google</span>
 										</a>
 									</li>
 									<li>
 										<a href="/">
-											<div class="mega-advance-menu">
-												<div class="mega-first square--50 rounded-2 bg-light-danger text-danger fs-4"><i class="fa-solid fa-briefcase"></i></div>
-												<div class="mega-last ps-2">
-													<h6 class="lh-base fs-6 font--bold m-0">Oracle</h6>
-												</div>
-											</div>
+                                            <span class="lh-base font--bold m-0">Oracle</span>
 										</a>
 									</li>
 								</ul>
@@ -137,8 +107,8 @@
 		<div class="clearfix"></div>
 
         <!--  Hero Banner Start -->
-		<div class="image-cover hero-header" style="background:#ecf4f9 url(assets/img/job-bg.png)no-repeat;">
-			<div class="container">
+        <div class="image-cover hero-header" style="background:#ecf4f9 url(assets/img/home-bg.png)no-repeat;">
+        	<div class="container">
 
 				<div class="row justify-content-center align-items-center">
 					<div class="col-xl-9 col-lg-11 col-md-12 col-sm-12">
@@ -188,53 +158,80 @@
 		</div>
 		<!-- Hero Banner End -->
 
-        <!-- Our Partners Start -->
-		<section class="py-5">
-			<div class="container">
+        <!-- Exams Start -->
+        <section>
+            <div class="container">
 
-				<div class="row row-cols-4 row-cols-md-6 align-items-center justify-content-center gx-4">
-					<div class="col">
-						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
-							<img src="assets/img/brand/logo-1.png" class="img-fluid" alt="">
-						</figure>
-					</div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 mb-3">
+                        <div class="sec-heading center">
+                            <div class="d-inline-flex px-4 py-1 rounded-5 text-primary bg-light-primary font--medium mb-2"><span>Certifications</span></div>
+                            <h2>Top Certifications</h2>
+                        </div>
+                    </div>
+                </div>
 
-					<div class="col">
-						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
-							<img src="assets/img/brand/logo-2.png" class="img-fluid" alt="">
-						</figure>
-					</div>
+                <div class="row align-items-center justify-content-center row-cols-xl-5 row-cols-lg-4 row-cols-md-4 row-cols-2 g-4">
 
-					<div class="col">
-						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
-							<img src="assets/img/brand/logo-3.png" class="img-fluid" alt="">
-						</figure>
-					</div>
+                    <div class="col">
+                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
+                            <div class="flex-shrink-0"><img src="assets/img/l-1.png" class="img-fluid" width="60" alt=""></div>
+                            <div class="ps-3">
+                                <h6 class="mb-0">Microsoft</h6>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="col">
-						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
-							<img src="assets/img/brand/logo-4.png" class="img-fluid" alt="">
-						</figure>
-					</div>
+                    <div class="col">
+                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
+                            <div class="flex-shrink-0"><img src="assets/img/l-2.png" class="img-fluid" width="60" alt=""></div>
+                            <div class="ps-3">
+                                <h6 class="mb-0">Amazon</h6>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="col">
-						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
-							<img src="assets/img/brand/logo-8.png" class="img-fluid" alt="">
-						</figure>
-					</div>
+                    <div class="col">
+                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
+                            <div class="flex-shrink-0"><img src="assets/img/l-3.png" class="img-fluid" width="60" alt=""></div>
+                            <div class="ps-3">
+                                <h6 class="mb-0">Cisco</h6>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="col">
-						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
-							<img src="assets/img/brand/logo-9.png" class="img-fluid" alt="">
-						</figure>
-					</div>
+                    <div class="col">
+                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
+                            <div class="flex-shrink-0"><img src="assets/img/l-4.png" class="img-fluid" width="60" alt=""></div>
+                            <div class="ps-3">
+                                <h6 class="mb-0">Google</h6>
+                            </div>
+                        </div>
+                    </div>
 
-				</div>
+                    <div class="col">
+                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
+                            <div class="flex-shrink-0"><img src="assets/img/l-5.png" class="img-fluid" width="60" alt=""></div>
+                            <div class="ps-3">
+                                <h6 class="mb-0">CompTIA</h6>
+                            </div>
+                        </div>
+                    </div>
 
-			</div>
-		</section>
-		<div class="clearfix"></div>
-		<!-- Our Partners End -->
+                    <div class="col">
+                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
+                            <div class="flex-shrink-0"><img src="assets/img/l-6.png" class="img-fluid" width="60" alt=""></div>
+                            <div class="ps-3">
+                                <h6 class="mb-0">Oracle</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <!-- Exams End -->
 
         <!-- Latest Exams Start -->
 		<section class="bg-light-info">
@@ -243,7 +240,8 @@
 				<div class="row align-items-center justify-content-center">
 					<div class="col-xl-7 col-lg-7 col-md-11 mb-3">
 						<div class="sec-heading text-center">
-							<h2 class="mb-1">Latest Exams</h2>
+                            <div class="d-inline-flex px-4 py-1 rounded-5 text-primary bg-light-primary font--medium mb-2"><span>Exams</span></div>
+                            <h2 class="mb-1">Latest Exams</h2>
 						</div>
 					</div>
 				</div>
@@ -350,80 +348,53 @@
 		<div class="clearfix"></div>
 		<!-- Latest Exams End -->
 
-        <!-- Exams Start -->
-        <section>
-            <div class="container">
+        <!-- Our Partners Start -->
+		<section class="py-5">
+			<div class="container">
 
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 mb-3">
-                        <div class="sec-heading center">
-                            <div class="d-inline-flex px-4 py-1 rounded-5 text-primary bg-light-primary font--medium mb-2"><span>Exams</span></div>
-                            <h2>Popular Exams</h2>
-                        </div>
-                    </div>
-                </div>
+				<div class="row row-cols-4 row-cols-md-6 align-items-center justify-content-center gx-4">
+					<div class="col">
+						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
+							<img src="assets/img/brand/logo-1.png" class="img-fluid" alt="">
+						</figure>
+					</div>
 
-                <div class="row align-items-center justify-content-center row-cols-xl-5 row-cols-lg-4 row-cols-md-4 row-cols-2 g-4">
+					<div class="col">
+						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
+							<img src="assets/img/brand/logo-2.png" class="img-fluid" alt="">
+						</figure>
+					</div>
 
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-1.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Microsoft</h6>
-                            </div>
-                        </div>
-                    </div>
+					<div class="col">
+						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
+							<img src="assets/img/brand/logo-3.png" class="img-fluid" alt="">
+						</figure>
+					</div>
 
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-2.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Amazon</h6>
-                            </div>
-                        </div>
-                    </div>
+					<div class="col">
+						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
+							<img src="assets/img/brand/logo-4.png" class="img-fluid" alt="">
+						</figure>
+					</div>
 
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-3.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Cisco</h6>
-                            </div>
-                        </div>
-                    </div>
+					<div class="col">
+						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
+							<img src="assets/img/brand/logo-8.png" class="img-fluid" alt="">
+						</figure>
+					</div>
 
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-4.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Google</h6>
-                            </div>
-                        </div>
-                    </div>
+					<div class="col">
+						<figure class="single-brand thumb-figure p-xl-4 p-lg-3 p-md-2 py-3">
+							<img src="assets/img/brand/logo-9.png" class="img-fluid" alt="">
+						</figure>
+					</div>
 
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-5.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">CompTIA</h6>
-                            </div>
-                        </div>
-                    </div>
+				</div>
 
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-6.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Oracle</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <div class="clearfix"></div>
-        <!-- Exams End -->
+			</div>
+		</section>
+		<div class="clearfix"></div>
+		<!-- Our Partners End -->
 
         <!-- Exam Category Start -->
 		{{-- <section class="bg-light-info">
@@ -748,7 +719,7 @@
 							<div class="footer-widget">
 								<img src="assets/img/logo.png" class="img-footer" alt="">
 								<div class="footer-add">
-									<p>Collins Street West, Victoria Near Bank Road<br>Australia QHR12456.</p>
+									<p>Address 1<br>Address 2</p>
 								</div>
 								<div class="foot-socials">
 									<ul>
@@ -761,54 +732,37 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-4">
+
+						<div class="col-lg-3 col-md-4">
 							<div class="footer-widget">
 								<h4 class="widget-title font--bold">For Clients</h4>
 								<ul class="footer-menu">
 									<li><a href="JavaScript:Void(0);">Talent Marketplace</a></li>
 									<li><a href="JavaScript:Void(0);">Payroll Services</a></li>
 									<li><a href="JavaScript:Void(0);">Direct Contracts</a></li>
-									<li><a href="JavaScript:Void(0);">Hire Worldwide</a></li>
-									<li><a href="JavaScript:Void(0);">Hire in the USA</a></li>
-									<li><a href="JavaScript:Void(0);">How to Hire</a></li>
 								</ul>
 							</div>
 						</div>
 
-						<div class="col-lg-2 col-md-4">
+						<div class="col-lg-3 col-md-4">
 							<div class="footer-widget">
 								<h4 class="widget-title">Our Resources</h4>
 								<ul class="footer-menu">
 									<li><a href="JavaScript:Void(0);">Free Business tools</a></li>
 									<li><a href="JavaScript:Void(0);">Affiliate Program</a></li>
 									<li><a href="JavaScript:Void(0);">Success Stories</a></li>
-									<li><a href="JavaScript:Void(0);">Upwork Reviews</a></li>
-									<li><a href="JavaScript:Void(0);">Resources</a></li>
-									<li><a href="JavaScript:Void(0);">Help & Support</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-lg-2 col-md-6">
-							<div class="footer-widget">
-								<h4 class="widget-title">The Company</h4>
-								<ul class="footer-menu">
-									<li><a href="JavaScript:Void(0);">About Us</a></li>
-									<li><a href="JavaScript:Void(0);">Leadership</a></li>
-									<li><a href="JavaScript:Void(0);">Contact Us</a></li>
-									<li><a href="JavaScript:Void(0);">Investor Relations</a></li>
-									<li><a href="JavaScript:Void(0);">Trust, Safety & Security</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="col-lg-3 col-md-6">
 							<div class="footer-widget">
-								<h4 class="widget-title">Download Apps</h4>
-								<div class="app-wrap">
-									<p><a href="JavaScript:Void(0);"><img src="assets/img/light-play.png" class="img-fluid" alt=""></a></p>
-									<p><a href="JavaScript:Void(0);"><img src="assets/img/light-ios.png" class="img-fluid" alt=""></a></p>
-								</div>
+								<h4 class="widget-title">The Company</h4>
+								<ul class="footer-menu">
+									<li><a href="JavaScript:Void(0);">About Us</a></li>
+									<li><a href="JavaScript:Void(0);">Leadership</a></li>
+									<li><a href="JavaScript:Void(0);">Contact Us</a></li>
+								</ul>
 							</div>
 						</div>
 
@@ -821,10 +775,10 @@
 					<div class="row align-items-center justify-content-between">
 
 						<div class="col-xl-4 col-lg-5 col-md-5">
-							<p class="mb-0">© 2023 Killar Apps® Design by Themezhub.</p>
+							<p class="mb-0">© 2024 ExamWaves - Designed by <a href="genuineict.com">Genuine ICT</a>.</p>
 						</div>
 
-						<div class="col-xl-8 col-lg-7 col-md-7">
+						{{-- <div class="col-xl-8 col-lg-7 col-md-7">
 							<div class="job-info-count-group">
 								<div class="single-jb-info-count">
 									<div class="jbs-y7"><h5 class="ctr">12</h5><span class="theme-2-cl">K</span></div>
@@ -843,7 +797,7 @@
 									<div class="jbs-y5"><p>Companies</p></div>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 
 					</div>
 				</div>
