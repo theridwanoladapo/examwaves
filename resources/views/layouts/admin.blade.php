@@ -22,7 +22,7 @@
         </div> --}}
 
         <div id="main-wrapper">
-            <livewire:layout.app-navigation />
+            <livewire:layout.admin-navigation />
 
             {{ $slot }}
         </div>

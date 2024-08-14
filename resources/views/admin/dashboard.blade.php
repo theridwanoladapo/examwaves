@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <!-- Account Dashboard Start -->
     <section>
         <div class="container">
@@ -19,14 +19,14 @@
                                         <img src="{{ asset('assets/img/team-1.jpg') }}" class="img-fluid circle" width="120" alt="img">
                                     </div>
                                     <div class="user-caps">
-                                        <h5 class="mb-0">Admin</h5>
-                                        <p class="m-0 text-muted">admin@examwaves.io</p>
+                                        <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                        <p class="m-0 text-muted">{{ auth()->user()->email }}</p>
                                     </div>
                                 </div>
 
                                 <div class="user-prfl-nav mt-4">
                                     <ul class="no-ul-list">
-                                        <li class="py-3"><a href="/dashboard" class="fw-medium active text-primary"><i class="fa-solid fa-gauge-high me-2"></i>User Dashboard</a></li>
+                                        <li class="py-3"><a href="{{ route('admin.dashboard') }}" class="fw-medium active text-primary"><i class="fa-solid fa-gauge-high me-2"></i>Dashboard</a></li>
                                     </ul>
                                 </div>
 
@@ -56,4 +56,4 @@
     </section>
     <div class="clearfix"></div>
     <!-- Account Dashboard End -->
-</x-app-layout>
+</x-admin-layout>

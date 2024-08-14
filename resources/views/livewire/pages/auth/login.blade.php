@@ -21,13 +21,13 @@ $login = function () {
 
     switch ($userRole) {
         case 1:
-            $this->redirectIntended(default: route('admin', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
             break;
         case 0:
             $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
             break;
         default:
-            return redirect('/');
+            return redirect('/', navigate: true);
             break;
     }
 };
@@ -44,7 +44,7 @@ $login = function () {
                 <div class="col-xl-5 col-lg-6 com-md-9">
                     <div class="position-relative">
                         <div class="d-flex mb-4 justify-content-center">
-                            <a href="/"><img src="assets/img/ico.png" class="img-fluid" width="60" alt="logo"></a>
+                            <a href="{{ route('home') }}"><img src="assets/img/ico.png" class="img-fluid" width="60" alt="logo"></a>
                         </div>
 
                         <div class="card border-0 rounded-5 p-xl-4 p-lg-4 p-3">

@@ -19,14 +19,14 @@
                                         <img src="{{ asset('assets/img/team-1.jpg') }}" class="img-fluid circle" width="120" alt="img">
                                     </div>
                                     <div class="user-caps">
-                                        <h5 class="mb-0">Name</h5>
-                                        <p class="m-0 text-muted">email</p>
+                                        <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                        <p class="m-0 text-muted">{{ auth()->user()->email }}</p>
                                     </div>
                                 </div>
 
                                 <div class="user-prfl-nav mt-4">
                                     <ul class="no-ul-list">
-                                        <li class="py-3"><a href="/dashboard" class="fw-medium active text-primary"><i class="fa-solid fa-gauge-high me-2"></i>User Dashboard</a></li>
+                                        <li class="py-3"><a href="{{ route('dashboard') }}" class="fw-medium active text-primary"><i class="fa-solid fa-gauge-high me-2"></i>User Dashboard</a></li>
                                     </ul>
                                 </div>
 
