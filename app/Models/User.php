@@ -49,14 +49,15 @@ class User extends Authenticatable
     }
 
     /**
-     * Interact with the user's role.
+     * Interact with the name attribute.
      *
-     * @param  string  $value
+     * return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    /* protected function role(): Attribute
+    public function name(): Attribute
     {
-        return new Attribute(
-            get: fn ($value) => ["user", "admin"][$value],
+        return Attribute::make(
+            get: fn (string $value) => ucwords($value),
+            set: fn (string $value) => strtolower($value),
         );
-    } */
+    }
 }

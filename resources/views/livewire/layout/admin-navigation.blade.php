@@ -31,11 +31,9 @@ $logout = function (Logout $logout) {
                                             </div>
                                         </div>
                                         <ul>
-                                            <li><a href=""><i class="fa fa-tachometer-alt me-2"></i>User Dashboard<span class="notti_coun style-1">4</span></a></li>
-                                            <li><a href=""><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
-                                            <li><a href=""><i class="fa-solid fa-gear me-2"></i>Account Setting</a></li>
-                                            <li><a href=""><i class="fa-solid fa-wallet me-2"></i>Account Billing</a></li>
-                                            <li><a href=""><i class="fa fa-envelope me-2"></i>My Order</a></li>
+                                            <li><a href="{{ route('admin.dashboard') }}">
+                                                <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                                            </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -48,7 +46,7 @@ $logout = function (Logout $logout) {
                         <li>
                             <div class="btn-group account-drop">
                                 <button type="button" class="btn btn-order-by-filt" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{ asset('assets/img/user-5.png') }}" class="img-fluid circle" alt="">
+                                    <img src="{{ asset('assets/img/ico.png') }}" class="img-fluid circle" alt="">
                                 </button>
                                 <div class="dropdown-menu pull-right animated flipInX">
                                     <div class="drp_menu_headr">
@@ -58,11 +56,9 @@ $logout = function (Logout $logout) {
                                         </div>
                                     </div>
                                     <ul>
-                                        <li><a href="/dashboard"><i class="fa fa-tachometer-alt me-2"></i>User Dashboard<span class="notti_coun style-1">4</span></a></li>
-                                        <li><a href="/dashboard"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
-                                        <li><a href="/dashboard"><i class="fa-solid fa-gear me-2"></i>Account Setting</a></li>
-                                        <li><a href="/dashboard"><i class="fa-solid fa-wallet me-2"></i>Account Billing</a></li>
-                                        <li><a href="/dashboard"><i class="fa fa-envelope me-2"></i>My Order</a></li>
+                                        <li><a href="{{ route('admin.dashboard') }}">
+                                            <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                                        </a></li>
                                     </ul>
                                 </div>
                             </div>

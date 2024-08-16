@@ -20,5 +20,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@examwaves.io',
             'role' => 1
         ]);
+
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@example.com',
+            'role' => 0
+        ]);
     }
 }

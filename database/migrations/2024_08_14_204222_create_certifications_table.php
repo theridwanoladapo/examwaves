@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
+            $table->string('code');
             $table->longText('description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('rating');
-            $table->decimal('balance', 12, 2)->default(0);
+            $table->decimal('price', 12, 2)->default(0);
             $table->foreignId('exam_id')->constrained('exams');
             $table->timestamps();
         });

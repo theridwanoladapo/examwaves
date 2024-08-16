@@ -52,42 +52,19 @@
 							<li>
                                 <a href="JavaScript:Void(0);">Practice Exams<span class="submenu-indicator"></span></a>
 								<ul class="nav-dropdown nav-submenu xxl-menu">
+                                    @foreach ($exams as $exam)
 									<li>
-										<a href="/">
-                                            <span class="lh-base font--bold m-0">Microsoft</span>
+										<a href="javascript:void(0)">
+                                            <span class="lh-base font--bold m-0">{{ $exam->name }}</span>
 										</a>
 									</li>
-									<li>
-										<a href="/">
-                                            <span class="lh-base font--bold m-0">Amazon</span>
-										</a>
-									</li>
-									<li>
-										<a href="/">
-                                            <span class="lh-base font--bold m-0">CompTIA</span>
-										</a>
-									</li>
-									<li>
-										<a href="/">
-                                            <span class="lh-base font--bold m-0">Cisco</span>
-										</a>
-									</li>
-									<li>
-										<a href="/">
-                                            <span class="lh-base font--bold m-0">Google</span>
-										</a>
-									</li>
-									<li>
-										<a href="/">
-                                            <span class="lh-base font--bold m-0">Oracle</span>
-										</a>
-									</li>
+                                    @endforeach
 								</ul>
 							</li>
 
-                            <li><a href="/">How it works</a></li>
+                            <li><a href="javascript:void(0)">How it works</a></li>
 
-							<li><a href="/">Contact Us</a></li>
+							<li><a href="javascript:void(0)">Contact Us</a></li>
 
 						</ul>
 
@@ -172,60 +149,16 @@
                 </div>
 
                 <div class="row align-items-center justify-content-center row-cols-xl-5 row-cols-lg-4 row-cols-md-4 row-cols-2 g-4">
-
+                    @foreach ($exams as $exam)
                     <div class="col">
                         <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-1.png" class="img-fluid" width="60" alt=""></div>
+                            {{-- <div class="flex-shrink-0"><img src="assets/img/l-1.png" class="img-fluid" width="60" alt=""></div> --}}
                             <div class="ps-3">
-                                <h6 class="mb-0">Microsoft</h6>
+                                <h6 class="mb-0">{{ $exam->name }}</h6>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-2.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Amazon</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-3.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Cisco</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-4.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Google</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-5.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">CompTIA</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            <div class="flex-shrink-0"><img src="assets/img/l-6.png" class="img-fluid" width="60" alt=""></div>
-                            <div class="ps-3">
-                                <h6 class="mb-0">Oracle</h6>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -247,99 +180,38 @@
 				</div>
 
 				<div class="row justify-content-center g-lg-4 g-3">
-
+                    @foreach ($certifications as $certification)
 					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
 						<div class="card border rounded-4 p-4 h-100 d-flex flex-column">
 							<div class="position-relative mb-4">
 								<div class="d-flex align-items-center mb-3">
 									<div class="dlio-catds">
                                         <h6 class="fw-medium mb-0 text-success bg-light-success rounded px-3 py-1 me-2">
-                                            <a href="/">Amazon</a>
+                                            <a href="javascript:void(0)">{{ $certification->exam->name }}</a>
                                         </h6>
                                     </div>
 									{{-- <div class="dlio-dates ms-3"><span class="text-muted">10 March 2023</span></div> --}}
 								</div>
 								<div class="d-flex">
 									<h5 class="lh-base fw-semibold mb-0">
-                                        <a href="/" class="jbl-detail">
-                                            AWS Certified Cloud Practitioner: AWS Certified Cloud Practitioner (CLF-C01)
+                                        <a href="javascript:void(0)" class="jbl-detail">
+                                            {{ $certification->title }} ({{ $certification->code }})
                                         </a>
                                     </h5>
 								</div>
 							</div>
                             <div class="mt-auto">
-                                <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: 5.0</span>
+                                <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: {{ $certification->rating }}</span>
                                 <div class="crd-srv gray-simple d-flex align-items-center justify-content-between px-3 py-3 rounded-3 mt-3">
                                     <div class="empl-thumb">
-                                        <h6 class="fw-semibold mb-0">$24.99</h6>
+                                        <h6 class="fw-semibold mb-0">${{ $certification->price }}</h6>
                                     </div>
-                                    <a href="/" class="btn btn-md btn-primary">Add to Cart</a>
+                                    <a href="javascript:void(0)" class="btn btn-md btn-primary">Add to Cart</a>
                                 </div>
                             </div>
 						</div>
 					</div>
-
-					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-						<div class="card border rounded-4 p-4 h-100 d-flex flex-column">
-							<div class="position-relative mb-4">
-								<div class="d-flex align-items-center mb-3">
-									<div class="dlio-catds">
-                                        <h6 class="fw-medium mb-0 text-success bg-light-success rounded px-3 py-1 me-2">
-                                            <a href="/">Microsoft</a>
-                                        </h6>
-                                    </div>
-									{{-- <div class="dlio-dates ms-3"><span class="text-muted">10 March 2023</span></div> --}}
-								</div>
-								<div class="d-flex flex-column">
-									<h5 class="lh-base fw-semibold mb-0">
-                                        <a href="/" class="jbl-detail">
-                                            Microsoft Azure Data Fundamentals (DP-900)
-                                        </a>
-                                    </h5>
-								</div>
-							</div>
-                            <div class="mt-auto">
-                                <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: 5.0</span>
-                                <div class="crd-srv gray-simple d-flex align-items-center justify-content-between px-3 py-3 rounded-3 mt-3">
-                                    <div class="empl-thumb">
-                                        <h6 class="fw-semibold mb-0">$24.99</h6>
-                                    </div>
-                                    <a href="/" class="btn btn-md btn-primary">Add to Cart</a>
-                                </div>
-                            </div>
-						</div>
-					</div>
-
-					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-						<div class="card border rounded-4 p-4 h-100 d-flex flex-column">
-							<div class="position-relative mb-4">
-								<div class="d-flex align-items-center mb-3">
-									<div class="dlio-catds">
-                                        <h6 class="fw-medium mb-0 text-success bg-light-success rounded px-3 py-1 me-2">
-                                            <a href="/">Amazon</a>
-                                        </h6>
-                                    </div>
-									{{-- <div class="dlio-dates ms-3"><span class="text-muted">10 March 2023</span></div> --}}
-								</div>
-								<div class="d-flex">
-									<h5 class="lh-base fw-semibold mb-0">
-                                        <a href="/" class="jbl-detail">
-                                            AWS Certified SysOps Administrator - Associate: AWS Certified SysOps Administrator - Associate (SOA-C02)
-                                        </a>
-                                    </h5>
-								</div>
-							</div>
-                            <div class="mt-auto">
-                                <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: 5.0</span>
-                                <div class="crd-srv gray-simple d-flex align-items-center justify-content-between px-3 py-3 rounded-3 mt-3">
-                                    <div class="empl-thumb">
-                                        <h6 class="fw-semibold mb-0">$26.99</h6>
-                                    </div>
-                                    <a href="/" class="btn btn-md btn-primary">Add to Cart</a>
-                                </div>
-                            </div>
-						</div>
-					</div>
+                    @endforeach
 
 				</div>
 
