@@ -56,14 +56,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($exam->certifications as $k => $certification)
                                         <tr>
-                                            <th>01</th>
-                                            <td>#124673</td>
-                                            <td>A2-S23</td>
-                                            <td><strong>$60</strong></td>
-                                            <td><span class="badge text-bg-info circle">5</span></td>
-                                            <td><a href="#" class="square--30 circle text-light bg-seegreen d-inline-flex"><i class="fa-solid fa-eye"></i></a><a href="#" class="square--30 circle text-light bg-danger d-inline-flex ms-2"><i class="fa-solid fa-trash"></i></a></td>
+                                            <th>{{ $k+1 }}</th>
+                                            <td>{{ $certification->title }}</td>
+                                            <td>{{ $certification->code }}</td>
+                                            <td><strong>${{ $certification->price }}</strong></td>
+                                            <td><span class="badge text-bg-info circle">{{ $certification->rating }}</span></td>
+                                            <td>
+                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-seegreen d-inline-flex">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
+                                            </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
