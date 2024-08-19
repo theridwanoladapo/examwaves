@@ -50,7 +50,7 @@
 							<li><a href="/">Home</a></li>
 
 							<li>
-                                <a href="JavaScript:Void(0);">Practice Exams<span class="submenu-indicator"></span></a>
+                                <a href="JavaScript:Void(0);">Exam Providers<span class="submenu-indicator"></span></a>
 								<ul class="nav-dropdown nav-submenu xxl-menu">
                                     @foreach ($exams as $exam)
 									<li>
@@ -221,7 +221,7 @@
 		<!-- Latest Exams End -->
 
         <!-- Our Partners Start -->
-		<section class="py-5">
+		{{-- <section class="py-5">
 			<div class="container">
 
 				<div class="row row-cols-4 row-cols-md-6 align-items-center justify-content-center gx-4">
@@ -265,7 +265,7 @@
 
 			</div>
 		</section>
-		<div class="clearfix"></div>
+		<div class="clearfix"></div> --}}
 		<!-- Our Partners End -->
 
         <!-- Exam Category Start -->
@@ -445,7 +445,7 @@
 		<!-- Exam Category End -->
 
         <!-- What Our Customaer Says Start -->
-		<section class="gray-simple">
+		<section>
 			<div class="container">
 
 				<div class="row justify-content-center">
@@ -568,8 +568,8 @@
 							<div class="call-action-form">
 								<form>
 									<div class="newsltr-form rounded-3">
-										<input type="text" class="form-control" placeholder="Enter Your email">
-										<button type="button" class="btn btn-dark">Subscribe</button>
+										<input type="text" class="form-control" placeholder="Search for your certification exam...">
+										<button type="button" class="btn btn-dark">Search</button>
 									</div>
 								</form>
 							</div>
