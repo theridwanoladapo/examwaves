@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ExamController extends Controller
 {
     /**
-     * Method index
+     * Method index exams
      *
      */
     public function index()
@@ -17,13 +17,24 @@ class ExamController extends Controller
 
         return view('admin.exams.index', compact('exams'));
     }
-    
+
     /**
-     * Method create
+     * Method create exams
      *
      */
     public function create()
     {
         return view('admin.exams.create');
+    }
+
+    /**
+     * Method show
+     *
+     */
+    public function show($id)
+    {
+        $exam = Exam::find($id);
+
+        return view('admin.exams.show', compact('exam'));
     }
 }
