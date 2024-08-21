@@ -18,11 +18,28 @@ class CertificationController extends Controller
 
         return view('admin.certifications.index', compact('certifications'));
     }
-
+    
+    /**
+     * Method create
+     *
+     */
     public function create()
     {
         $exams = Exam::all();
 
         return view('admin.certifications.create', compact('exams'));
+    }
+    
+    /**
+     * Method show
+     *
+     * @param $id $id [explicite description]
+     *
+     */
+    public function show($id)
+    {
+        $certification = Certification::find($id);
+
+        return view('admin.certifications.show', compact('certification'));
     }
 }

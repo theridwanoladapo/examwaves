@@ -45,6 +45,8 @@ Route::middleware(['auth', 'admin-access'])
         ->name('certifications.index');
     Route::get('certifications/create', [CertificationController::class, 'create'])
         ->name('certifications.create');
+    Route::get('certifications/view/{id}', [CertificationController::class, 'show'])
+        ->name('certifications.view');
 });
 
 require __DIR__.'/auth.php';

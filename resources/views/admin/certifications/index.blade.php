@@ -51,7 +51,7 @@
                                             <td>{{ $certification->price }}</td>
                                             <td>{{ $certification->exam->name }}</td>
                                             <td>
-                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-seegreen d-inline-flex">
+                                                <a href="{{ route('admin.certifications.view', $certification->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
                                                 <a href="javascript:void(0)" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
