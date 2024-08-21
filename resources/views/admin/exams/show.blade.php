@@ -26,7 +26,11 @@
                         </div>
                         <div class="dash-y44 position-relative mb-3">
                             <div class="dash-user-thumb mt-5 pt-2">
-                                <img src="{{ asset('assets/img/icon.png') }}" class="img-fluid bg-white p-2 border border-3" width="100" alt="User">	
+                                @if ($exam->image_path)
+                                <img src="{{ asset($exam->image_path) }}" class="img-fluid bg-white p-2 border border-3" width="100" alt="IMG">
+                                @else
+                                <img src="{{ asset('assets/img/icon.png') }}" class="img-fluid bg-white p-2 border border-3" width="100" alt="IMG">
+                                @endif
                             </div>
                             <div class="dash-y45 row align-items-center justify-content-between gy-3 mt-3">
                                 <div class="lios-parts-starts col-sm-7">

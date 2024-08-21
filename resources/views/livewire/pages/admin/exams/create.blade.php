@@ -2,15 +2,22 @@
 
 use App\Livewire\Forms\ExamForm;
 
+use function Livewire\Volt\{state, usesFileUploads};
 use function Livewire\Volt\form;
 use function Livewire\Volt\layout;
+
+usesFileUploads();
+
+state(['image']);
 
 layout('layouts.admin');
 
 form(ExamForm::class);
 
 $storeExam = function () {
-    
+
+    $this->form->image =  $this->image;
+
     $this->form->store();
 
     return $this->redirectRoute('admin.exams.index', navigate: true);
@@ -29,34 +36,37 @@ $storeExam = function () {
 
         <div class="card-body px-4">
 
-            <form wire:submit="storeExam">
+            <form wire:submit.prevent="storeExam">
 
-    
-                {{-- <div class="d-flex align-items-center">
-                    <div class="author-fluid me-3">
-                        <img src="assets/img/team-1.jpg" class="img-fluid circle" width="100" alt="Img">
+                <div class="mb-3">
+                    <div class="author-fluid mb-3">
+                        @if ($image)
+                        <img src="{{ $image->temporaryUrl() }}" class="img-fluid rounded bg-white p-2 border border-3" width="100" height="100" alt="Img">
+                        @else
+                        <img src="{{ asset('assets/img/icon.png') }}" class="img-fluid rounded bg-white p-2 border border-3" width="100" height="100" alt="Img">
+                        @endif
                     </div>
-                    <div class="author-fluid">
-                        <button class="btn btn-md btn-primary me-2 my-1" type="button">Upload New</button>
-                        <button class="btn btn-md btn-light-danger me-2 my-1" type="button"><i class="fa-solid fa-trash me-2"></i>Delete</button>
+                    <div class="author-fluid d-flex align-items-center">
+                        <input wire:model="image" type="file" accept="image/png, image/jpeg, image/jpg" id="image" class="border">
+                        <div wire:loading wire:target="image" class="text-success ms-3">Uploading...</div>
                     </div>
-                </div> --}}
-                
+                </div>
+                @error('form.image') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+
                 <div class="row mt-0 mt-lg-2">
-                
+
                     <div class="mb-3">
                         <label for="name" class="form-label">Name <span class="text-danger fw-bold">*</span></label>
                         <input wire:model="form.name" name="name" id="name" type="text" class="form-control" placeholder="Exam name">
-                        <x-input-error :messages="$errors->get('form.name')" class="mt-2" />
+                        @error('form.name') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <textarea wire:model="form.description" name="description" id="description" rows="3" class="form-control" placeholder="Exam Description"></textarea>
-                        <x-input-error :messages="$errors->get('form.description')" class="mt-2" />
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="d-flex justify-content-start pt-3">
                     <button class="btn btn-md btn-primary me-3" type="submit">Save</button>
                 </div>

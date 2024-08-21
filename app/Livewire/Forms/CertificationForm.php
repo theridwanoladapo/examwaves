@@ -17,7 +17,7 @@ class CertificationForm extends Form
     #[Validate('nullable|string')]
     public string $description = '';
 
-    #[Validate('nullable|image')]
+    #[Validate('nullable|string')]
     public string $image_path = '';
 
     #[Validate('nullable|string')]
@@ -29,9 +29,19 @@ class CertificationForm extends Form
     #[Validate('required|exists:exams,id')]
     public string $exam_id = '';
 
+    
+    #[Validate('nullable|image|max:2048')]
+    public $image = '';
+
     public function store()
     {
         $this->validate();
+
+        if($this->image) {
+            $img = $this->image->store(path: 'image/certifications');
+        }
+
+        $this->image_path = $img;
 
         Certification::create($this->only([
             'title',

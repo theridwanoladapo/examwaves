@@ -2,18 +2,22 @@
 
 use App\Livewire\Forms\CertificationForm;
 
+use function Livewire\Volt\{state, usesFileUploads};
 use function Livewire\Volt\form;
 use function Livewire\Volt\layout;
-use function Livewire\Volt\{state};
  
-state('exams');
+usesFileUploads();
+
+state(['image', 'exams']);
 
 layout('layouts.admin');
 
 form(CertificationForm::class);
 
 $storeCertification = function () {
-    
+
+    $this->form->image =  $this->image;
+
     $this->form->store();
 
     return $this->redirectRoute('admin.certifications.index');
@@ -33,34 +37,38 @@ $storeCertification = function () {
         <div class="card-body px-4">
 
             <form wire:submit="storeCertification">
-
     
-                {{-- <div class="d-flex align-items-center">
-                    <div class="author-fluid me-3">
-                        <img src="assets/img/team-1.jpg" class="img-fluid circle" width="100" alt="Img">
+                <div class="mb-3">
+                    <div class="author-fluid mb-3">
+                        @if ($image)
+                        <img src="{{ $image->temporaryUrl() }}" class="img-fluid rounded bg-white p-2 border border-3" width="100" height="100" alt="Img">
+                        @else
+                        <img src="{{ asset('assets/img/icon.png') }}" class="img-fluid rounded bg-white p-2 border border-3" width="100" height="100" alt="Img">
+                        @endif
                     </div>
-                    <div class="author-fluid">
-                        <button class="btn btn-md btn-primary me-2 my-1" type="button">Upload New</button>
-                        <button class="btn btn-md btn-light-danger me-2 my-1" type="button"><i class="fa-solid fa-trash me-2"></i>Delete</button>
+                    <div class="author-fluid d-flex align-items-center">
+                        <input wire:model="image" type="file" accept="image/png, image/jpeg, image/jpg" id="image" class="border">
+                        <div wire:loading wire:target="image" class="text-success ms-3">Uploading...</div>
                     </div>
-                </div> --}}
+                </div>
+                @error('form.image') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                 
                 <div class="row mt-0 mt-lg-2">
                 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title <span class="text-danger fw-bold">*</span></label>
                         <input wire:model="form.title" name="title" id="title" type="text" class="form-control" placeholder="Exam Certication title">
-                        <x-input-error :messages="$errors->get('form.title')" class="mt-2" />
+                        @error('form.title') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="code" class="form-label">Code <span class="text-danger fw-bold">*</span></label>
                         <input wire:model="form.code" name="code" id="code" type="text" class="form-control" placeholder="Exam Certication code (e.g A1-900)">
-                        <x-input-error :messages="$errors->get('form.code')" class="mt-2" />
+                        @error('form.code') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <input wire:model="form.description" name="description" id="description" type="text" class="form-control" placeholder="Exam Certication description">
-                        <x-input-error :messages="$errors->get('form.description')" class="mt-2" />
+                        @error('form.description') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="rating" class="form-label">Rating</label>
@@ -72,12 +80,12 @@ $storeCertification = function () {
                             <option value="4">Four</option>
                             <option value="5">Five</option>
                         </select>
-                        <x-input-error :messages="$errors->get('form.rating')" class="mt-2" />
+                        @error('form.rating') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price <span class="text-danger fw-bold">*</span></label>
                         <input wire:model="form.price" name="price" id="price" type="number" class="form-control" placeholder="Exam Certication price">
-                        <x-input-error :messages="$errors->get('form.price')" class="mt-2" />
+                        @error('form.price') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exam_id" class="form-label">Exam <span class="text-danger fw-bold">*</span></label>
@@ -87,7 +95,7 @@ $storeCertification = function () {
                             <option value="{{ $exam->id }}">{{ $exam->name }}</option>
                             @endforeach
                         </select>
-                        <x-input-error :messages="$errors->get('form.exam_id')" class="mt-2" />
+                        @error('form.exam_id') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     
                 </div>
