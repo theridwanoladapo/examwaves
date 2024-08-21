@@ -26,9 +26,11 @@ class ExamController extends Controller
     {
         return view('admin.exams.create');
     }
-
+    
     /**
      * Method show
+     *
+     * @param $id $id
      *
      */
     public function show($id)
@@ -36,5 +38,18 @@ class ExamController extends Controller
         $exam = Exam::find($id);
 
         return view('admin.exams.show', compact('exam'));
+    }
+    
+    /**
+     * Method edit
+     *
+     * @param $id $id
+     *
+     */
+    public function edit($id)
+    {
+        $exam = Exam::find($id);
+
+        return view('admin.exams.edit', compact('exam'));
     }
 }

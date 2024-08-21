@@ -38,6 +38,8 @@ Route::middleware(['auth', 'admin-access'])
         ->name('exams.create');
     Route::get('exams/view/{id}', [ExamController::class, 'show'])
         ->name('exams.view');
+    Route::get('exams/edit/{id}', [ExamController::class, 'edit'])
+        ->name('exams.edit');
 
     Route::get('certifications', [CertificationController::class, 'index'])
         ->name('certifications.index');
