@@ -39,7 +39,7 @@ class ExamForm extends Form
             $img = $this->image->store(path: 'image/exams');
         }
         
-        $this->image_path = $img;
+        $this->image_path = $img ?? '';
         
         Exam::create($this->only([
             'image_path', 'name', 'description'

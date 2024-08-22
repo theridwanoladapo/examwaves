@@ -30,35 +30,7 @@
                                 </div>
                             </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($exams as $k => $exam)
-                                        <tr>
-                                            <th scope="row">{{ $k+1 }}</th>
-                                            <td>{{ $exam->name }}</td>
-                                            <td>{{ $exam->description }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.exams.view', $exam->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            <livewire:pages.admin.exams.list />
                         </div>
                     </div>
                     <!-- End Dashboard -->

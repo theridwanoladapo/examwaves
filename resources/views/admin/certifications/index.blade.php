@@ -30,39 +30,7 @@
                                 </div>
                             </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Code</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Exam</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($certifications as $k => $certification)
-                                        <tr>
-                                            <th scope="row">{{ $k+1 }}</th>
-                                            <td>{{ $certification->title }}</td>
-                                            <td>{{ $certification->code }}</td>
-                                            <td>{{ $certification->price }}</td>
-                                            <td>{{ $certification->exam->name }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.certifications.view', $certification->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            <livewire:pages.admin.certifications.list />
                         </div>
                     </div>
                     <!-- End Dashboard -->

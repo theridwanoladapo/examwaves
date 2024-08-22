@@ -55,7 +55,7 @@ class CertificationForm extends Form
             $img = $this->image->store(path: 'image/certifications');
         }
 
-        $this->image_path = $img;
+        $this->image_path = $img ?? '';
 
         Certification::create($this->only([
             'title',
