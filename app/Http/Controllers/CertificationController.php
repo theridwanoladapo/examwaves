@@ -7,7 +7,7 @@ use App\Models\Exam;
 use Illuminate\Http\Request;
 
 class CertificationController extends Controller
-{    
+{
     /**
      * Method index
      *
@@ -18,7 +18,7 @@ class CertificationController extends Controller
 
         return view('admin.certifications.index', compact('certifications'));
     }
-    
+
     /**
      * Method create
      *
@@ -29,11 +29,11 @@ class CertificationController extends Controller
 
         return view('admin.certifications.create', compact('exams'));
     }
-    
+
     /**
      * Method show
      *
-     * @param $id $id [explicite description]
+     * @param $id $id
      *
      */
     public function show($id)
@@ -41,5 +41,19 @@ class CertificationController extends Controller
         $certification = Certification::find($id);
 
         return view('admin.certifications.show', compact('certification'));
+    }
+    
+    /**
+     * Method edit
+     *
+     * @param $id $id
+     *
+     */
+    public function edit($id)
+    {
+        $certification = Certification::find($id);
+        $exams = Exam::all();
+
+        return view('admin.certifications.edit', compact('certification', 'exams'));
     }
 }

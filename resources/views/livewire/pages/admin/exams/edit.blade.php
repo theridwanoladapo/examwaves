@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Exam;
 use App\Livewire\Forms\ExamForm;
 
 use function Livewire\Volt\{mount, state, usesFileUploads};
@@ -73,7 +72,7 @@ $updateExam = function () {
                 </div>
 
                 <div class="d-flex justify-content-start pt-3">
-                    <button class="btn btn-md btn-primary me-3" type="submit">Save</button>
+                    <button class="btn btn-md btn-primary me-3" type="submit">Update</button>
                 </div>
 
             </form>

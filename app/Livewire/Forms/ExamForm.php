@@ -5,12 +5,9 @@ namespace App\Livewire\Forms;
 use App\Models\Exam;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-use Livewire\WithFileUploads;
 
 class ExamForm extends Form
 {
-    use WithFileUploads;
-
     public ?Exam $exam;
 
     #[Validate('required|string|max:255')]
@@ -44,7 +41,9 @@ class ExamForm extends Form
         
         $this->image_path = $img;
         
-        Exam::create($this->only(['image_path', 'name', 'description']));
+        Exam::create($this->only([
+            'image_path', 'name', 'description'
+        ]));
 
         $this->reset();
     }
@@ -59,6 +58,8 @@ class ExamForm extends Form
         
         $this->image_path = $img;
 
-        $this->exam->update($this->only(['image_path', 'name', 'description']));
+        $this->exam->update($this->only([
+            'image_path', 'name', 'description'
+        ]));
     }
 }
