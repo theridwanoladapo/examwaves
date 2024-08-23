@@ -42,4 +42,9 @@ class Certification extends Model
     {
         return $this->belongsTo(Exam::class);
     }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }
