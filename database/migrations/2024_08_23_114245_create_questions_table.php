@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('question');
             $table->string('question_img');
-            $table->enum('type', ['multi_choice', 'two_choice', 'written'])->default(['multi_choice']);
+            $table->enum('type', ['multi_choice', 'two_choice', 'written'])->default('multi_choice');
             $table->longText('option_0')->nullable();
             $table->longText('option_1')->nullable();
             $table->longText('option_2')->nullable();

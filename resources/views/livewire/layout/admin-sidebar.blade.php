@@ -28,6 +28,16 @@
                         <i class="fa-solid fa-certificate me-2"></i> Certifications
                     </a>
                 </li>
+                <li class="py-2">
+                    <a href="{{ route('admin.tests.index') }}" class="fw-medium @if(request()->routeIs('admin.tests*')) {{'text-primary'}} @endif" wire:navigate>
+                        <i class="fa-solid fa-file-pen me-2"></i> Tests
+                    </a>
+                </li>
+                <li class="py-2">
+                    <a href="{{ route('admin.questions.upload') }}" class="fw-medium @if(request()->routeIs('admin.questions*')) {{'text-primary'}} @endif" wire:navigate>
+                        <i class="fa-solid fa-upload me-2"></i> Upload Question
+                    </a>
+                </li>
             </ul>
         </div>
 

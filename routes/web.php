@@ -3,6 +3,8 @@
 use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,6 +51,16 @@ Route::middleware(['auth', 'admin-access'])
         ->name('certifications.view');
     Route::get('certifications/edit/{id}', [CertificationController::class, 'edit'])
         ->name('certifications.edit');
+
+    Route::get('tests/index', [TestController::class, 'index'])
+        ->name('tests.index');
+    Route::get('tests/create', [TestController::class, 'create'])
+        ->name('tests.create');
+    Route::get('tests/view/{id}', [TestController::class, 'show'])
+        ->name('tests.view');
+
+    Route::get('questions/upload', [QuestionController::class, 'upload'])
+        ->name('questions.upload');
 });
 
 require __DIR__.'/auth.php';

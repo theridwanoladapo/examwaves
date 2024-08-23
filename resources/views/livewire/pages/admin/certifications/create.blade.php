@@ -57,22 +57,22 @@ $storeCertification = function () {
                 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title <span class="text-danger fw-bold">*</span></label>
-                        <input wire:model="form.title" name="title" id="title" type="text" class="form-control" placeholder="Exam Certication title">
+                        <input wire:model="form.title" name="title" id="title" type="text" class="form-control" placeholder="Exam Certification title">
                         @error('form.title') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="code" class="form-label">Code <span class="text-danger fw-bold">*</span></label>
-                        <input wire:model="form.code" name="code" id="code" type="text" class="form-control" placeholder="Exam Certication code (e.g A1-900)">
+                        <input wire:model="form.code" name="code" id="code" type="text" class="form-control" placeholder="Exam Certification code (e.g A1-900)">
                         @error('form.code') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input wire:model="form.description" name="description" id="description" type="text" class="form-control" placeholder="Exam Certication description">
+                        <input wire:model="form.description" name="description" id="description" type="text" class="form-control" placeholder="Exam Certification description">
                         @error('form.description') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="rating" class="form-label">Rating</label>
-                        <select wire:model="form.rating" name="rating" id="rating" class="form-select" placeholder="Certication rating">
+                        <select wire:model="form.rating" name="rating" id="rating" class="form-select" placeholder="Certification rating">
                             <option value="0">Select</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -84,12 +84,12 @@ $storeCertification = function () {
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price <span class="text-danger fw-bold">*</span></label>
-                        <input wire:model="form.price" name="price" id="price" type="number" class="form-control" placeholder="Exam Certication price">
+                        <input wire:model="form.price" name="price" id="price" type="number" class="form-control" placeholder="Exam Certification price">
                         @error('form.price') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exam_id" class="form-label">Exam <span class="text-danger fw-bold">*</span></label>
-                        <select wire:model="form.exam_id" name="exam_id" id="exam_id" class="form-select" placeholder="Certication exam">
+                        <select wire:model="form.exam_id" name="exam_id" id="exam_id" class="form-select" placeholder="Certification exam">
                             <option>Select</option>
                             @foreach ($exams as $exam)
                             <option value="{{ $exam->id }}">{{ $exam->name }}</option>
