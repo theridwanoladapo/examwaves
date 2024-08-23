@@ -52,21 +52,17 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Code</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">Rating</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Time Limit</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($certification->certifications as $k => $certification)
+                                        @foreach ($certification->tests as $k => $test)
                                         <tr>
                                             <th>{{ $k+1 }}</th>
-                                            <td>{{ $certification->title }}</td>
-                                            <td>{{ $certification->code }}</td>
-                                            <td><strong>${{ $certification->price }}</strong></td>
-                                            <td><span class="badge text-bg-info circle">{{ $certification->rating }}</span></td>
+                                            <td>{{ $test->name }}</td>
+                                            <td>{{ $test->time_limit }}</td>
                                             <td>
                                                 <a href="javascript:void(0)" class="square--30 circle text-light bg-seegreen d-inline-flex">
                                                     <i class="fa-solid fa-eye"></i>
@@ -76,7 +72,7 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

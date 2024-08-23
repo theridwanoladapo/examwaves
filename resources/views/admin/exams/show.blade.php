@@ -68,12 +68,12 @@
                                             <td><strong>${{ $certification->price }}</strong></td>
                                             <td><span class="badge text-bg-info circle">{{ $certification->rating }}</span></td>
                                             <td>
-                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-seegreen d-inline-flex">
+                                                <a href="{{ route('admin.certifications.view', $certification->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
-                                                <a href="javascript:void(0)" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
+                                                {{-- <button wire:click="deleteCertification({{$certification->id}})" wire:confirm="Are you sure you want to delete {{ $certification->title }}?" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
                                                     <i class="fa-solid fa-trash"></i>
-                                                </a>
+                                                </button> --}}
                                             </td>
                                         </tr>
                                         @endforeach
