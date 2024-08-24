@@ -26,15 +26,15 @@ $storeTest = function () {
 ?>
 
 <div>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    
     <div class="dash-wrapsw card border-0 rounded-4 py-4 mb-4">
         <div class="card-headers border-0 py-4 px-4 pb-0 pt-1">
             <h4><i class="fa-solid fa-pen-fancy text-primary me-2"></i>Add new test</h4>
         </div>
 
         <div class="card-body px-4">
+            <!-- Session Status -->
+            <x-auth-session-status class="h6 mb-4" :status="session('status')" />
 
             <form wire:submit.prevent="storeTest">
 

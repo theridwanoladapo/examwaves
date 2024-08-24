@@ -26,8 +26,18 @@ state([
 ]);
 
 updated([
-    'exam' => fn () => $this->getCertifications(),
-    'certification' => fn () => $this->getTests(),
+    'exam' => function () {
+        $this->test = null;
+        $this->tests = null;
+        $this->certification = null;
+        $this->certifications = null;
+        $this->getCertifications();
+    },
+    'certification' => function () {
+        $this->test = null;
+        $this->tests = null;
+        $this->getTests();
+    },
 ]);
 
 form(UploadForm::class);
