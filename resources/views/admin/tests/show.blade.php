@@ -34,10 +34,18 @@
                                 @endif
                             </div>
                             <div class="dash-y45 row align-items-center justify-content-between gy-3 mt-3">
+                                <h5 class="m-0">{{ $test->name }} <i class="fa-solid fa-circle-check fs-sm text-success ms-2"></i></h5>
+                                <div class="lios-parts-starts col-sm-6">
+                                    <p class="text-muted mb-0">Certification:</p>
+									<p class="m-0 text-dark fw-medium"> {{ $test->certification->title }} </p>
+                                </div>
+                                <div class="lios-parts-starts col-sm-6">
+                                    <p class="text-muted mb-0">Exam Provider:</p>
+									<p class="m-0 text-dark fw-medium"> {{ $test->certification->exam->name }} </p>
+                                </div>
                                 <div class="lios-parts-starts col-sm-7">
-                                    <h5 class="m-0">{{ $test->name }} <i class="fa-solid fa-circle-check fs-sm text-success ms-2"></i></h5>
                                     <p class="text-muted mb-0">Time Limit:</p>
-									<p class="m-0 text-dark fw-medium"> {{ $test->time_limit }} </p>
+									<p class="m-0 text-dark fw-medium"> {{ $test->time_limit }} mins</p>
                                 </div>
                             </div>
                         </div>
@@ -45,42 +53,12 @@
 
                     <div class="dash-wrapsw card border-0 rounded-4">
                         <div class="card-header">
-                            <h6>Certifications List</h6>
+                            <h6>Questions</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No.</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Code</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">Rating</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- @foreach ($test->certifications as $k => $certification)
-                                        <tr>
-                                            <th>{{ $k+1 }}</th>
-                                            <td>{{ $certification->title }}</td>
-                                            <td>{{ $certification->code }}</td>
-                                            <td><strong>${{ $certification->price }}</strong></td>
-                                            <td><span class="badge text-bg-info circle">{{ $certification->rating }}</span></td>
-                                            <td>
-                                                <a href="{{ route('admin.certifications.view', $certification->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                                <button wire:click="deleteCertification({{$certification->id}})" wire:confirm="Are you sure you want to delete {{ $certification->title }}?" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        @endforeach --}}
-                                    </tbody>
-                                </table>
-                            </div>
+                            
+                            <livewire:pages.admin.questions.list :test_id="$test->id" />
+
                         </div>
                     </div>
 

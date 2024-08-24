@@ -22,7 +22,8 @@ $deleteTest = function (Test $test) {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Certification</th>
+                    <th scope="col">Time Limit (in mins)</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@ $deleteTest = function (Test $test) {
                 <tr>
                     <th scope="row">{{ $k+1 }}</th>
                     <td>{{ $test->name }}</td>
+                    <td>{{ $test->certification->title }}</td>
                     <td>{{ $test->time_limit }}</td>
                     <td>
                         <a href="{{ route('admin.tests.view', $test->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
