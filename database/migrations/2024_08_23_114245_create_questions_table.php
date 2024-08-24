@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->longText('question');
-            $table->string('question_img');
-            $table->enum('type', ['multi_choice', 'two_choice', 'written'])->default('multi_choice');
-            $table->longText('option_0')->nullable();
-            $table->longText('option_1')->nullable();
-            $table->longText('option_2')->nullable();
-            $table->longText('option_3')->nullable();
-            $table->longText('option_4')->nullable();
-            $table->longText('option_5')->nullable();
-            $table->longText('option_6')->nullable();
-            $table->longText('correct_ans')->nullable();
+            $table->string('question_img')->nullable();
+            $table->enum('answer_type', ['multi_opt', 'one_opt', 'yes_no', 'typed'])->default('one_opt');
+            $table->longText('option_a')->nullable();
+            $table->longText('option_b')->nullable();
+            $table->longText('option_c')->nullable();
+            $table->longText('option_d')->nullable();
+            $table->longText('option_e')->nullable();
+            $table->longText('option_f')->nullable();
+            $table->longText('option_g')->nullable();
+            $table->longText('correct_options')->nullable();
             $table->longText('explanation')->nullable();
             $table->foreignId('test_id')->constrained('tests');
             $table->timestamps();

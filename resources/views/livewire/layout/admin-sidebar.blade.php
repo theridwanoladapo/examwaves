@@ -20,7 +20,7 @@
                 </li>
                 <li class="py-2">
                     <a href="{{ route('admin.exams.index') }}" class="fw-medium @if(request()->routeIs('admin.exams*')) {{'text-primary'}} @endif" wire:navigate>
-                        <i class="fa-solid fa-pen-fancy me-2"></i> Exams
+                        <i class="fa-solid fa-pen-fancy me-2"></i> Exam Providers
                     </a>
                 </li>
                 <li class="py-2">

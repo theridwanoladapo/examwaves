@@ -45,6 +45,9 @@
                     <div class="dash-wrapsw card border-0 rounded-4">
                         <div class="card-header">
                             <h6>Practice Tests</h6>
+                            {{-- <a href="{{ route('')}}" class="btn btn-sm btn-light gray-simple me-3 me-sm-4" wire:navigate>
+                                <i class="fa-solid fa-plus me-2 ms-n1"></i> Add New Tests
+                            </a> --}}
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
