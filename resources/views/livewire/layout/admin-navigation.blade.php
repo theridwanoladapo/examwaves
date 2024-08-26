@@ -14,8 +14,8 @@ $logout = function (Logout $logout) {
         <div class="container">
             <nav id="navigation" class="navigation navigation-landscape">
                 <div class="nav-header">
-                    <a class="nav-brand" href="#"><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
-                    <div class="nav-toggle"></div>
+                    <a class="nav-brand" href="{{ route('home') }}"><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
+                    {{-- <div class="nav-toggle"></div> --}}
                     <div class="mobile_nav">
                         <ul>
                             <li>

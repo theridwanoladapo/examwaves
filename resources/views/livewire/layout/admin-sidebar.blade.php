@@ -10,7 +10,7 @@
                 <p class="m-0 text-muted">{{ auth()->user()->email }}</p>
             </div>
         </div>
-        
+
         <div class="user-prfl-nav mt-4">
             <ul class="no-ul-list">
                 <li class="py-2">
@@ -34,8 +34,13 @@
                     </a>
                 </li>
                 <li class="py-2">
-                    <a href="{{ route('admin.questions.upload') }}" class="fw-medium @if(request()->routeIs('admin.questions*')) {{'text-primary'}} @endif" wire:navigate>
-                        <i class="fa-solid fa-upload me-2"></i> Upload Question
+                    <a href="{{ route('admin.questions.create') }}" class="fw-medium @if(request()->routeIs('admin.questions.create')) {{'text-primary'}} @endif" wire:navigate>
+                        <i class="fa-solid fa-plus me-2"></i> Add Question
+                    </a>
+                </li>
+                <li class="py-2">
+                    <a href="{{ route('admin.questions.upload') }}" class="fw-medium @if(request()->routeIs('admin.questions.upload')) {{'text-primary'}} @endif" wire:navigate>
+                        <i class="fa-solid fa-upload me-2"></i> Upload Questions
                     </a>
                 </li>
             </ul>

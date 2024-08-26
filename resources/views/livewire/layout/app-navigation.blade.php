@@ -14,7 +14,7 @@ $logout = function (Logout $logout) {
         <div class="container">
             <nav id="navigation" class="navigation navigation-landscape">
                 <div class="nav-header">
-                    <a class="nav-brand" href="#"><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
+                    <a class="nav-brand" href="{{ route('home') }}"><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
                     <div class="nav-toggle"></div>
                     <div class="mobile_nav">
                         <ul>
@@ -46,7 +46,7 @@ $logout = function (Logout $logout) {
                 <div class="nav-menus-wrapper" style="transition-property: none;">
                     <ul class="nav-menu">
 
-                        <li><a href="">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
 
                         <li>
                             <a href="JavaScript:Void(0);">Practice Exams<span class="submenu-indicator"></span></a>

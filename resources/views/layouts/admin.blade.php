@@ -26,7 +26,9 @@
 
             {{ $slot }}
 
-            <button type="button" class="d-lg-none btn btn-md btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#Sidebaruser"><i class="fa-solid fa-filter me-2"></i>Dashboard Navigation</button>
+            <button type="button" class="d-lg-none btn btn-md btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#Sidebaruser">
+                <i class="fa-solid fa-filter me-2"></i> Dashboard Navigation
+            </button>
         </div>
 
 

@@ -19,13 +19,13 @@ class UploadForm extends Form
     public function import()
     {
         $this->validate();
-        
+
         $import = new QuestionsImport($this->test_id);
-        
+
         Excel::import($import, $this->file);
-        
+
         $data = $import->getArray();
-        
+
         $questions = $data['questions'];
 
         Question::insert($questions);
@@ -33,8 +33,5 @@ class UploadForm extends Form
         session()->flash('status', 'Questions successfully added to test.');
 
         $this->reset();
-        // foreach ($questions as $question) {
-        //     ExamQuestions::create($question);
-        // }
     }
 }

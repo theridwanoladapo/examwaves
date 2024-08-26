@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('question');
             $table->string('question_img')->nullable();
-            $table->enum('answer_type', ['multi_opt', 'one_opt', 'yes_no', 'typed'])->default('one_opt');
+            $table->enum('answer_type', ['multi_opt', 'one_opt', 'bool', 'typed'])->default('one_opt');
             $table->longText('option_a')->nullable();
             $table->longText('option_b')->nullable();
             $table->longText('option_c')->nullable();

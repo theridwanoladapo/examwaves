@@ -19,7 +19,7 @@
 
                 <div class="col-xl-9 col-lg-8">
                     <!-- Dashboard Info -->
-                    <livewire:pages.admin.questions.upload />
+                    <livewire:pages.admin.questions.create />
                     <!-- End Dashboard -->
                 </div>
 

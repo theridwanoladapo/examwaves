@@ -61,6 +61,8 @@ Route::middleware(['auth', 'admin-access'])
 
     Route::get('questions/upload', [QuestionController::class, 'upload'])
         ->name('questions.upload');
+    Route::get('questions/create', [QuestionController::class, 'create'])
+        ->name('questions.create');
 });
 
 require __DIR__.'/auth.php';
