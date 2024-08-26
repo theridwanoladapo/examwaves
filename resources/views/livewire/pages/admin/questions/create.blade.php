@@ -50,7 +50,7 @@ $storeQuestion = function () {
 
     $this->form->test_id = $this->test;
     $this->form->image = $this->image;
-    
+
     $this->form->store();
 
     return $this->redirectRoute('admin.questions.create', navigate: true);
@@ -123,7 +123,7 @@ $storeQuestion = function () {
                         <img src="{{ $image->temporaryUrl() }}" class="img-fluid rounded bg-white p-2 mt-1 border border-3" style="max-height: 200px" alt="Img">
                         @endif
                         <div wire:loading wire:target="file" class="text-success ms-3">Uploading...</div>
-                        @error('form.file') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                        @error('form.image') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="answer_type" class="form-label">Answer Test <span class="text-danger fw-bold">*</span></label>
@@ -134,7 +134,7 @@ $storeQuestion = function () {
                             <option value="bool">{{ answer_type_human('bool') }}</option>
                             <option value="typed">{{ answer_type_human('typed') }}</option>
                         </select>
-                        @error('answer_type') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                        @error('form.answer_type') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
 
                 </div>
@@ -172,6 +172,7 @@ $storeQuestion = function () {
                     <div class="mb-3">
                         <label for="correct_options" class="form-label">Correct Option(s)</label>
                         <input wire:model="form.correct_options" name="correct_options" id="correct_options" type="text" class="form-control" placeholder="Correct Option(s)...">
+                        @error('form.correct_options') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="explanation" class="form-label">Correct Answer Explanation</label>

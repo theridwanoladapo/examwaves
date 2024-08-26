@@ -38,7 +38,7 @@ class QuestionForm extends Form
     #[Validate('nullable|string')]
     public string $option_g = '';
 
-    #[Validate('nullable|string')]
+    #[Validate('required|string')]
     public string $correct_options = '';
 
     #[Validate('nullable|string')]
@@ -66,6 +66,8 @@ class QuestionForm extends Form
             'option_d', 'option_e', 'option_f', 'option_g',
             'correct_options', 'explanation', 'test_id'
         ));
+
+        session()->flash('status', 'Questions successfully added.');
 
         $this->reset();
     }
