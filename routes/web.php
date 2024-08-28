@@ -16,12 +16,12 @@ Route::get('/', function () {
     ->name('home');
 // Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::view('dashboard', 'user.dashboard')
     ->middleware(['auth', 'verified', 'user-access'])
     ->name('dashboard');
 
 Route::middleware(['auth', 'user-access'])->group(function () {
-    Route::view('profile', 'profile')
+    Route::view('profile', 'user.profile')
         ->name('profile');
 });
 
