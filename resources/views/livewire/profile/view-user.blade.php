@@ -10,7 +10,7 @@ use function Livewire\Volt\{state};
     <div class="dash-wrapsw card py-0 px-lg-5 px-4 pb-4 border-0 rounded-4 mb-4">
         <div class="position-absolute start-0 end-0 top-0 bg-primary ht-120"></div>
         <div class="position-absolute end-0 top-0 mt-5 pt-3 me-4 z-1">
-            <a href="{{ route('profile') }}" class="btn btn-sm btn-whites fw-medium">Profile Setting</a>
+            <a href="{{ route('profile') }}" class="btn btn-sm btn-whites fw-medium">Edit Profile</a>
         </div>
         <div class="dash-y44 position-relative mb-3">
             <div class="dash-user-thumb mt-5 pt-2">
@@ -68,5 +68,38 @@ use function Livewire\Volt\{state};
             </ul>
         </div> --}}
 
+    </div>
+
+    <div class="dash-wrapsw card border-0 rounded-4">
+        <div class="card-header">
+            <h6>My Exams</h6>
+        </div>
+        <div class="card-body">
+            <p class="text-center">You have no exams</p>
+            {{-- <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">Invoices</th>
+                            <th scope="col">Create Date</th>
+                            <th scope="col">Ammount</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>01</th>
+                            <td>#124673</td>
+                            <td>15 Mar 2023</td>
+                            <td><strong>$60</strong></td>
+                            <td><span class="label text-success bg-light-success">Completed</span></td>
+                            <td><a href="#" class="square--30 circle text-light bg-seegreen d-inline-flex"><i class="fa-solid fa-eye"></i></a><a href="#" class="square--30 circle text-light bg-danger d-inline-flex ms-2"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> --}}
+        </div>
     </div>
 </div>
