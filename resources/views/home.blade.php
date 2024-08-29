@@ -36,11 +36,37 @@
                         </a>
 						<div class="nav-toggle"></div>
 						<div class="mobile_nav">
+                            @auth
+                            <ul>
+                                <li>
+                                    <div class="btn-group account-drop">
+                                        <button type="button" class="btn btn-order-by-filt" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="{{ asset('assets/img/user-5.png') }}" class="img-fluid circle" alt="">
+                                        </button>
+                                        <div class="dropdown-menu pull-right animated flipInX">
+                                            <div class="drp_menu_headr">
+                                                <h4>Hi, {{ auth()->user()->name }}</h4>
+                                                <div class="drp_menu_headr-right">
+                                                    <button wire:click="logout" class="btn btn-whites">Logout</button>
+                                                </div>
+                                            </div>
+                                            <ul>
+                                                <li><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                                <li><a href="{{ route('profile') }}"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
+                                                {{-- <li><a href=""><i class="fa-solid fa-gear me-2"></i>Account Setting</a></li> --}}
+                                                {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            @else
 							<ul>
 								<li>
 									<a href="JavaScript:Void(0);" class="btn btn-info"><i class="fas fa-sign-in-alt me-2"></i>Log in</a>
 								</li>
 							</ul>
+                            @endauth
 						</div>
 					</div>
 
@@ -68,6 +94,31 @@
 
 						</ul>
 
+                        @auth
+                        <ul class="nav-menu nav-menu-social align-to-right">
+                            <li>
+                                <div class="btn-group account-drop">
+                                    <button type="button" class="btn btn-order-by-filt" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="{{ asset('assets/img/user-5.png') }}" class="img-fluid circle" alt="">
+                                    </button>
+                                    <div class="dropdown-menu pull-right animated flipInX">
+                                        <div class="drp_menu_headr">
+                                            <h4>Hi, {{ auth()->user()->name }}</h4>
+                                            <div class="drp_menu_headr-right">
+                                                <button wire:click="logout" class="btn btn-whites">Logout</button>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                            <li><a href="{{ route('profile') }}"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
+                                            {{-- <li><a href=""><i class="fa-solid fa-gear me-2"></i>Account Setting</a></li> --}}
+                                            {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        @else
 						<ul class="nav-menu nav-menu-social align-to-right">
                             <li>
                                 <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt me-2"></i>Log in</a>
@@ -76,6 +127,7 @@
                                 <a href="{{ route('register') }}" class="bg-info">Sign up<i class="fa-regular fa-circle-right ms-2"></i></a>
                             </li>
                         </ul>
+                        @endauth
 					</div>
 				</nav>
 			</div>
