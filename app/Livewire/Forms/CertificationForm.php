@@ -30,14 +30,14 @@ class CertificationForm extends Form
 
     #[Validate('required|exists:exams,id')]
     public string $exam_id = '';
-    
+
     #[Validate('nullable|image|max:2048')]
     public $image = '';
 
     public function setCertification(Certification $certification)
     {
         $this->certification = $certification;
- 
+
         $this->title = $certification->title;
         $this->code = $certification->code;
         $this->description = $certification->description;
@@ -77,8 +77,8 @@ class CertificationForm extends Form
         if($this->image) {
             $img = $this->image->store(path: 'image/certifications');
         }
-        
-        $this->image_path = $img;
+
+        $this->image_path = $img ?? $this->image_path;
 
         $this->certification->update($this->only([
             'title',

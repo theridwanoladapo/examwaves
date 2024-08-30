@@ -25,7 +25,7 @@ class ExamForm extends Form
     public function setExam(Exam $exam)
     {
         $this->exam = $exam;
- 
+
         $this->name = $exam->name;
         $this->description = $exam->description;
         $this->image_path = $exam->image_path ?? '';
@@ -38,9 +38,9 @@ class ExamForm extends Form
         if($this->image) {
             $img = $this->image->store(path: 'image/exams');
         }
-        
+
         $this->image_path = $img ?? '';
-        
+
         Exam::create($this->only([
             'image_path', 'name', 'description'
         ]));
@@ -55,8 +55,8 @@ class ExamForm extends Form
         if($this->image) {
             $img = $this->image->store(path: 'image/exams');
         }
-        
-        $this->image_path = $img;
+
+        $this->image_path = $img ?? $this->image_path;
 
         $this->exam->update($this->only([
             'image_path', 'name', 'description'
