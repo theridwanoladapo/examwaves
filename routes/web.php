@@ -12,17 +12,18 @@ Route::get('/', function () {
     $certifications = \App\Models\Certification::limit(6)->get();
 
     return view('home', compact(['exams','certifications']));
-})
-    ->name('home');
+})->name('home');
 // Route::view('/', 'welcome');
 
-Route::view('dashboard', 'user.dashboard')
+Route::view('user/dashboard', 'user.dashboard')
     ->middleware(['auth', 'verified', 'user-access'])
     ->name('dashboard');
 
 Route::middleware(['auth', 'user-access'])->group(function () {
-    Route::view('profile', 'user.profile')
+    Route::view('user/profile', 'user.profile')
         ->name('profile');
+    Route::view('user/settings', 'user.settings')
+        ->name('settings');
 });
 
 

@@ -33,7 +33,7 @@ $logout = function (Logout $logout) {
                                         <ul>
                                             <li><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
                                             <li><a href="{{ route('profile') }}"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
-                                            {{-- <li><a href=""><i class="fa-solid fa-gear me-2"></i>Account Setting</a></li> --}}
+                                            <li><a href="{{ route('settings') }}"><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
                                             {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
                                         </ul>
                                     </div>
@@ -135,7 +135,7 @@ $logout = function (Logout $logout) {
                                     <ul>
                                         <li><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
                                         <li><a href="{{ route('profile') }}"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
-                                        {{-- <li><a href=""><i class="fa-solid fa-gear me-2"></i>Account Setting</a></li> --}}
+                                        <li><a href="{{ route('settings') }}"><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
                                         {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
                                     </ul>
                                 </div>

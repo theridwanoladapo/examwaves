@@ -23,6 +23,11 @@
                         <i class="fa-solid fa-id-card me-2"></i> Profile
                     </a>
                 </li>
+                <li class="py-2">
+                    <a href="{{ route('settings') }}" class="fw-medium @if(request()->routeIs('settings')) {{'text-primary'}} @endif" wire:navigate>
+                        <i class="fa-solid fa-gear me-2"></i> Account Settings
+                    </a>
+                </li>
             </ul>
         </div>
 

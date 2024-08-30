@@ -39,42 +39,54 @@ $updatePassword = function () {
 
 ?>
 
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Update Password') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
-        </p>
-    </header>
-
-    <form wire:submit="updatePassword" class="mt-6 space-y-6">
-        <div>
-            <x-input-label for="update_password_current_password" :value="__('Current Password')" />
-            <x-text-input wire:model="current_password" id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('current_password')" class="mt-2" />
+<div>
+    <div class="dash-wrapsw card border-0 rounded-4 py-4 mb-4">
+        <div class="card-headers border-0 py-4 px-4 pb-0 pt-1">
+            <h5><i class="fa-solid fa-lock text-primary me-2"></i>{{ __('Update Password') }}</h5>
+            <p class="mt-1 text-gray-600">
+                {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            </p>
         </div>
+        <div class="card-body px-4">
+            <form wire:submit.prevent="updatePassword">
+                <div class="row align-items-center g-3 g-sm-4 pb-3">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="update_password_current_password">Current Password</label>
+                        <input wire:model="current_password" id="update_password_current_password" name="current_password"
+                        type="password" class="form-control" autocomplete="current-password" placeholder="********">
+                        @error('current_password') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="col-sm-6">
+                        {{-- <a href="" class="fw-semibold text-primary d-flex mt-sm-4">
+                            <i class="fa-solid fa-question me-2"></i>Forgot My Password
+                        </a> --}}
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="update_password">New Password</label>
+                        <input wire:model="password" id="update_password" name="password"
+                        type="password" class="form-control" autocomplete="new-password" placeholder="********">
+                        @error('password') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="update_password_confirmation">Confirm Password</label>
+                        <input wire:model="password_confirmation" id="update_password_confirmation" name="password_confirmation"
+                        type="password" class="form-control" autocomplete="new-password" placeholder="********">
+                        @error('password_confirmation') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                    </div>
+                </div>
 
-        <div>
-            <x-input-label for="update_password_password" :value="__('New Password')" />
-            <x-text-input wire:model="password" id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <div class="alert alert-info d-flex rounded-4 mb-0"><i class="ai-circle-info fs-xl me-2"></i>
+                    <p class="mb-0">Password must be minimum 8 characters long - the more, the better.</p>
+                </div>
+
+                <div class="d-flex justify-content-start pt-3">
+                    <button class="btn btn-primary me-3" type="submit">Save changes</button>
+                    <x-action-message class="me-3" on="password-updated">
+                        {{ __('Saved.') }}
+                    </x-action-message>
+                </div>
+            </form>
+
         </div>
-
-        <div>
-            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input wire:model="password_confirmation" id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            <x-action-message class="me-3" on="password-updated">
-                {{ __('Saved.') }}
-            </x-action-message>
-        </div>
-    </form>
-</section>
+    </div>
+</div>
