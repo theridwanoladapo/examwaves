@@ -24,6 +24,9 @@
                             <div class="d-sm-flex align-items-center mb-4">
                                 <h1 class="h2 text-dark mb-4 mb-sm-0 me-4">Welcome to Admin Dashboard</h1>
                             </div>
+
+                            <livewire:pages.admin.dashboard />
+                            
                         </div>
                     </div>
                     <!-- End Dashboard -->
