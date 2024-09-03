@@ -6,7 +6,7 @@ use App\Models\Certification;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
-{    
+{
     /**
      * Method index
      *
@@ -18,8 +18,8 @@ class HomeController extends Controller
 
     public function viewExam($id)
     {
-        $exam = Certification::find($id);
+        $certification = Certification::find($id);
 
-        return view('exams.view', compact('exam'));
+        return view('exams.show', compact('certification'));
     }
 }

@@ -32,12 +32,12 @@ with(fn () => ['certifications' => Certification::paginate(10)]);
                     </div>
                 </div>
                 <div class="mt-auto">
-                    <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: {{ $certification->rating }}</span>
                     <div class="crd-srv gray-simple d-flex align-items-center justify-content-between px-3 py-3 rounded-3 mt-3">
                         <div class="empl-thumb">
-                            <h6 class="fw-semibold mb-0">${{ $certification->price }}</h6>
+                            <h6><span class="fw-semibold mb-0">Practice Exam:</span> {{ exam_test_count($certification->id) }}</h6>
+                            <h6><span class="fw-semibold mb-0">Question Exam:</span> {{ exam_question_count($certification->id) }}</h6>
                         </div>
-                        <a href="javascript:void(0)" class="btn btn-md btn-primary">See more</a>
+                        <a href="{{ route('certifications.view', $certification->id) }}" class="btn btn-md btn-primary">See more</a>
                     </div>
                 </div>
             </div>

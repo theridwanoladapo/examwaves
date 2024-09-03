@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/Jost.css') }}" type="text/css">
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
     </head>
-    <body class="gray-simple">
+    <body>
         <!-- Preloader -->
         {{-- <div id="preloader">
             <div class="preloader"><span></span><span></span></div>

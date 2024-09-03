@@ -257,12 +257,10 @@
                             <div class="mt-auto">
                                 <div class="crd-srv gray-simple d-flex align-items-center justify-content-between px-3 py-3 rounded-3 mt-3">
                                     <div class="empl-thumb">
-                                        {{-- <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: {{ $certification->rating }}</span>
-                                        <span class="fw-medium"><i class="fas fa-star text-warning mx-2"></i> Rating: {{ $certification->rating }}</span> --}}
                                         <h6><span class="fw-semibold mb-0">Practice Exam:</span> {{ exam_test_count($certification->id) }}</h6>
                                         <h6><span class="fw-semibold mb-0">Question Exam:</span> {{ exam_question_count($certification->id) }}</h6>
                                     </div>
-                                    <a href="javascript:void(0)" class="btn btn-md btn-primary">See more</a>
+                                    <a href="{{ route('certifications.view', $certification->id) }}" class="btn btn-md btn-primary">See more</a>
                                 </div>
                             </div>
 						</div>
@@ -272,7 +270,7 @@
 
                 <div class="row align-items-center justify-content-center mt-5">
                     <div class="col-xl-7 col-lg-7 col-md-11 mb-3 text-center wow animated fadeInUp">
-                        <a href="{{ route('exams') }}" class="btn btn-outline-primary rounded-5">Explore More Exams</a>
+                        <a href="{{ route('certifications') }}" class="btn btn-outline-primary rounded-5">Explore More Exams</a>
                     </div>
                 </div>
 
