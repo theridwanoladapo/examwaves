@@ -17,6 +17,7 @@ $logout = function (Logout $logout) {
                     <a class="nav-brand" href="{{ route('home') }}"><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
                     <div class="nav-toggle"></div>
                     <div class="mobile_nav">
+                        @auth
                         <ul>
                             <li>
                                 <div class="btn-group account-drop">
@@ -27,19 +28,26 @@ $logout = function (Logout $logout) {
                                         <div class="drp_menu_headr">
                                             <h4>Hi, {{ auth()->user()->name }}</h4>
                                             <div class="drp_menu_headr-right">
-                                                <button wire:click="logout" class="btn btn-whites">Logout</button>
+                                                <button wire:click="logout" class="btn btn-whites"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
                                             </div>
                                         </div>
                                         <ul>
-                                            <li><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                                            <li><a href="{{ route('profile') }}"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
-                                            <li><a href="{{ route('settings') }}"><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
+                                            <li><a href="{{ route('dashboard') }}" wire:navigate><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                            <li><a href="{{ route('profile') }}" wire:navigate><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
+                                            <li><a href="{{ route('settings') }}" wire:navigate><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
                                             {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                         </ul>
+                        @else
+                        <ul>
+                            <li>
+                                <a href="JavaScript:Void(0);" class="btn btn-info"><i class="fas fa-sign-in-alt me-2"></i> Log in</a>
+                            </li>
+                        </ul>
+                        @endauth
                     </div>
                 </div>
                 <div class="nav-menus-wrapper" style="transition-property: none;">
@@ -119,6 +127,7 @@ $logout = function (Logout $logout) {
 
                     </ul>
 
+                    @auth
                     <ul class="nav-menu nav-menu-social align-to-right">
                         <li>
                             <div class="btn-group account-drop">
@@ -129,19 +138,29 @@ $logout = function (Logout $logout) {
                                     <div class="drp_menu_headr">
                                         <h4>Hi, {{ auth()->user()->name }}</h4>
                                         <div class="drp_menu_headr-right">
-                                            <button wire:click="logout" class="btn btn-whites">Logout</button>
+                                            <button wire:click="logout" class="btn btn-whites"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
                                         </div>
                                     </div>
                                     <ul>
-                                        <li><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                                        <li><a href="{{ route('profile') }}"><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
-                                        <li><a href="{{ route('settings') }}"><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
+                                        <li><a href="{{ route('dashboard') }}" wire:navigate><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                                        <li><a href="{{ route('profile') }}" wire:navigate><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
+                                        <li><a href="{{ route('settings') }}" wire:navigate><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
                                         {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    @else
+                    <ul class="nav-menu nav-menu-social align-to-right">
+                        <li>
+                            <a href="{{ route('login') }}" wire:navigate><i class="fas fa-sign-in-alt me-2"></i> Log in</a>
+                        </li>
+                        <li class="list-buttons ms-2">
+                            <a href="{{ route('register') }}" class="bg-info" wire:navigate>Sign up <i class="fa-regular fa-circle-right ms-2"></i></a>
+                        </li>
+                    </ul>
+                    @endauth
                 </div>
             </nav>
         </div>

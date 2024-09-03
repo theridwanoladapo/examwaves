@@ -1,8 +1,12 @@
 <?php
 
+use App\Models\Question;
+use App\Models\Test;
+
 // answer type
 if (! function_exists('answer_type_human')) {
-    function answer_type_human($type) {
+    function answer_type_human($type) 
+    {
         if ($type == 'one_opt') {
             $result = 'One Correct Answer';
         }
@@ -17,5 +21,39 @@ if (! function_exists('answer_type_human')) {
         }
 
         return $result;
+    }
+}
+
+
+// exam question count
+if (! function_exists('exam_question_count')) {
+    function exam_question_count($exam_id) 
+    {
+        $test = Test::where('certification_id', $exam_id)->first();
+        
+        if (! $test) return 0;
+
+        $test_id = $test->id;
+        $count = Question::where('test_id', $test_id)->count();
+
+        return $count;
+    }
+}
+
+// exam test count
+if (! function_exists('exam_test_count')) {
+    function exam_test_count($exam_id) 
+    {
+        $count = Test::where('certification_id', $exam_id)->count();
+
+        return $count;
+    }
+}
+
+// example
+if (! function_exists('example')) {
+    function example($args) 
+    {
+        
     }
 }

@@ -13,7 +13,10 @@ Route::get('/', function () {
 
     return view('home', compact(['exams','certifications']));
 })->name('home');
-// Route::view('/', 'welcome');
+Route::view('exams', 'exams.index')
+    ->name('exams');
+Route::get('exams/{id}', [HomeController::class, 'viewExam'])
+    ->name('exams.view');
 
 Route::view('user/dashboard', 'user.dashboard')
     ->middleware(['auth', 'verified', 'user-access'])

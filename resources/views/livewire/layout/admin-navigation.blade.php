@@ -27,7 +27,7 @@ $logout = function (Logout $logout) {
                                         <div class="drp_menu_headr">
                                             <h4>Hi, {{ auth()->user()->name }}</h4>
                                             <div class="drp_menu_headr-right">
-                                                <button wire:click="logout" class="btn btn-whites">Logout</button>
+                                                <button wire:click="logout" class="btn btn-whites"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
                                             </div>
                                         </div>
                                         <ul>
@@ -52,7 +52,7 @@ $logout = function (Logout $logout) {
                                     <div class="drp_menu_headr">
                                         <h4>Hi, {{ auth()->user()->name }}</h4>
                                         <div class="drp_menu_headr-right">
-                                            <button wire:click="logout" class="btn btn-whites">Logout</button>
+                                            <button wire:click="logout" class="btn btn-whites"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
                                         </div>
                                     </div>
                                     <ul>
