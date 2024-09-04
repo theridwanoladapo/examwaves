@@ -16,6 +16,9 @@ class TestForm extends Form
     #[Validate('nullable|integer')]
     public string $time_limit = '';
 
+    #[Validate('nullable|integer')]
+    public string $pass_percent = '';
+
     #[Validate('required|exists:certifications,id')]
     public string $certification_id = '';
 
@@ -25,6 +28,7 @@ class TestForm extends Form
  
         $this->name = $test->name;
         $this->time_limit = $test->time_limit;
+        $this->pass_percent = $test->pass_percent;
         $this->certification_id = $test->certification_id;
     }
 
@@ -33,7 +37,7 @@ class TestForm extends Form
         $this->validate();
 
         Test::create($this->only([
-            'name', 'time_limit', 'certification_id'
+            'name', 'time_limit', 'pass_percent', 'certification_id'
         ]));
 
         session()->flash('status', 'Test successfully added.');
@@ -46,7 +50,7 @@ class TestForm extends Form
         $this->validate();
 
         $this->test->update($this->only([
-            'name', 'time_limit', 'certification_id'
+            'name', 'time_limit', 'pass_percent', 'certification_id'
         ]));
 
         session()->flash('status', 'Test successfully updated.');

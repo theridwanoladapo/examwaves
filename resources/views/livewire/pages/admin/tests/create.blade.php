@@ -51,6 +51,11 @@ $storeTest = function () {
                         @error('form.time_limit') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="description" class="form-label">Pass Percentage <span class="text-danger fw-bold">*</span></label>
+                        <input wire:model="form.pass_percent" name="pass_percent" id="pass_percent" type="number" class="form-control" placeholder="Test Pass Percentage">
+                        @error('form.pass_percent') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="certification_id" class="form-label">Certification <span class="text-danger fw-bold">*</span></label>
                         <select wire:model="form.certification_id" name="certification_id" id="certification_id" class="form-select" placeholder="Certification">
                             <option>Select</option>

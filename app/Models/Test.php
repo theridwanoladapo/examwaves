@@ -17,6 +17,7 @@ class Test extends Model
     protected $fillable = [
         'name',
         'time_limit',
+        'pass_percent',
         'certification_id',
     ];
 
