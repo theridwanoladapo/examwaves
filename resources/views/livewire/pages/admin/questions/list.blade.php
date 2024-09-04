@@ -24,7 +24,7 @@ $deleteQuestion = function (Question $question) {
                     <th scope="col">No.</th>
                     <th scope="col">Question</th>
                     <th scope="col">Answer Type</th>
-                    <th scope="col">Test</th>
+                    {{-- <th scope="col">Pass %</th> --}}
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@ $deleteQuestion = function (Question $question) {
                     <th>{{ $k+1 }}</th>
                     <td>{{ $question->question }}</td>
                     <td>{{ answer_type_human($question->answer_type) }}</td>
-                    <td><strong>{{ $question->test->name }}</strong></td>
+                    {{-- <td>{{ $question->test->pass_percent }}%</td> --}}
                     <td>
                         {{-- <a href="{{ route('admin.questions.view', $question->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
                             <i class="fa-solid fa-eye"></i>

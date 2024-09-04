@@ -43,9 +43,13 @@
                                     <p class="text-muted mb-0">Exam Provider:</p>
 									<p class="m-0 text-dark fw-medium"> {{ $test->certification->exam->name }} </p>
                                 </div>
-                                <div class="lios-parts-starts col-sm-7">
+                                <div class="lios-parts-starts col-sm-6">
                                     <p class="text-muted mb-0">Time Limit:</p>
 									<p class="m-0 text-dark fw-medium"> {{ $test->time_limit }} mins</p>
+                                </div>
+                                <div class="lios-parts-starts col-sm-6">
+                                    <p class="text-muted mb-0">Pass Percentage:</p>
+									<p class="m-0 text-dark fw-medium"> {{ $test->pass_percent }}%</p>
                                 </div>
                             </div>
                         </div>
