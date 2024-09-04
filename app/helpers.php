@@ -50,6 +50,16 @@ if (! function_exists('exam_test_count')) {
     }
 }
 
+// test question count
+if (! function_exists('test_question_count')) {
+    function test_question_count($test_id) 
+    {
+        $count = Question::where('test_id', $test_id)->count();
+
+        return $count;
+    }
+}
+
 // example
 if (! function_exists('example')) {
     function example($args) 

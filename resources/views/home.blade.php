@@ -27,7 +27,7 @@
 	<div id="main-wrapper">
 
 		<!-- Start Navigation -->
-		<div class="header header-transparent dark">
+		<div class="header header-light shadow">
 			<div class="container">
 				<nav id="navigation" class="navigation navigation-landscape">
 					<div class="nav-header">
@@ -134,6 +134,18 @@
 		</div>
 		<!-- End Navigation -->
 		<div class="clearfix"></div>
+
+        @auth
+        <div class="d-flex align-items-center pb-1 mt-3 mb-2 bg-white w-100">
+            <span class="avatar bg-light-primary text-primary w-15 h-15 me-2 ms-4">
+                <span class="fs-30">{{ Str::substr(auth()->user()->name, 0, 1) }}</span>
+            </span>
+            <div class="ps-3">
+                <h6 class="mb-0">Welcome back, {{ auth()->user()->name }}</h6>
+                {{-- <span class="fs-sm text-muted">02 hours ago</span> --}}
+            </div>
+        </div>
+        @endauth
 
         <!--  Hero Banner Start -->
         <div class="image-cover hero-header" style="background:#ecf4f9 url(assets/img/home-bg.png)no-repeat;">

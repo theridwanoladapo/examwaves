@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Account Dashboard Start -->
-    <section>
+    <section class="gray-simple">
         <div class="container">
 
             <div class="row justify-content-between">

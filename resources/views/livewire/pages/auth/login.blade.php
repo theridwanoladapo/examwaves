@@ -24,7 +24,7 @@ $login = function () {
             $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
             break;
         case 0:
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('home', absolute: false), navigate: true);
             break;
         default:
             return redirect('/', navigate: true);
