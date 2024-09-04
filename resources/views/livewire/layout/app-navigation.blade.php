@@ -57,11 +57,10 @@ $logout = function (Logout $logout) {
 
                         <li>
                             <a href="JavaScript:Void(0);">Practice Exams<span class="submenu-indicator"></span></a>
-                            <ul class="nav-dropdown nav-submenu xxl-menu">
+                            <ul class="nav-dropdown">
                                 <li>
                                     <a href="">
                                         <div class="mega-advance-menu">
-                                            <div class="mega-first square--50 rounded-2 bg-light-success text-success fs-4"><i class="fa-brands fa-microsoft"></i></div>
                                             <div class="mega-last ps-2">
                                                 <h6 class="lh-base fs-6 font--bold m-0">Microsoft</h6>
                                             </div>
@@ -71,7 +70,6 @@ $logout = function (Logout $logout) {
                                 <li>
                                     <a href="">
                                         <div class="mega-advance-menu">
-                                            <div class="mega-first square--50 rounded-2 bg-light-warning text-warning fs-4"><i class="fa-brands fa-amazon"></i></div>
                                             <div class="mega-last ps-2">
                                                 <h6 class="lh-base fs-6 font--bold m-0">Amazon</h6>
                                             </div>
@@ -81,7 +79,6 @@ $logout = function (Logout $logout) {
                                 <li>
                                     <a href="">
                                         <div class="mega-advance-menu">
-                                            <div class="mega-first square--50 rounded-2 bg-light-info text-info fs-4"><i class="fa-solid fa-envelope-open-text"></i></div>
                                             <div class="mega-last ps-2">
                                                 <h6 class="lh-base fs-6 font--bold m-0">CompTIA</h6>
                                             </div>
@@ -91,7 +88,6 @@ $logout = function (Logout $logout) {
                                 <li>
                                     <a href="">
                                         <div class="mega-advance-menu">
-                                            <div class="mega-first square--50 rounded-2 bg-light-purple text-purple fs-4"><i class="fa-solid fa-eye"></i></div>
                                             <div class="mega-last ps-2">
                                                 <h6 class="lh-base fs-6 font--bold m-0">Cisco</h6>
                                             </div>
@@ -101,7 +97,6 @@ $logout = function (Logout $logout) {
                                 <li>
                                     <a href="">
                                         <div class="mega-advance-menu">
-                                            <div class="mega-first square--50 rounded-2 bg-light-seegreen text-seegreen fs-4"><i class="fa-brands fa-google"></i></div>
                                             <div class="mega-last ps-2">
                                                 <h6 class="lh-base fs-6 font--bold m-0">Google</h6>
                                             </div>
@@ -111,7 +106,6 @@ $logout = function (Logout $logout) {
                                 <li>
                                     <a href="">
                                         <div class="mega-advance-menu">
-                                            <div class="mega-first square--50 rounded-2 bg-light-danger text-danger fs-4"><i class="fa-solid fa-briefcase"></i></div>
                                             <div class="mega-last ps-2">
                                                 <h6 class="lh-base fs-6 font--bold m-0">Oracle</h6>
                                             </div>
