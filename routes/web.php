@@ -13,8 +13,12 @@ Route::get('/', function () {
 
     return view('home', compact(['exams','certifications']));
 })->name('home');
-Route::view('exam-providers', 'exams.index')
-    ->name('exam-providers');
+
+Route::get('providers', [HomeController::class, 'allProviders'])
+    ->name('providers');
+Route::get('providers/{id}', [HomeController::class, 'viewProvider'])
+    ->name('providers.view');
+
 Route::view('exams', 'exams.index')
     ->name('certifications');
 Route::get('exams/{id}', [HomeController::class, 'viewExam'])

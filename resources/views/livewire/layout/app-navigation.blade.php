@@ -1,6 +1,13 @@
 <?php
 
+use App\Models\Exam;
+
 use App\Livewire\Actions\Logout;
+use function Livewire\Volt\{state};
+
+$getExams = fn () => $this->exams = Exam::all();
+
+state(['exams' => $getExams]);
 
 $logout = function (Logout $logout) {
     $logout();
@@ -10,11 +17,11 @@ $logout = function (Logout $logout) {
 
 ?>
 <div>
-    <div class="header header-light">
+    <div class="header header-light shadow">
         <div class="container">
             <nav id="navigation" class="navigation navigation-landscape">
                 <div class="nav-header">
-                    <a class="nav-brand" href="{{ route('home') }}"><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
+                    <a class="nav-brand" href="{{ route('home') }}" wire:navigate><img src="{{ asset('assets/img/logo.png') }}" class="logo" alt=""></a>
                     <div class="nav-toggle"></div>
                     <div class="mobile_nav">
                         @auth
@@ -53,65 +60,22 @@ $logout = function (Logout $logout) {
                 <div class="nav-menus-wrapper" style="transition-property: none;">
                     <ul class="nav-menu">
 
-                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('home') }}" wire:navigate>Home</a></li>
 
                         <li>
                             <a href="JavaScript:Void(0);">Practice Exams<span class="submenu-indicator"></span></a>
                             <ul class="nav-dropdown">
+                                @foreach ($this->exams as $exam)
                                 <li>
-                                    <a href="">
+                                    <a href="{{ route('providers.view', $exam->id) }}" wire:navigate>
                                         <div class="mega-advance-menu">
                                             <div class="mega-last ps-2">
-                                                <h6 class="lh-base fs-6 font--bold m-0">Microsoft</h6>
+                                                <h6 class="lh-base fs-6 font--bold m-0">{{ $exam->name }}</h6>
                                             </div>
                                         </div>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <div class="mega-advance-menu">
-                                            <div class="mega-last ps-2">
-                                                <h6 class="lh-base fs-6 font--bold m-0">Amazon</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <div class="mega-advance-menu">
-                                            <div class="mega-last ps-2">
-                                                <h6 class="lh-base fs-6 font--bold m-0">CompTIA</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <div class="mega-advance-menu">
-                                            <div class="mega-last ps-2">
-                                                <h6 class="lh-base fs-6 font--bold m-0">Cisco</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <div class="mega-advance-menu">
-                                            <div class="mega-last ps-2">
-                                                <h6 class="lh-base fs-6 font--bold m-0">Google</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <div class="mega-advance-menu">
-                                            <div class="mega-last ps-2">
-                                                <h6 class="lh-base fs-6 font--bold m-0">Oracle</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                         </li>
 

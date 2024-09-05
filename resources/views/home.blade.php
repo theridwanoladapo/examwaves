@@ -114,7 +114,9 @@
                         <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
                             {{-- <div class="flex-shrink-0"><img src="assets/img/l-1.png" class="img-fluid" width="60" alt=""></div> --}}
                             <div class="ps-3">
-                                <h6 class="mb-0">{{ $exam->name }}</h6>
+                                <h6 class="mb-0">
+                                    <a href="{{ route('providers.view', $exam->id) }}" wire:navigate>{{ $exam->name }}</a>
+                                </h6>
                             </div>
                         </div>
                     </div>
