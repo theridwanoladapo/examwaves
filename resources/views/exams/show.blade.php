@@ -10,7 +10,7 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item font--medium"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item font--medium"><a
-                                    href="{{ route('certifications') }}">{{ $certification->exam->name }}</a></li>
+                                    href="{{ route('providers.view', $certification->exam->id) }}">{{ $certification->exam->name }}</a></li>
                             <li class="breadcrumb-item font--medium active text-primary" aria-current="page">
                                 {{ $certification->title }}</li>
                         </ol>
@@ -103,160 +103,29 @@
                     </div> --}}
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-md-12 col-xl-offset-1">
-                    <div class="blogs-sidewraps pt-lg-0 pt-4">
-
-                        <div class="blogs-sides">
-                            <!-- Search Box -->
-                            <div class="position-relative mb-4 mb-lg-5"><i
-                                    class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                                <input class="form-control ps-5" type="search" placeholder="Enter keyword">
+                <div class="col-xl-4 col-lg-4 col-md-12">
+                    <div class="detail-side-block border overflow-hidden rounded-3 mt-md-0 mt-4">
+                        <div class="detail-side-head d-flex align-items-center gray-simple p-3">
+                            <div class="side-flex-thumb">
+                                <img src="assets/img/l-12.png" class="img-fluid" width="55" alt="">
                             </div>
-
-                            <!-- category -->
-                            <h4 class="font--bold">Categories:</h4>
-                            <ul class="no-ul-list mb-4 mb-lg-5">
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between py-1">
-                                        <div class="escols">
-                                            <input id="b1" class="form-check-input" name="b1"
-                                                type="checkbox">
-                                            <label for="b1" class="form-check-label">All categories</label>
-                                        </div>
-                                        <span class="fs-xs text-muted me-1">142</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between py-1">
-                                        <div class="escols">
-                                            <input id="b2" class="form-check-input" name="b2"
-                                                type="checkbox">
-                                            <label for="b2" class="form-check-label">Branding</label>
-                                        </div>
-                                        <span class="fs-xs text-muted ms-auto">16</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between py-1">
-                                        <div class="escols">
-                                            <input id="b3" class="form-check-input" name="b3"
-                                                type="checkbox">
-                                            <label for="b3" class="form-check-label">Software</label>
-                                        </div>
-                                        <span class="fs-xs text-muted ms-auto">22</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between py-1">
-                                        <div class="escols">
-                                            <input id="b4" class="form-check-input" name="b4"
-                                                type="checkbox">
-                                            <label for="b4" class="form-check-label">Advertisement</label>
-                                        </div>
-                                        <span class="fs-xs text-muted ms-auto">52</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between py-1">
-                                        <div class="escols">
-                                            <input id="b5" class="form-check-input" name="b5"
-                                                type="checkbox">
-                                            <label for="b5" class="form-check-label">E-commerce</label>
-                                        </div>
-                                        <span class="fs-xs text-muted ms-auto">62</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between py-1">
-                                        <div class="escols">
-                                            <input id="bg5" class="form-check-input" name="bg5"
-                                                type="checkbox">
-                                            <label for="bg5" class="form-check-label">Travel & Guide</label>
-                                        </div>
-                                        <span class="fs-xs text-muted ms-auto">54</span>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <!-- Trending -->
-                            <h4 class="font--bold">Trending Post:</h4>
-                            <div class="position-relative mt-4 mb-4 mb-lg-5">
-                                <article class="position-relative d-flex align-items-center mb-4">
-                                    <img class="rounded" src="assets/img/blog-1.jpg" width="90"
-                                        alt="Post Thumb">
-                                    <div class="ps-3">
-                                        <h4 class="h6 mb-2">
-                                            <a class="stretched-link" href="blog-single-v1.html">How work with killar
-                                                software?</a>
-                                        </h4>
-                                        <span class="text-sm-muted">10 min ago</span>
-                                    </div>
-                                </article>
-                                <article class="position-relative d-flex align-items-center mb-4">
-                                    <img class="rounded" src="assets/img/blog-2.jpg" width="90"
-                                        alt="Post Thumb">
-                                    <div class="ps-3">
-                                        <h4 class="h6 mb-2">
-                                            <a class="stretched-link" href="blog-single-v1.html">Can we increase our
-                                                revinue with killar</a>
-                                        </h4>
-                                        <span class="text-sm-muted">02 hours ago</span>
-                                    </div>
-                                </article>
-                                <article class="position-relative d-flex align-items-center mb-4">
-                                    <img class="rounded" src="assets/img/blog-3.jpg" width="90"
-                                        alt="Post Thumb">
-                                    <div class="ps-3">
-                                        <h4 class="h6 mb-2">
-                                            <a class="stretched-link" href="blog-single-v1.html">Facebook trends that
-                                                will definitely work</a>
-                                        </h4>
-                                        <span class="text-sm-muted">2 days ago</span>
-                                    </div>
-                                </article>
-
-                            </div>
-
-
-                            <!-- Tags -->
-                            <h4 class="font--bold">Popular Tags:</h4>
-                            <div class="position-relative tags-rap d-inline-block mb-4 mb-lg-5 mt-2">
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Shop</a>
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Trends</a>
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Shoes</a>
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Social</a>
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Travel</a>
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Guide</a>
-                                <a href="#"
-                                    class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">IPL</a>
-                                <a href="#" class="gray-simple px-2 py-1 d-inline-block rounded me-2 mb-2">Real
-                                    Estate</a>
-                            </div>
-
-                            <!-- category -->
-                            <h4 class="font--bold">Follow Us On:</h4>
-                            <div class="position-relative d-inline-flex">
-                                <a class="square--40 btn--instagram rounded-circle mt-2" href="#"><i
-                                        class="fa-brands fa-instagram"></i></a>
-                                <a class="square--40 btn--facebook rounded-circle mt-2 ms-3" href="#"><i
-                                        class="fa-brands fa-facebook-f"></i></a>
-                                <a class="square--40 btn--twitter rounded-circle mt-2 ms-3" href="#"><i
-                                        class="fa-brands fa-twitter"></i></a>
-                                <a class="square--40 btn--dribbble rounded-circle mt-2 ms-3" href="#"><i
-                                        class="fa-brands fa-dribbble"></i></a>
+                            <div class="side-flex-caption ps-3">
+                                <div class="jbs-title-iop"><h4 class="m-0">${{ $certification->price }}</h4></div>
+                                {{-- <div class="jbs-locat-oiu text-sm-muted">
+                                    <span><i class="fa-solid fa-location-dot me-1"></i>California, USA</span>
+                                </div> --}}
                             </div>
                         </div>
-
-                        <div class="blogs-sides mt-4 mt-lg-5">
-                            <img src="assets/img/popeyes-banner-ad.jpg" class="img-fluid" alt="">
+                        <div class="detail-side-middle py-3 px-3">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary full-width font-sm">Add to cart</button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-primary full-width font-sm">Buy Now</button>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 

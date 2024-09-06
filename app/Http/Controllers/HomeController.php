@@ -35,6 +35,6 @@ class HomeController extends Controller
     {
         $exam = Exam::find($id);
 
-        return view('providers.index', compact('exam'));
+        return view('providers.view', compact('exam'));
     }
 }

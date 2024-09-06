@@ -149,14 +149,14 @@
 								<div class="d-flex align-items-center mb-3">
 									<div class="dlio-catds">
                                         <h6 class="fw-medium mb-0 text-success bg-light-success rounded px-3 py-1 me-2">
-                                            <a href="javascript:void(0)">{{ $certification->exam->name }}</a>
+                                            <a href="{{ route('providers.view', $certification->exam->id) }}">{{ $certification->exam->name }}</a>
                                         </h6>
                                     </div>
 									{{-- <div class="dlio-dates ms-3"><span class="text-muted">10 March 2023</span></div> --}}
 								</div>
 								<div class="d-flex">
 									<h5 class="lh-base fw-semibold mb-0">
-                                        <a href="javascript:void(0)" class="jbl-detail">
+                                        <a href="{{ route('certifications.view', $certification->id) }}" class="jbl-detail">
                                             {{ $certification->title }} ({{ $certification->code }})
                                         </a>
                                     </h5>
@@ -166,7 +166,7 @@
                                 <div class="crd-srv gray-simple d-flex align-items-center justify-content-between px-3 py-3 rounded-3 mt-3">
                                     <div class="empl-thumb">
                                         <h6><span class="fw-semibold mb-0">Practice Exam:</span> {{ exam_test_count($certification->id) }}</h6>
-                                        <h6><span class="fw-semibold mb-0">Question Exam:</span> {{ exam_question_count($certification->id) }}</h6>
+                                        <h6><span class="fw-semibold mb-0">Questions:</span> {{ exam_question_count($certification->id) }}</h6>
                                     </div>
                                     <a href="{{ route('certifications.view', $certification->id) }}" class="btn btn-md btn-primary">See more</a>
                                 </div>
