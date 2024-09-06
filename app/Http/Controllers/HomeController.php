@@ -17,24 +17,29 @@ class HomeController extends Controller
         return view('admin.dashboard');
     }
 
+    public function allExams()
+    {
+        return view('frontend.exams.index');
+    }
+
     public function viewExam($id)
     {
         $certification = Certification::find($id);
 
-        return view('exams.show', compact('certification'));
+        return view('frontend.exams.show', compact('certification'));
     }
 
     public function allProviders()
     {
         $exams = Exam::all();
 
-        return view('providers.index', compact('exams'));
+        return view('frontend.providers.index', compact('exams'));
     }
 
     public function viewProvider($id)
     {
         $exam = Exam::find($id);
 
-        return view('providers.view', compact('exam'));
+        return view('frontend.providers.view', compact('exam'));
     }
 }

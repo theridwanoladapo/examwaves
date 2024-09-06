@@ -19,7 +19,7 @@ Route::get('providers', [HomeController::class, 'allProviders'])
 Route::get('providers/{id}', [HomeController::class, 'viewProvider'])
     ->name('providers.view');
 
-Route::view('exams', 'exams.index')
+Route::get('exams', [HomeController::class, 'allExams'])
     ->name('certifications');
 Route::get('exams/{id}', [HomeController::class, 'viewExam'])
     ->name('certifications.view');
