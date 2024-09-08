@@ -52,6 +52,7 @@
 									<p class="m-0 text-dark fw-medium"> {{ $test->pass_percent }}%</p>
                                 </div>
                             </div>
+                            <a href="{{ route('admin.tests.quiz', $test->id) }}" class="mt-3 btn btn-sm btn-primary fw-medium">Try Test</a>
                         </div>
                     </div>
 

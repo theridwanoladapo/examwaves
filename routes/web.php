@@ -68,6 +68,8 @@ Route::middleware(['auth', 'admin-access'])
         ->name('tests.create');
     Route::get('tests/view/{id}', [TestController::class, 'show'])
         ->name('tests.view');
+    Route::get('tests/quiz/{id}', [TestController::class, 'tryQuiz'])
+        ->name('tests.quiz');
 
     Route::get('questions/upload', [QuestionController::class, 'upload'])
         ->name('questions.upload');

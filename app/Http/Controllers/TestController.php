@@ -9,7 +9,7 @@ class TestController extends Controller
 {
     
     /**
-     * Method index
+     * All tests list page
      *
      */
     public function index()
@@ -18,7 +18,7 @@ class TestController extends Controller
     }
         
     /**
-     * Method create
+     * Create test page
      *
      */
     public function create()
@@ -27,7 +27,7 @@ class TestController extends Controller
     }
 
     /**
-     * Method show
+     * View single test page
      *
      * @param $id $id
      *
@@ -37,5 +37,18 @@ class TestController extends Controller
         $test = Test::find($id);
 
         return view('admin.tests.show', compact('test'));
+    }
+    
+    /**
+     *Go to quiz page
+     *
+     * @param $id $id
+     *
+     */
+    public function tryQuiz($id)
+    {
+        $test = Test::find($id);
+
+        return view('admin.tests.quiz', compact('test'));
     }
 }
