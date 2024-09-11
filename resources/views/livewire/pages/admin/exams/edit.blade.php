@@ -8,7 +8,7 @@ use function Livewire\Volt\layout;
 
 usesFileUploads();
 
-state(['image', 'exam']);
+state(['image', 'exam', 'description']);
 
 form(ExamForm::class);
 
@@ -16,11 +16,13 @@ layout('layouts.admin');
 
 mount(function () {
     $this->form->setExam($this->exam);
+    $this->description = $this->form->description;
 });
 
 $updateExam = function () {
 
     $this->form->image =  $this->image;
+    $this->form->description =  $this->description ?? '';
 
     $this->form->update();
 
@@ -66,7 +68,9 @@ $updateExam = function () {
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea wire:model="form.description" name="description" id="description" rows="3" class="form-control" placeholder="Exam Description"></textarea>
+                        <div wire:ignore>
+                            <textarea wire:model="description" name="description" id="description" class="form-control" placeholder="Exam Description"></textarea>
+                        </div>
                     </div>
 
                 </div>
@@ -79,3 +83,28 @@ $updateExam = function () {
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function () {
+            $('#description').summernote({
+                placeholder: 'Write description here...',
+                tabsize: 4,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['help']]
+                ],
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        @this.set('description', contents);
+                    }
+                }
+            });
+        });
+    </script>
+@endpush

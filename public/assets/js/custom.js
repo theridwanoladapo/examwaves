@@ -1,23 +1,23 @@
 (function($){
 "use strict";
 
-	
+
 	$(window).on('load', function (){
-		
+
 		/*----------------------------------------------------*/
 		/*	Modal Window
 		/*----------------------------------------------------*/
-			
+
 		setTimeout(function () {
 		    $(".modal:not(.auto-off)").modal("show");
 		},3600);
-		
+
 		$('#preloader').delay(350).fadeOut('slow');
 		$('body').delay(350).css({ 'overflow': 'visible' });
 	})
-	
+
 	new WOW().init();
-	
+
 	/*---- Bottom To Top Scroll Script ---*/
 	$(window).on('scroll', function() {
 		var height = $(window).scrollTop();
@@ -27,14 +27,14 @@
 			$('#back2Top').fadeOut();
 		}
 	});
-	
-	
+
+
 	// Tooltip
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	  return new bootstrap.Tooltip(tooltipTriggerEl)
 	})
-	
+
 	$("#back2Top").on('click', function(event) {
 		event.preventDefault();
 		$("html, body").animate({ scrollTop: 0 }, "slow");
@@ -186,8 +186,8 @@
 	(jQuery, window, document), $(document).ready(function() {
 		$("#navigation").navigation()
 	});
-	
-	$(window).scroll(function() {    
+
+	$(window).scroll(function() {
 		var scroll = $(window).scrollTop();
 
 		if (scroll >= 50) {
@@ -196,7 +196,7 @@
 			$(".header").removeClass("header-fixed");
 		}
 	});
-	
+
 	// Brand Slide
 	$('#brand-slide').slick({
 	  slidesToShow:7,
@@ -228,7 +228,7 @@
 		}
 	  ]
 	});
-	
+
 	// Our Testimonials
 	$('#testimonials-slide').slick({
 	  slidesToShow:3,
@@ -261,7 +261,7 @@
 		}
 	  ]
 	});
-	
+
 	// Single Reviews
 	$('#single-reviews').slick({
 	  slidesToShow:1,
@@ -294,7 +294,7 @@
 		}
 	  ]
 	});
-	
+
 	// Product Slide
 	$('.product-slide').slick({
 	  slidesToShow:1,
@@ -326,7 +326,7 @@
 		}
 	  ]
 	});
-	
+
 	// Real Estate Slide
 	$('.realestate-slide').slick({
 	  slidesToShow:1,
@@ -361,7 +361,7 @@
 		}
 	  ]
 	});
-	
+
 	// MagnificPopup
 	$('body').magnificPopup({
 		type: 'image',
@@ -378,7 +378,7 @@
 		}
 	});
 
-	
+
 	$("body").on('click', '.toggle-password', function() {
 	  $(this).toggleClass("fa-eye-slash");
 	  var input = $("#password-field");
@@ -389,7 +389,7 @@
 	  }
 
 	});
-	
+
 	(function () {
 		var n,
 			o = document.querySelectorAll(".masonry-grid");
@@ -409,10 +409,10 @@
 							null !== t && t.classList.remove("active"), this.classList.add("active"), n.filter(r), e.preventDefault();
 						});
 				})(e);
-				
+
 			}
 	})()
-	
+
 	// Range Slider Script
 	$(".js-range-slider").ionRangeSlider({
 		type: "single",
@@ -422,7 +422,27 @@
 		to: 500,
 		grid: true
 	});
-	
+
+    // Summernote
+    $('.summernote').summernote({
+        placeholder: 'Write description here...',
+        tabsize: 4,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture']],
+            ['view', ['help']]
+        ],
+        /* callbacks: {
+            onChange: function(contents, $editable) {
+                @this.set('description', contents);
+            }
+        } */
+    });
+
 // ------------------ End Document ------------------ //
 
 })(this.jQuery);

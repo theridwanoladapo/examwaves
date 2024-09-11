@@ -33,10 +33,10 @@
                                 @endif
                             </div>
                             <div class="dash-y45 row align-items-center justify-content-between gy-3 mt-3">
-                                <div class="lios-parts-starts col-sm-7">
+                                <div class="lios-parts-starts col-sm-12">
                                     <h5 class="m-0">{{ $exam->name }} <i class="fa-solid fa-circle-check fs-sm text-success ms-2"></i></h5>
                                     <p class="text-muted mb-0">Description:</p>
-									<p class="m-0 text-dark fw-medium"> {{ $exam->description ? $exam->description : 'Nil' }} </p>
+									<p class="m-0 text-dark fw-medium"> {!! $exam->description ? $exam->description : 'Nil' !!} </p>
                                 </div>
                             </div>
                         </div>

@@ -22,7 +22,7 @@
                     <div class="dash-wrapsw card border-0 rounded-4 py-4 mb-4">
                         <div class="card-body px-4">
                             <div class="d-sm-flex align-items-center mb-4">
-                                <h1 class="h4 text-dark mb-4 mb-sm-0 me-4"><i class="fa-solid fa-pen-fancy text-primary me-2"></i> Exams</h1>
+                                <h1 class="h4 text-dark mb-4 mb-sm-0 me-4"><i class="fa-solid fa-pen-fancy text-primary me-2"></i> Exam Providers</h1>
                                 <div class="d-flex ms-auto">
                                     <a href="{{ route('admin.exams.create')}}" class="btn btn-md btn-light gray-simple me-3 me-sm-4" wire:navigate>
                                         <i class="fa-solid fa-plus me-2 ms-n1"></i> Add New

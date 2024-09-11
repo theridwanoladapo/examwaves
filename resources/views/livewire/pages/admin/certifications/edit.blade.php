@@ -5,10 +5,10 @@ use App\Livewire\Forms\CertificationForm;
 use function Livewire\Volt\{mount, state, usesFileUploads};
 use function Livewire\Volt\form;
 use function Livewire\Volt\layout;
- 
+
 usesFileUploads();
 
-state(['image', 'certification', 'exams']);
+state(['image', 'certification', 'exams', 'description']);
 
 form(CertificationForm::class);
 
@@ -16,11 +16,13 @@ layout('layouts.admin');
 
 mount(function () {
     $this->form->setCertification($this->certification);
+    $this->description = $this->form->description;
 });
 
 $updateCertification = function () {
 
     $this->form->image =  $this->image;
+    $this->form->description =  $this->description;
 
     $this->form->update();
 
@@ -41,7 +43,7 @@ $updateCertification = function () {
         <div class="card-body px-4">
 
             <form wire:submit="updateCertification">
-    
+
                 <div class="mb-3">
                     <div class="author-fluid mb-3">
                         @if ($image)
@@ -56,9 +58,9 @@ $updateCertification = function () {
                     </div>
                 </div>
                 @error('form.image') <span class="text-danger mt-3">{{ $message }}</span> @enderror
-                
+
                 <div class="row mt-0 mt-lg-2">
-                
+
                     <div class="mb-3">
                         <label for="title" class="form-label">Title <span class="text-danger fw-bold">*</span></label>
                         <input wire:model="form.title" name="title" id="title" type="text" class="form-control" placeholder="Exam Certication title">
@@ -71,7 +73,9 @@ $updateCertification = function () {
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input wire:model="form.description" name="description" id="description" type="text" class="form-control" placeholder="Exam Certication description">
+                        <div wire:ignore>
+                            <textarea wire:model="description" name="description" id="description" type="text" class="form-control" placeholder="Exam Certication description"></textarea>
+                        </div>
                         @error('form.description') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
@@ -101,9 +105,9 @@ $updateCertification = function () {
                         </select>
                         @error('form.exam_id') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="d-flex justify-content-start pt-3">
                     <button class="btn btn-md btn-primary me-3" type="submit">Update</button>
                 </div>
@@ -112,3 +116,28 @@ $updateCertification = function () {
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function () {
+            $('#description').summernote({
+                placeholder: 'Write description here...',
+                tabsize: 4,
+                height: 100,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['help']]
+                ],
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        @this.set('description', contents);
+                    }
+                }
+            });
+        });
+    </script>
+@endpush
