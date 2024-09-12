@@ -24,7 +24,7 @@
                         <div class="col-lg-8 col-md-8">
                             <div>
                                 <h1 class="mb-0">{{ $exam->name }}</h1>
-                                <p class="">{{ $exam->description }}</p>
+                                <p class="">{!! $exam->description !!}</p>
                                 {{-- <div class="d-flex align-items-center">
                                     <div class="d-inline-flex align-items-center me-3"><span class="text-muted"><i class="fa-solid fa-location-dot opacity-75 me-1"></i>California, USA</span></div>
                                     <div class="d-inline-flex align-items-center me-3"><span class="text-muted"><i class="fa-solid fa-briefcase opacity-75 me-1"></i>IT & Software</span></div>

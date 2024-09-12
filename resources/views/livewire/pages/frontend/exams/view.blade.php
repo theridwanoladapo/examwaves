@@ -9,7 +9,7 @@ mount(function ($certification) {
 });
 
 $addToCart = function (int $certificationId) {
-    
+
 };
 
 ?>
@@ -33,6 +33,7 @@ $addToCart = function (int $certificationId) {
                                     style="background-color: currentColor; height: 1px;"></span>
                             </a>
                         </div>
+                        <div>{!! $this->certification->description !!}</div>
                         {{-- <div class="d-flex align-items-center mb-4"><span class="fs-sm me-2">Share post:</span>
                             <div class="d-flex">
                                 <a class="text-muted p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Instagram" data-bs-original-title="Instagram"><i class="fa-brands fa-instagram"></i></a>
