@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    
+
     /**
      * All tests list page
      *
@@ -16,7 +16,7 @@ class TestController extends Controller
     {
         return view('admin.tests.index');
     }
-        
+
     /**
      * Create test page
      *
@@ -38,7 +38,7 @@ class TestController extends Controller
 
         return view('admin.tests.show', compact('test'));
     }
-    
+
     /**
      *Go to quiz page
      *
@@ -49,6 +49,6 @@ class TestController extends Controller
     {
         $test = Test::find($id);
 
-        return view('admin.tests.quiz', compact('test'));
+        return view('admin.tests.take-quiz', compact('test'));
     }
 }

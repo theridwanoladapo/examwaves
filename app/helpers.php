@@ -5,7 +5,7 @@ use App\Models\Test;
 
 // answer type
 if (! function_exists('answer_type_human')) {
-    function answer_type_human($type) 
+    function answer_type_human($type)
     {
         if ($type == 'one_opt') {
             $result = 'One Correct Answer';
@@ -27,10 +27,10 @@ if (! function_exists('answer_type_human')) {
 
 // exam question count
 if (! function_exists('exam_question_count')) {
-    function exam_question_count($exam_id) 
+    function exam_question_count($exam_id)
     {
         $test = Test::where('certification_id', $exam_id)->first();
-        
+
         if (! $test) return 0;
 
         $test_id = $test->id;
@@ -42,7 +42,7 @@ if (! function_exists('exam_question_count')) {
 
 // exam test count
 if (! function_exists('exam_test_count')) {
-    function exam_test_count($exam_id) 
+    function exam_test_count($exam_id)
     {
         $count = Test::where('certification_id', $exam_id)->count();
 
@@ -52,7 +52,7 @@ if (! function_exists('exam_test_count')) {
 
 // test question count
 if (! function_exists('test_question_count')) {
-    function test_question_count($test_id) 
+    function test_question_count($test_id)
     {
         $count = Question::where('test_id', $test_id)->count();
 
@@ -60,10 +60,22 @@ if (! function_exists('test_question_count')) {
     }
 }
 
+// score percentage
+if (! function_exists('score_percent')) {
+    function score_percent($test_id, $score)
+    {
+        $test_count = Question::where('test_id', $test_id)->count();
+
+        $percent = ($score / $test_count) * 100;
+        
+        return $percent;
+    }
+}
+
 // example
 if (! function_exists('example')) {
-    function example($args) 
+    function example($args)
     {
-        
+
     }
 }
