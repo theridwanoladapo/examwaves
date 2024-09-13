@@ -60,7 +60,7 @@
 					<div class="col-xl-7 col-lg-9 col-md-12 col-sm-12">
 						<div class="search-from-clasic mt-5 mb-3">
 							<div class="hero-search-content">
-                                <form action="" method="POST">
+                                {{-- <form action="" method="POST"> --}}
                                     <div class="row">
                                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
                                             <div class="classic-search-box">
@@ -79,11 +79,11 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary full-width">Search</button>
+                                                <button type="button" class="btn btn-primary full-width">Search</button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                {{-- </form> --}}
 							</div>
 						</div>
 					</div>

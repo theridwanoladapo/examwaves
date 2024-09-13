@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <livewire:pages.exams.list />
+            <livewire:pages.frontend.exams.list />
 
         </div>
     </section>

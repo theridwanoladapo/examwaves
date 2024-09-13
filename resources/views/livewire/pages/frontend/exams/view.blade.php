@@ -22,18 +22,18 @@ $addToCart = function (int $certificationId) {
                 <div class="col-xl-8 col-lg-8 col-md-12">
 
                     <!-- Exam Title -->
-                    <h2 class="pb-2 pb-lg-3">{{ $this->certification->title }} ({{ $this->certification->code }})</h2>
+                    <h2 class="pb-2 pb-lg-3">{{ $certification->title }} ({{ $certification->code }})</h2>
                     <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
                         <div class="d-flex align-items-center mb-4 me-4">
                             <span class="fs-sm me-2">Exam Provider:</span>
-                            <a class="text-primary position-relative fw-semibold p-0" href="#" data-scroll=""
+                            <a class="text-primary position-relative fw-semibold p-0" href="{{ route('providers.view', $certification->exam->id) }}" data-scroll=""
                                 data-scroll-offset="80">
-                                {{ $this->certification->exam->name }}
+                                {{ $certification->exam->name }}
                                 <span class="d-block position-absolute start-0 bottom-0 w-100"
                                     style="background-color: currentColor; height: 1px;"></span>
                             </a>
                         </div>
-                        <div>{!! $this->certification->description !!}</div>
+                        <div>{!! $certification->description !!}</div>
                         {{-- <div class="d-flex align-items-center mb-4"><span class="fs-sm me-2">Share post:</span>
                             <div class="d-flex">
                                 <a class="text-muted p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Instagram" data-bs-original-title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -46,7 +46,7 @@ $addToCart = function (int $certificationId) {
 
                     <!-- Exam Content -->
                     <h4 class="font--bold">Included in the Exam</h4>
-                    <p>{{ exam_question_count($this->certification->id) }} questions</p>
+                    <p>{{ exam_question_count($certification->id) }} questions</p>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -60,9 +60,9 @@ $addToCart = function (int $certificationId) {
                                 <div class="accordion-body">
                                     <table class="table">
                                         <tbody>
-                                            @foreach ($this->certification->tests as $k => $test)
+                                            @foreach ($certification->tests as $k => $test)
                                             <tr>
-                                                <th scope="row">{{ $test->name }} ({{ $this->certification->code }})</th>
+                                                <th scope="row">{{ $test->name }} ({{ $certification->code }})</th>
                                                 <td>{{ test_question_count($test->id) }}</td>
                                             </tr>
                                             @endforeach
@@ -106,7 +106,7 @@ $addToCart = function (int $certificationId) {
                                 <img src="assets/img/l-12.png" class="img-fluid" width="55" alt="">
                             </div>
                             <div class="side-flex-caption ps-3">
-                                <div class="jbs-title-iop"><h4 class="m-0">${{ $this->certification->price }}</h4></div>
+                                <div class="jbs-title-iop"><h4 class="m-0">${{ $certification->price }}</h4></div>
                                 {{-- <div class="jbs-locat-oiu text-sm-muted">
                                     <span><i class="fa-solid fa-location-dot me-1"></i>California, USA</span>
                                 </div> --}}
@@ -114,7 +114,7 @@ $addToCart = function (int $certificationId) {
                         </div>
                         <div class="detail-side-middle py-3 px-3">
                             <div class="form-group">
-                                <button wire:click="addToCart({{$this->certification->id}})" type="button" class="btn btn-primary full-width font-sm">Add to cart</button>
+                                <button wire:click="addToCart({{$certification->id}})" type="button" class="btn btn-primary full-width font-sm">Add to cart</button>
                             </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-outline-primary full-width font-sm">Buy Now</button>

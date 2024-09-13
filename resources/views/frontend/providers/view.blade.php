@@ -18,7 +18,11 @@
                     <div class="row justify-content-start">
 						<div class="col-lg-2 col-md-3 mb-4">
                             <div class="p-1 bg-white w-40 w-min-40 h-40 me-2 d-flex align-items-center">
+                                @if (is_null($exam->image_path))
+                                <img src="{{ asset('assets/img/ico.png') }}" class="w-100" />
+                                @else
                                 <img src="{{ asset($exam->image_path) }}" class="w-100" />
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8">
