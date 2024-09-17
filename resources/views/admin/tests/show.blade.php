@@ -52,7 +52,7 @@
 									<p class="m-0 text-dark fw-medium"> {{ $test->pass_percent }}%</p>
                                 </div>
                             </div>
-                            <a href="{{ route('admin.tests.quiz', $test->id) }}" class="mt-3 btn btn-sm btn-primary fw-medium">Try Test</a>
+                            <a href="{{ route('admin.tests.quiz', $test->id) }}" class="mt-3 px-4 btn btn-sm btn-primary fw-medium">Try Test</a>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                             <h6>Questions</h6>
                         </div>
                         <div class="card-body">
-                            
+
                             <livewire:pages.admin.questions.list :test_id="$test->id" />
 
                         </div>

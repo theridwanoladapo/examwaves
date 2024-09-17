@@ -18,31 +18,31 @@ class QuestionForm extends Form
     public string $answer_type = '';
 
     #[Validate('nullable|string')]
-    public string $option_a = '';
+    public ?string $option_a = null;
 
     #[Validate('nullable|string')]
-    public string $option_b = '';
+    public ?string $option_b = null;
 
     #[Validate('nullable|string')]
-    public string $option_c = '';
+    public ?string $option_c = null;
 
     #[Validate('nullable|string')]
-    public string $option_d = '';
+    public ?string $option_d = null;
 
     #[Validate('nullable|string')]
-    public string $option_e = '';
+    public ?string $option_e = null;
 
     #[Validate('nullable|string')]
-    public string $option_f = '';
+    public ?string $option_f = null;
 
     #[Validate('nullable|string')]
-    public string $option_g = '';
+    public ?string $option_g = null;
 
     #[Validate('required|string')]
-    public string $correct_options = '';
+    public ?string $correct_options = '';
 
     #[Validate('nullable|string')]
-    public string $explanation = '';
+    public ?string $explanation = null;
 
     #[Validate('required|exists:tests,id')]
     public string $test_id = '';

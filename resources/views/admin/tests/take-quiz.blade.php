@@ -51,15 +51,19 @@
 
         <section>
             <div class="container">
+                <a href="{{ route('admin.tests.view', $test->id) }}" class="btn btn-sm btn-light mb-3" wire:navigate>
+                    <i class="fas fa-chevron-left me-2"></i> Back to Test Overview
+                </a>
                 <div class="row justify-content-center">
 
-                    <livewire:pages.admin.tests.quiz :test="$test" />
+                    <livewire:pages.admin.tests.attempt :test="$test" />
 
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h2 class="pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-2">{{ $test->certification->title }} ({{ $test->certification->code }})</h2>
                         {{-- <div class="row row-cols-3 my-3">
                             <div class="col">
-                                <div class="h4 text-dark font--bold mb-0"><span class="ctr">{{ test_question_count($test->id) }}</span>
+                                <div class="h4 text-dark font--bold mb-0">
+                                    <span class="ctr">{{ test_question_count($test->id) }}</span>
                                 </div>
                                 <p class="fs-sm mb-0">Total Questions</p>
                             </div>

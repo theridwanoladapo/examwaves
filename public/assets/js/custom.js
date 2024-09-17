@@ -424,7 +424,7 @@
 	});
 
     // Summernote
-    $('.summernote').summernote({
+    /* $('.summernote').summernote({
         placeholder: 'Write description here...',
         tabsize: 4,
         height: 120,
@@ -436,12 +436,12 @@
             ['insert', ['link', 'picture']],
             ['view', ['help']]
         ],
-        /* callbacks: {
-            onChange: function(contents, $editable) {
-                @this.set('description', contents);
-            }
-        } */
-    });
+        // callbacks: {
+        //     onChange: function(contents, $editable) {
+        //         @this.set('description', contents);
+        //     }
+        // }
+    }); */
 
 // ------------------ End Document ------------------ //
 
