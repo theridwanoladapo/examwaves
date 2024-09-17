@@ -79,27 +79,27 @@ $storeExam = function () {
     </div>
 </div>
 
-@push('scripts')
-    <script>
-        $(function () {
-            $('#description').summernote({
-                placeholder: 'Write description here...',
-                tabsize: 4,
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'italic', 'underline']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture']],
-                    ['view', ['help']]
-                ],
-                callbacks: {
-                    onChange: function(contents, $editable) {
-                        @this.set('description', contents);
-                    }
+@script
+<script>
+    $(function () {
+        $('#description').summernote({
+            placeholder: 'Write description here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('description', contents);
                 }
-            });
+            }
         });
-    </script>
-@endpush
+    });
+</script>
+@endscript

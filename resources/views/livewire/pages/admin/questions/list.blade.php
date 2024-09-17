@@ -32,7 +32,7 @@ $deleteQuestion = function (Question $question) {
                 @foreach ($this->questions as $k => $question)
                 <tr>
                     <th>{{ $k+1 }}</th>
-                    <td>{{ $question->question }}</td>
+                    <td>{!! $question->question !!}</td>
                     <td>{{ answer_type_human($question->answer_type) }}</td>
                     {{-- <td>{{ $question->test->pass_percent }}%</td> --}}
                     <td>

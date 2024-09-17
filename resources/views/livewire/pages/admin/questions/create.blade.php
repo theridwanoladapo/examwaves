@@ -25,6 +25,15 @@ state([
     'certifications',
     'tests',
     'answer_type',
+    'question',
+    'option_a',
+    'option_b',
+    'option_c',
+    'option_d',
+    'option_e',
+    'option_f',
+    'option_g',
+    'explanation',
 ]);
 
 updated([
@@ -48,8 +57,17 @@ layout('layouts.admin');
 
 $storeQuestion = function () {
 
-    $this->form->test_id = $this->test;
-    $this->form->image = $this->image;
+    $this->form->test_id = $this->test ?? '';
+    $this->form->image = $this->image ?? '';
+    $this->form->question =  $this->question ?? '';
+    $this->form->option_a =  !empty(strip_tags($this->option_a)) ? $this->option_a : null;
+    $this->form->option_b =  !empty(strip_tags($this->option_b)) ? $this->option_b : null;
+    $this->form->option_c =  !empty(strip_tags($this->option_c)) ? $this->option_c : null;
+    $this->form->option_d =  !empty(strip_tags($this->option_d)) ? $this->option_d : null;
+    $this->form->option_e =  !empty(strip_tags($this->option_e)) ? $this->option_e : null;
+    $this->form->option_f =  !empty(strip_tags($this->option_f)) ? $this->option_f : null;
+    $this->form->option_g =  !empty(strip_tags($this->option_g)) ? $this->option_g : null;
+    $this->form->explanation =  !empty(strip_tags($this->explanation)) ? $this->explanation : null;
 
     $this->form->store();
 
@@ -113,7 +131,9 @@ $storeQuestion = function () {
 
                     <div class="mb-3">
                         <label for="question" class="form-label">Question <span class="text-danger fw-bold">*</span></label>
-                        <input wire:model="form.question" name="question" id="question" type="text" class="form-control" placeholder="question...">
+                        <div wire:ignore>
+                            <textarea wire:model="question" name="question" id="question" class="form-control" placeholder="Question..."></textarea>
+                        </div>
                         @error('form.question') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
@@ -143,31 +163,45 @@ $storeQuestion = function () {
 
                     <div class="mb-3">
                         <label for="option_a" class="form-label">Option A</label>
-                        <input wire:model="form.option_a" name="option_a" id="option_a" type="text" class="form-control" placeholder="Option A...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_a" name="option_a" id="option_a" class="form-control" placeholder="Option A..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="option_b" class="form-label">Option B</label>
-                        <input wire:model="form.option_b" name="option_b" id="option_b" type="text" class="form-control" placeholder="Option B...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_b" name="option_b" id="option_b" class="form-control" placeholder="Option B..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="option_c" class="form-label">Option C</label>
-                        <input wire:model="form.option_c" name="option_c" id="option_c" type="text" class="form-control" placeholder="Option C...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_c" name="option_c" id="option_c" class="form-control" placeholder="Option C..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="option_d" class="form-label">Option D</label>
-                        <input wire:model="form.option_d" name="option_d" id="option_d" type="text" class="form-control" placeholder="Option D...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_d" name="option_d" id="option_d" class="form-control" placeholder="Option D..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="option_e" class="form-label">Option E</label>
-                        <input wire:model="form.option_e" name="option_e" id="option_e" type="text" class="form-control" placeholder="Option E...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_e" name="option_e" id="option_e" class="form-control" placeholder="Option E..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="option_f" class="form-label">Option F</label>
-                        <input wire:model="form.option_f" name="option_f" id="option_f" type="text" class="form-control" placeholder="Option F...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_f" name="option_f" id="option_f" class="form-control" placeholder="Option F..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="option_g" class="form-label">Option G</label>
-                        <input wire:model="form.option_g" name="option_g" id="option_g" type="text" class="form-control" placeholder="Option G...">
+                        <div wire:ignore>
+                            <textarea wire:model="option_g" name="option_g" id="option_g" class="form-control" placeholder="Option G..."></textarea>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="correct_options" class="form-label">Correct Option(s)</label>
@@ -176,7 +210,9 @@ $storeQuestion = function () {
                     </div>
                     <div class="mb-3">
                         <label for="explanation" class="form-label">Correct Answer Explanation</label>
-                        <input wire:model="form.explanation" name="explanation" id="explanation" type="text" class="form-control" placeholder="Correct Answer Explanation...">
+                        <div wire:ignore>
+                            <textarea wire:model="explanation" name="explanation" id="explanation" class="form-control" placeholder="Correct Answer Explanation..."></textarea>
+                        </div>
                     </div>
 
                 </div>
@@ -189,3 +225,172 @@ $storeQuestion = function () {
         </div>
     </div>
 </div>
+
+@script
+<script>
+    $(function () {
+        $('#question').summernote({
+            placeholder: 'Question...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('question', contents);
+                }
+            }
+        });
+        $('#explanation').summernote({
+            placeholder: 'Correct Answer Explanation...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('explanation', contents);
+                }
+            }
+        });
+        $('#option_a').summernote({
+            placeholder: 'Write option a here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_a', contents);
+                }
+            }
+        });
+        $('#option_b').summernote({
+            placeholder: 'Write option b here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_b', contents);
+                }
+            }
+        });
+        $('#option_c').summernote({
+            placeholder: 'Write option c here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_c', contents);
+                }
+            }
+        });
+        $('#option_d').summernote({
+            placeholder: 'Write option d here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_d', contents);
+                }
+            }
+        });
+        $('#option_e').summernote({
+            placeholder: 'Write option e here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_e', contents);
+                }
+            }
+        });
+        $('#option_f').summernote({
+            placeholder: 'Write option f here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_f', contents);
+                }
+            }
+        });
+        $('#option_g').summernote({
+            placeholder: 'Write option g here...',
+            tabsize: 4,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('option_g', contents);
+                }
+            }
+        });
+    });
+</script>
+@endscript
