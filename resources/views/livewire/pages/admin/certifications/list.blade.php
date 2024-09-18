@@ -1,16 +1,17 @@
 <?php
 
 use App\Models\Certification;
-use function Livewire\Volt\{state};
 
-$getCertifications = fn () => $this->certifications = Certification::all();
+use function Livewire\Volt\{with, usesPagination};
 
-state(['certifications' => $getCertifications]);
+usesPagination(theme: 'bootstrap');
+
+with(fn () => ['certifications' => Certification::paginate(10)]);
 
 $deleteCertification = function (Certification $certification) {
     $certification->delete();
 
-    $this->getCertifications();
+    $this->resetPage();
 }
 
 ?>
@@ -27,7 +28,7 @@ $deleteCertification = function (Certification $certification) {
                 </tr>
             </thead>
             <tbody>
-                @foreach ($this->certifications as $k => $certification)
+                @foreach ($certifications as $k => $certification)
                 <tr>
                     <th scope="row">{{ $k+1 }}</th>
                     <td>{{ $certification->title }}</td>
@@ -46,5 +47,7 @@ $deleteCertification = function (Certification $certification) {
                 @endforeach
             </tbody>
         </table>
+
+        {{ $certifications->links('components.pagination-links') }}
     </div>
 </div>

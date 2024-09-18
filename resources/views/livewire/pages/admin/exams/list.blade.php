@@ -1,16 +1,17 @@
 <?php
 
 use App\Models\Exam;
-use function Livewire\Volt\{state};
 
-$getExams = fn () => $this->exams = Exam::all();
+use function Livewire\Volt\{with, usesPagination};
 
-state(['exams' => $getExams]);
+usesPagination(theme: 'bootstrap');
+
+with(fn () => ['exams' => Exam::paginate(10)]);
 
 $deleteExam = function (Exam $exam) {
     $exam->delete();
 
-    $this->getExams();
+    $this->resetPage();
 }
 
 ?>
@@ -27,7 +28,7 @@ $deleteExam = function (Exam $exam) {
                 </tr>
             </thead>
             <tbody>
-                @foreach ($this->exams as $k => $exam)
+                @foreach ($exams as $k => $exam)
                 <tr>
                     <th scope="row">{{ $k+1 }}</th>
                     <td>{{ $exam->name }}</td>
@@ -44,5 +45,7 @@ $deleteExam = function (Exam $exam) {
                 @endforeach
             </tbody>
         </table>
+
+        {{ $exams->links('components.pagination-links') }}
     </div>
 </div>
