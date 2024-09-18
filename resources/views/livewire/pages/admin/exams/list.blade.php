@@ -23,7 +23,7 @@ $deleteExam = function (Exam $exam) {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    {{-- <th scope="col">Description</th> --}}
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@ $deleteExam = function (Exam $exam) {
                 <tr>
                     <th scope="row">{{ $k+1 }}</th>
                     <td>{{ $exam->name }}</td>
-                    <td>{!! Str::limit($exam->description, 120) !!}</td>
+                    {{-- <td>{!! Str::limit($exam->description, 120) !!}</td> --}}
                     <td>
                         <a href="{{ route('admin.exams.view', $exam->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
                             <i class="fa-solid fa-eye"></i>
