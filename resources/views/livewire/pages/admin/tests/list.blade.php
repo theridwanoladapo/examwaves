@@ -6,7 +6,7 @@ use function Livewire\Volt\{with, usesPagination};
 
 usesPagination(theme: 'bootstrap');
 
-with(fn () => ['tests' => Test::paginate(3)]);
+with(fn () => ['tests' => Test::paginate(10)]);
 
 $deleteTest = function (Test $test) {
     $test->delete();
