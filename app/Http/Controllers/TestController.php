@@ -40,6 +40,19 @@ class TestController extends Controller
     }
 
     /**
+     * Edit single test page
+     *
+     * @param $id $id
+     *
+     */
+    public function edit($id)
+    {
+        $test = Test::find($id);
+
+        return view('admin.tests.edit', compact('test'));
+    }
+
+    /**
      *Go to quiz page
      *
      * @param $id $id

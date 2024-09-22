@@ -22,7 +22,7 @@
                     <div class="dash-wrapsw card py-0 px-lg-5 px-4 pb-4 border-0 rounded-4 mb-4">
                         <div class="position-absolute start-0 end-0 top-0 bg-primary ht-120"></div>
                         <div class="position-absolute end-0 top-0 mt-5 pt-3 me-4 z-1">
-                            {{-- <a href="{{ route('admin.tests.edit', $test->id) }}" class="btn btn-sm btn-whites fw-medium">Edit Test</a> --}}
+                            <a href="{{ route('admin.tests.edit', $test->id) }}" class="btn btn-sm btn-whites fw-medium">Edit Test</a>
                             {{-- <a href="{{ route('admin.questions.add', $test->id) }}" class="btn btn-sm btn-whites fw-medium">Add Question</a> --}}
                         </div>
                         <div class="dash-y44 position-relative mb-3">

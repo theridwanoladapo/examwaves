@@ -22,10 +22,10 @@ class TestForm extends Form
     #[Validate('required|exists:certifications,id')]
     public string $certification_id = '';
 
-    public function setCertification(Test $test)
+    public function setTest(Test $test)
     {
         $this->test = $test;
- 
+
         $this->name = $test->name;
         $this->time_limit = $test->time_limit;
         $this->pass_percent = $test->pass_percent;
