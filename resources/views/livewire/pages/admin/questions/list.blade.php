@@ -36,6 +36,9 @@ $deleteQuestion = function (Question $question) {
                     <td>{!! $question->question !!}</td>
                     <td>{{ answer_type_human($question->answer_type) }}</td>
                     <td>
+                        <a href="{{ route('admin.questions.edit', $question->id) }}" class="square--30 circle text-light bg-primary d-inline-flex ms-2 mb-1">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
                         <button wire:click="deleteQuestion({{$question->id}})" wire:confirm="Are you sure you want to delete this question?" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
                             <i class="fa-solid fa-trash"></i>
                         </button>
