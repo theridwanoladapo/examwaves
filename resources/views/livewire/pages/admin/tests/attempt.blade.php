@@ -117,14 +117,13 @@ $cancelSubmit = function ()
 };
 
 $returnToResults = fn () => $this->onReview = false;
-// $reviewQuestions = fn () => dd($this->quiz);
+
 $reviewQuestions = fn () => $this->onReview = true;
 
 $submitQuiz = function ()
 {
     $val = [];
     $score = 0;
-    // $answers = [];
     $correct_ans = [];
     $wrong_ans = [];
     $skipped_ans = [];
@@ -134,7 +133,6 @@ $submitQuiz = function ()
     foreach ($this->quiz as $k => $val) {
         if (!isset($val['answer']) || is_null($val['answer']) || empty($val['answer'])) {
             $skipped_ans[$k] = $val;
-            // $answers[$k] = $val;
         } else {
             if ($val['correct'] === $val['answer']) {
                 $score += 1;
@@ -231,9 +229,15 @@ $submitQuiz = function ()
                     <div class="card-body px-4 py-4">
                         <h5>{{ $test->certification->title }} {{ $test->name }} - Results Review</h5>
                         <hr>
+                        @if ($isSubmitted)
                         <button wire:click="returnToResults" type="button" class="btn btn-sm btn-light mb-3">
                             <i class="fas fa-chevron-left me-2"></i> Back to Result Overview
                         </button>
+                        @else
+                        <button wire:click="returnToResults" type="button" class="btn btn-sm btn-light mb-3">
+                            <i class="fas fa-chevron-left me-2"></i> Back to Welcome
+                        </button>
+                        @endif
 
                         <div class="accordion" id="accordionExample" wire:ignore>
                             @foreach ($questions as $key => $question)
@@ -243,23 +247,28 @@ $submitQuiz = function ()
                                         data-bs-target="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">
                                         <div>
                                             <h5 class="text-dark fw-semibold h6 mb-3">
-                                                @if (!isset($quiz[$question->id]['answer']) || is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
-                                                    <i class="fa fa-circle text-muted"></i>
-                                                @else
-                                                    @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
-                                                    <i class="fa fa-circle-check text-success"></i>
+
+                                                @if (isset($quiz[$question->id]['answer']))
+                                                    @if (is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
+                                                        <i class="fa fa-circle text-muted"></i>
                                                     @else
-                                                    <i class="fa fa-circle-exclamation text-danger"></i>
+                                                        @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
+                                                        <i class="fa fa-circle-check text-success"></i>
+                                                        @else
+                                                        <i class="fa fa-circle-exclamation text-danger"></i>
+                                                        @endif
                                                     @endif
                                                 @endif
                                                 Question {{ $key + 1 }}
-                                                @if (!isset($quiz[$question->id]['answer']) || is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
-                                                <span class="text-muted fw-medium h6 ms-3 mb-1">Skipped</span>
-                                                @else
-                                                    @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
-                                                    <span class="text-success fw-medium h6 ms-3 mb-1">Correct</span>
+                                                @if (isset($quiz[$question->id]['answer']))
+                                                    @if (is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
+                                                        <span class="text-muted fw-medium h6 ms-3 mb-1">Skipped</span>
                                                     @else
-                                                    <span class="text-danger fw-medium h6 ms-3 mb-1">Wrong</span>
+                                                        @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
+                                                        <span class="text-success fw-medium h6 ms-3 mb-1">Correct</span>
+                                                        @else
+                                                        <span class="text-danger fw-medium h6 ms-3 mb-1">Wrong</span>
+                                                        @endif
                                                     @endif
                                                 @endif
                                             </h5>
@@ -280,28 +289,40 @@ $submitQuiz = function ()
                                                 @if (!is_null($question->$option) || $question->$option != "")
                                                 @php
                                                     $status = '#000';
-                                                    if (in_array($k, $quiz[$question->id]['correct'])
-                                                        || in_array($k, $quiz[$question->id]['answer'])) {
+                                                    if (isset($quiz[$question->id]['answer'])) {
+                                                        if (in_array($k, $quiz[$question->id]['correct'])
+                                                            || in_array($k, $quiz[$question->id]['answer'])) {
+                                                            $status = '#00ba74';
+                                                        }
+                                                        if (!in_array($k, $quiz[$question->id]['correct'])
+                                                            && in_array($k, $quiz[$question->id]['answer'])) {
+                                                            $status = '#dc3545';
+                                                        }
+                                                    } elseif (in_array($k, $quiz[$question->id]['correct'])) {
                                                         $status = '#00ba74';
-                                                    }
-                                                    if (!in_array($k, $quiz[$question->id]['correct'])
-                                                        && in_array($k, $quiz[$question->id]['answer'])) {
-                                                        $status = '#dc3545';
                                                     }
                                                 @endphp
                                                 <div class="mt-3 rounded py-3 px-3 w-100" style="border: 1px solid {{$status}};">
-                                                    @if (in_array($k, $quiz[$question->id]['correct']) || (in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer'])))
+                                                    @if (isset($quiz[$question->id]['answer']))
+                                                        @if (in_array($k, $quiz[$question->id]['correct']) || (in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer'])))
+                                                            <span class="badge bg-light-success text-success p-1 mb-2">Correct answer</span>
+                                                        @elseif (!in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer']))
+                                                            <span class="badge bg-light-danger text-danger p-1 mb-2">Your answer is incorrect</span>
+                                                        @endif
+                                                    @elseif (in_array($k, $quiz[$question->id]['correct']))
                                                         <span class="badge bg-light-success text-success p-1 mb-2">Correct answer</span>
-                                                    @elseif (!in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer']))
-                                                        <span class="badge bg-light-danger text-danger p-1 mb-2">Your answer is incorrect</span>
                                                     @endif
                                                     <div class="d-flex align-items-start">
-                                                        @if (in_array($k, $quiz[$question->id]['correct']) || (in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer'])))
-                                                        <i class="fas fa-square-check text-success pe-3 py-1"></i>
-                                                        @elseif (!in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer']))
-                                                        <i class="fas fa-square-xmark text-danger pe-3 py-1"></i>
-                                                        @else
-                                                        <i class="far fa-square text-dark pe-3 py-1"></i>
+                                                        @if (isset($quiz[$question->id]['answer']))
+                                                            @if (in_array($k, $quiz[$question->id]['correct']) || (in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer'])))
+                                                            <i class="fas fa-square-check text-success pe-3 py-1"></i>
+                                                            @elseif (!in_array($k, $quiz[$question->id]['correct']) && in_array($k, $quiz[$question->id]['answer']))
+                                                            <i class="fas fa-square-xmark text-danger pe-3 py-1"></i>
+                                                            @else
+                                                            <i class="far fa-square text-dark pe-3 py-1"></i>
+                                                            @endif
+                                                        @elseif (in_array($k, $quiz[$question->id]['correct']))
+                                                            <span class="badge bg-light-success text-success p-1 mb-2">Correct answer</span>
                                                         @endif
                                                         <h6 class="ms-1 fw-semibold mb-0" style="color: {{$status}}">
                                                             {!! $question->$option !!}
@@ -315,7 +336,6 @@ $submitQuiz = function ()
                                                 <div class="mb-1">
                                                     <span class="h6 text-dark fw-bold">Correct Answer:</span>
                                                     {{ Str::upper(implode(', ', $quiz[$question->id]['correct'])) }}.
-                                                    {{-- {{ $question->$correct_answer }} --}}
                                                 </div>
                                                 <div class="mb-0">{!! $question->explanation !!}</div>
                                             </div>
@@ -327,31 +347,42 @@ $submitQuiz = function ()
                                                 @php
                                                     $correct_option = 'option_'.$quiz[$question->id]['correct'];
                                                     $status = '#000';
-                                                    if ($k === $quiz[$question->id]['correct']
-                                                        || $k === $quiz[$question->id]['answer']) {
+                                                    if (isset($quiz[$question->id]['answer'])) {
+                                                        if ($k === $quiz[$question->id]['correct']
+                                                            || $k === $quiz[$question->id]['answer']) {
+                                                            $status = '#00ba74';
+                                                        }
+                                                        if ($k !== $quiz[$question->id]['correct']
+                                                            && $k === $quiz[$question->id]['answer']) {
+                                                            $status = '#dc3545';
+                                                        }
+                                                    } elseif ($k === $quiz[$question->id]['correct']) {
                                                         $status = '#00ba74';
-                                                    }
-                                                    if ($k !== $quiz[$question->id]['correct']
-                                                        && $k === $quiz[$question->id]['answer']) {
-                                                        $status = '#dc3545';
                                                     }
                                                 @endphp
                                                 <div class="mt-3 rounded py-3 px-3 w-100" style="border: 1px solid {{$status}};">
-                                                    @if ($k === $quiz[$question->id]['correct'] || ($k === $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer']))
+                                                    @if (isset($quiz[$question->id]['answer']))
+                                                        @if ($k === $quiz[$question->id]['correct'] || ($k === $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer']))
+                                                            <span class="badge bg-light-success text-success p-1 mb-2">Correct answer</span>
+                                                        @endif
+                                                        @if ($k !== $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer'])
+                                                            <span class="badge bg-light-danger text-danger p-1 mb-2">Your answer is incorrect</span>
+                                                        @endif
+                                                    @elseif ($k === $quiz[$question->id]['correct'])
                                                         <span class="badge bg-light-success text-success p-1 mb-2">Correct answer</span>
-                                                    @endif
-                                                    @if ($k !== $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer'])
-                                                        <span class="badge bg-light-danger text-danger p-1 mb-2">Your answer is incorrect</span>
                                                     @endif
 
                                                     <div class="d-flex align-items-start">
-                                                        @if ($k === $quiz[$question->id]['correct'] || ($k === $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer']))
-                                                        <i class="fas fa-circle-check text-success pe-3 py-1"></i>
-                                                        @elseif ($k !== $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer'])
-                                                        <i class="fas fa-circle-xmark text-danger pe-3 py-1"></i>
-                                                        @else
-                                                        <i class="far fa-circle text-dark pe-3 py-1"></i>
-                                                        {{-- @if (($question->$correct_option === $question->$option) && ($quiz[$question->id]['correct'] !== $quiz[$question->id]['answer'])) --}}
+                                                        @if (isset($quiz[$question->id]['answer']))
+                                                            @if ($k === $quiz[$question->id]['correct'] || ($k === $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer']))
+                                                                <i class="fas fa-circle-check text-success pe-3 py-1"></i>
+                                                            @elseif ($k !== $quiz[$question->id]['correct'] && $k === $quiz[$question->id]['answer'])
+                                                                <i class="fas fa-circle-xmark text-danger pe-3 py-1"></i>
+                                                            @else
+                                                                <i class="far fa-circle text-dark pe-3 py-1"></i>
+                                                            @endif
+                                                        @elseif ($k === $quiz[$question->id]['correct'])
+                                                                <i class="fas fa-circle-check text-success pe-3 py-1"></i>
                                                         @endif
                                                         <h6 class="ms-1 fw-semibold mb-0" style="color: {{$status}}">
                                                             {!! $question->$option !!}
@@ -365,7 +396,6 @@ $submitQuiz = function ()
                                                 <div class="mb-1">
                                                     <span class="h6 text-dark fw-bold">Correct Answer:</span>
                                                     {{ Str::upper($quiz[$question->id]['correct']) }}.
-                                                    {{-- {{ $question->$correct_answer }} --}}
                                                 </div>
                                                 <div class="mb-0">{!! $question->explanation !!}</div>
                                             </div>
@@ -530,7 +560,10 @@ $submitQuiz = function ()
                                 </div>
                                 <div class="mt-3">
                                     <button type="button" wire:click="startQuiz" class="btn btn-primary px-4">
-                                        Start Exam
+                                        Take Exam
+                                    </button>
+                                    <button wire:click="reviewQuestions" type="button" class="btn btn-outline-dark" >
+                                        Review Questions
                                     </button>
                                 </div>
                             </div>
