@@ -66,7 +66,7 @@ if (! function_exists('score_percent')) {
     {
         $test_count = Question::where('test_id', $test_id)->count();
 
-        $percent = ($score / $test_count) * 100;
+        $percent = round(($score / $test_count) * 100);
 
         return $percent;
     }
