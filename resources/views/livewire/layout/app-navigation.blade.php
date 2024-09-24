@@ -117,8 +117,17 @@ $logout = function (Logout $logout) {
                         <li class="list-buttons ms-2">
                             <a href="{{ route('register') }}" class="bg-info" wire:navigate>Sign up <i class="fa-regular fa-circle-right ms-2"></i></a>
                         </li>
+                        {{-- <li>
+                            <a data-bs-toggle="offcanvas" href="#offcanvasProduct" role="button" aria-controls="offcanvasProduct" class="nav-link text-primary position-relative">
+                                <i class="fa-solid fa-basket-shopping fs-6"></i>
+                                @if (count(session()->get('cart', [])) > 0)
+                                <span class="badge bg-primary fs-xs position-absolute end-0 top-0 circle">2</span>
+                                @endif
+                            </a>
+                        </li> --}}
                     </ul>
                     @endauth
+                    <livewire:components.cart-icon />
                 </div>
             </nav>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Exam;
 use App\Models\Question;
 use App\Models\Test;
 
@@ -69,6 +70,17 @@ if (! function_exists('score_percent')) {
         $percent = round(($score / $test_count) * 100);
 
         return $percent;
+    }
+}
+
+// exam provider name
+if (! function_exists('exam_provider_name')) {
+    function exam_provider_name($id)
+    {
+        $exam = Exam::find($id);
+        $exam_name = $exam->name;
+
+        return $exam_name;
     }
 }
 

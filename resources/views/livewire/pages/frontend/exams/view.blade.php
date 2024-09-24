@@ -1,15 +1,68 @@
 <?php
 
-use function Livewire\Volt\{state, mount};
+use App\Models\Certification;
 
-state(['certification']);
+use function Livewire\Volt\{state, mount, on};
+
+state(['certification', 'cart', 'cartCount', 'cartTotal']);
 
 mount(function ($certification) {
     $this->certification = $certification;
+    // Initialize the cart, cartCount & cartTotal retrieved from session
+    $this->cart = session()->get('cart', []);
+    $this->cartCount = session()->get('cartCount', 0);
+    $this->cartTotal = session()->get('cartTotal', 0);
 });
 
-$addToCart = function (int $certificationId) {
+on(['cartUpdated' => function () {
+    $this->cart = session()->get('cart', []);
+    $this->cartCount = session()->get('cartCount', 0);
+    $this->cartTotal = session()->get('cartTotal', 0);
+}]);
 
+$addToCart = function (int $id) {
+    $cert = Certification::find($id);
+
+    $this->cart = session()->get('cart', []);
+
+    if (!array_key_exists($id, $this->cart)) {
+        // add item to cart array
+        $this->cart[$id] = [
+            'id' => $id,
+            'title' => $cert->title,
+            'code' => $cert->code,
+            'price' => $cert->price,
+            'exam_id' => $cert->exam_id
+        ];
+
+        $this->cartCount++;
+        $this->cartTotal += $cert->price;
+    }
+
+    session()->put('cart', $this->cart);
+    session()->put('cartCount', $this->cartCount);
+    session()->put('cartTotal', $this->cartTotal);
+
+    $this->dispatch('cartUpdated');
+};
+
+$removeFromCart = function (int $id) {
+    $cert = Certification::find($id);
+
+    $this->cart = session()->get('cart', []);
+
+    if (array_key_exists($id, $this->cart)) {
+        unset($this->cart[$id]);    // remove item from cart array
+
+        $this->cartCount--;
+        $this->cartTotal -= $cert->price;
+    }
+
+    session()->put('cart', $this->cart);
+    session()->put('cartCount', $this->cartCount);
+    session()->put('cartTotal', $this->cartTotal);
+
+    $this->dispatch('cartUpdated');
 };
 
 ?>
@@ -22,7 +75,7 @@ $addToCart = function (int $certificationId) {
                 <div class="col-xl-8 col-lg-8 col-md-12">
 
                     <!-- Exam Title -->
-                    <h2 class="pb-2 pb-lg-3">{{ $certification->title }} ({{ $certification->code }})</h2>
+                    <h4 class="pb-2 pb-lg-3">{{ $certification->title }} ({{ $certification->code }})</h4>
                     <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
                         <div class="d-flex align-items-center mb-4 me-4">
                             <span class="fs-sm me-2">Exam Provider:</span>
@@ -34,14 +87,6 @@ $addToCart = function (int $certificationId) {
                             </a>
                         </div>
                         <div>{!! $certification->description !!}</div>
-                        {{-- <div class="d-flex align-items-center mb-4"><span class="fs-sm me-2">Share post:</span>
-                            <div class="d-flex">
-                                <a class="text-muted p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Instagram" data-bs-original-title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                                <a class="text-muted p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Facebook" data-bs-original-title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                                <a class="text-muted p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Dribbble" data-bs-original-title="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
-                                <a class="text-muted p-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Twitter" data-bs-original-title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                            </div>
-                        </div> --}}
                     </div>
 
                     <!-- Exam Content -->
@@ -73,30 +118,6 @@ $addToCart = function (int $certificationId) {
                         </div>
                     </div>
 
-                    <!-- Post Author -->
-                    {{-- <div class="card border-0 w-100 d-inline-block bg-primary px-xl-5 px-lg-4 py-xl-5 py-lg-4 p-4 mt-4 mt-lg-5">
-                        <div class="position-relative">
-                            <div class="d-flex align-items-center justify-content-center pb-1 mb-3">
-                                <span class="avatar bg-success text-white w-15 h-15 me-4"><span class="fs-30">DC</span></span>
-                            </div>
-                            <div class="caption-author text-center mb-4">
-                                <h4 class="mb-0 text-light">Daniel Clarcues</h4>
-                                <p class="p-0 m-0 text-sm-muted text-light opacity-75 font--medium">Web Designer, Canada</p>
-                            </div>
-                            <div class="about-author text-center mb-4">
-                                <p class="fs-6 text-light">Pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances.</p>
-                            </div>
-                            <div class="social-author text-center">
-                                <ul class="no-ul-list d-flex align-items-center justify-content-center">
-                                    <li class="px-2"><a href="JavaScript:Void(0);" class="text-light"><i class="fa-brands fa-facebook"></i></a></li>
-                                    <li class="px-2"><a href="JavaScript:Void(0);" class="text-light"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li class="px-2"><a href="JavaScript:Void(0);" class="text-light"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li class="px-2"><a href="JavaScript:Void(0);" class="text-light"><i class="fa-brands fa-linkedin"></i></a></li>
-                                    <li class="px-2"><a href="JavaScript:Void(0);" class="text-light"><i class="fa-brands fa-google-plus-g"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-12">
@@ -114,10 +135,16 @@ $addToCart = function (int $certificationId) {
                         </div>
                         <div class="detail-side-middle py-3 px-3">
                             <div class="form-group">
-                                <button wire:click="addToCart({{$certification->id}})" type="button" class="btn btn-primary full-width font-sm">Add to cart</button>
+                                @if (array_key_exists($certification->id, $this->cart))
+                                <button wire:click="removeFromCart({{$certification->id}})"
+                                type="button" class="btn btn-outline-danger full-width font-sm">Remove from cart</button>
+                                @else
+                                <button wire:click="addToCart({{$certification->id}})"
+                                type="button" class="btn btn-outline-dark full-width font-sm">Add to cart</button>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-outline-primary full-width font-sm">Buy Now</button>
+                                <button type="button" class="btn btn-primary full-width font-sm">Buy Now</button>
                             </div>
                         </div>
                     </div>
