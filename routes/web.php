@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CertificationController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
@@ -24,6 +25,7 @@ Route::get('exams', [HomeController::class, 'allExams'])
 Route::get('exams/{id}', [HomeController::class, 'viewExam'])
     ->name('certifications.view');
 
+// UserAccess
 Route::view('user/dashboard', 'user.dashboard')
     ->middleware(['auth', 'verified', 'user-access'])
     ->name('dashboard');
@@ -33,10 +35,13 @@ Route::middleware(['auth', 'user-access'])->group(function () {
         ->name('profile');
     Route::view('user/settings', 'user.settings')
         ->name('settings');
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('checkout');
 });
 
 
-// Admin
+// AdminAccess
 Route::get('admin/dashboard', [HomeController::class, 'index'])
     ->middleware(['auth', 'admin-access'])
     ->name('admin.dashboard');

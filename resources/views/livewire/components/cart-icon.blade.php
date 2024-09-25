@@ -55,8 +55,8 @@ $clearCart = function () {
 <div>
     <ul class="nav-menu nav-menu-social align-to-right">
         <li>
-            <a data-bs-toggle="offcanvas" href="#offcanvasProduct" role="button" aria-controls="offcanvasProduct" class="nav-link text-primary position-relative">
-                <i class="fa-solid fa-basket-shopping fs-6"></i>
+            <a data-bs-toggle="offcanvas" href="#offcanvasProduct" role="button" aria-controls="offcanvasProduct" class="nav-link text-primary position-relative ms-2">
+                <i class="fa-solid fa-basket-shopping fs-5"></i>
                 <span class="badge bg-primary fs-xs position-absolute end-0 top-0 circle">{{ $cartCount }}</span>
             </a>
         </li>
@@ -76,26 +76,30 @@ $clearCart = function () {
             @foreach ($cart as $item)
             <div class="d-sm-flex align-items-center pb-4">
                 <div class="w-100 pt-1 ps-sm-4">
-                    <div class="mb-3">
+                    <div class="">
                         <div class="d-flex justify-content-between">
                             <div class="me-3">
-                                <h6 class="mb-2">
+                                <h6 class="">
                                     <a href="{{ route('admin.certifications.view', $item['id']) }}">
                                         {{ $item['title'] }} ({{ $item['code'] }})</a>
                                 </h6>
+                                <div class="text-muted fs-sm me-3">Exam Provider: <span class="text-dark fw-medium">{{ exam_provider_name($item['exam_id']) }}</span></div>
                             </div>
                             <div class="text-end ms-auto">
-                                <div class="fs-5 font--bold mb-2">${{ number_format($item['price'], 2) }}</div>
+                                <h6 class="font--bold">${{ number_format($item['price'], 2) }}</h6>
+                                <a class="fs-sm" wire:click="removeFromCart({{$item['id']}})" href="javascript:void(0)"
+                                    data-bs-toggle="tooltip" aria-label="Remove" data-bs-original-title="Remove Item">
+                                    <i class="fa-solid fa-trash text-danger"></i></a>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between">
+                        {{-- <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex flex-wrap">
                                 <div class="text-muted fs-sm me-3">Exam Provider: <span class="text-dark fw-medium">{{ exam_provider_name($item['exam_id']) }}</span></div>
                             </div>
                             <div class="nav justify-content-end">
                                 <a class="fs-6 p-2" wire:click="removeFromCart({{$item['id']}})" href="javascript:void(0)" data-bs-toggle="tooltip" aria-label="Remove" data-bs-original-title="Remove Item"><i class="fa-solid fa-trash"></i></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -122,7 +126,7 @@ $clearCart = function () {
                 <a class="text-muted font--medium px-0" href="#cartOffcanvas" data-bs-dismiss="offcanvas">
                     <i class="fa-solid fa-arrow-left me-2"></i>Back to shop</a>
             </div>
-            <a class="btn btn-lg btn-primary w-sm-auto" href="javascript:void(0)">Proceed to Checkout<i class="ai-chevron-right ms-2 me-n1"></i></a>
+            <a class="btn btn-lg btn-primary w-sm-auto" href="{{ route('checkout') }}">Proceed to Checkout<i class="ai-chevron-right ms-2 me-n1"></i></a>
         </div>
     </div>
 </div>
