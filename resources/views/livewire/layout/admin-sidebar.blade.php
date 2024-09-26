@@ -43,6 +43,11 @@
                         <i class="fa-solid fa-upload me-2"></i> Upload Questions
                     </a>
                 </li>
+                <li class="py-2">
+                    <a href="{{ route('admin.users.index') }}" class="fw-medium @if(request()->routeIs('admin.users.index')) {{'text-primary'}} @endif" wire:navigate>
+                        <i class="fa-solid fa-user me-2"></i> Users
+                    </a>
+                </li>
             </ul>
         </div>
 
