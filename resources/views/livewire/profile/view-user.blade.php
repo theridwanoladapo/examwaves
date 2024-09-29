@@ -14,7 +14,6 @@ with(fn () => [
     })->where('isActive', 1)->paginate(10)
 ]);
 
-
 ?>
 
 <div>
@@ -100,9 +99,9 @@ with(fn () => [
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($items as $item)
+                        @foreach ($items as $k => $item)
                         <tr>
-                            <th>#</th>
+                            <th>{{ $k+1 }}</th>
                             <td>{{ $item->certification->title }} ({{ $item->certification->code }})</td>
                             <td>{{ $item->certification->exam->name }}</td>
                             <td>{{ exam_test_count($item->certification->id) }}</td>
@@ -114,7 +113,7 @@ with(fn () => [
                                 @endif
                             </td>
                             <td>
-                                <a href="#" class="square--30 circle text-light bg-seegreen d-inline-flex" wire:navigate>
+                                <a href="{{ route('exam', $item->certification->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex" wire:navigate>
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </td>
