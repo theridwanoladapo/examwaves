@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('certification_id')->constrained('certifications');
+            $table->decimal('price', 12, 2)->default(0);
+            $table->tinyInteger('isActive')->default(0);  //  Active: 0=>not_active, 1=>active
             $table->timestamps();
         });
     }
