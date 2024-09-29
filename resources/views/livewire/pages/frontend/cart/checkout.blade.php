@@ -33,6 +33,7 @@ $proceedToCheckout = function () {
     <div class="gray-simple rounded-2 py-3 px-4 mt-5 mt-lg-2 ">
         <h1 class="fs-2 pb-3">Checkout</h1>
 
+        @if ($cart)
         <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
             @csrf
             <input type="hidden" name="email" value="{{ auth()->user()->email }}"> {{-- required --}}
@@ -45,6 +46,11 @@ $proceedToCheckout = function () {
         </form>
 
         <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-primary w-100 px-xl-5">Checkout with PayPal</a>
+        @else
+        <div class="d-flex align-items-center justify-content-center py-5 border rounded bg-white">
+            <span class="h6 font--bold">Your cart is empty</span>
+        </div>
+        @endif
 
     </div>
 </div>

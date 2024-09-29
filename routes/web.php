@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ExamController;
@@ -38,6 +39,9 @@ Route::middleware(['auth', 'user-access'])->group(function () {
         ->name('profile');
     Route::view('user/settings', 'user.settings')
         ->name('settings');
+
+    Route::get('/cart', [CartController::class, 'index'])
+        ->name('cart');
 });
 
 Route::get('paypal/checkout', [PayPalController::class, 'checkout'])->name('paypal.checkout');
