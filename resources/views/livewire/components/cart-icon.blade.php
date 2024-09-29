@@ -92,14 +92,6 @@ $clearCart = function () {
                                     <i class="fa-solid fa-trash text-danger"></i></a>
                             </div>
                         </div>
-                        {{-- <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex flex-wrap">
-                                <div class="text-muted fs-sm me-3">Exam Provider: <span class="text-dark fw-medium">{{ exam_provider_name($item['exam_id']) }}</span></div>
-                            </div>
-                            <div class="nav justify-content-end">
-                                <a class="fs-6 p-2" wire:click="removeFromCart({{$item['id']}})" href="javascript:void(0)" data-bs-toggle="tooltip" aria-label="Remove" data-bs-original-title="Remove Item"><i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -126,7 +118,7 @@ $clearCart = function () {
                 <a class="text-muted font--medium px-0" href="#cartOffcanvas" data-bs-dismiss="offcanvas">
                     <i class="fa-solid fa-arrow-left me-2"></i>Back to shop</a>
             </div>
-            <a class="btn btn-lg btn-primary w-sm-auto" href="{{ route('checkout') }}">Proceed to Checkout<i class="ai-chevron-right ms-2 me-n1"></i></a>
+            <a class="btn btn-lg btn-primary w-sm-auto" href="{{ route('cart') }}">Go to Cart<i class="ai-chevron-right ms-2 me-n1"></i></a>
         </div>
     </div>
 </div>

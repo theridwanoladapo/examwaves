@@ -53,13 +53,13 @@ $removeFromCart = function (int $id) {
 ?>
 
 <div>
-    <div class="py-3 py-md-3">
+    <div class="py-3 py-md-3 px-3">
         <div class="d-flex w-100 justify-content-between align-items-center border-bottom pb-2 pb-sm-2 mb-3">
             <h3 class="offcanvas-title d-flex align-items-center mb-1">Your Cart
                 <span class="fs-6 fw-normal text-muted ms-3">{{ $cartCount }} item(s)</span>
             </h3>
         </div>
-
+        @if ($cartCount > 0)
         @foreach ($cart as $item)
         <div class="d-sm-flex align-items-center pb-4">
             <div class="w-100 pt-1">
@@ -82,6 +82,11 @@ $removeFromCart = function (int $id) {
             </div>
         </div>
         @endforeach
+        @else
+        <div class="d-flex align-items-center justify-content-center py-4">
+            <span class="fs-xl font--bold">Your cart is empty</span>
+        </div>
+        @endif
 
     </div>
 
@@ -103,7 +108,7 @@ $removeFromCart = function (int $id) {
         <li class="d-flex justify-content-between mb-2">Shipping Cost:<span class="fw-semibold ms-2">$12.00</span></li>
     </ul> --}}
 
-    <div class="d-flex align-items-center justify-content-between border-top pt-4">
+    <div class="d-flex align-items-center justify-content-between border-top pt-4 px-3">
         <span class="fs-xl font--bold">Total:</span>
         <span class="fs-3 font--bold text-dark ms-2">${{ number_format($cartTotal, 2) }}</span>
     </div>

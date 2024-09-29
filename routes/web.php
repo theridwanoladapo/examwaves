@@ -4,6 +4,8 @@ use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
@@ -37,9 +39,19 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     Route::view('user/settings', 'user.settings')
         ->name('settings');
 
-    Route::get('/checkout', [CheckoutController::class, 'index'])
-        ->name('checkout');
+    Route::get('/cart', [CheckoutController::class, 'index'])
+        ->name('cart');
+    Route::get('/checkout/{type}', [CheckoutController::class, 'store'])
+    ->name('checkout');
 });
+
+Route::get('paypal/checkout', [PayPalController::class, 'checkout'])->name('paypal.checkout');
+Route::get('paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
+Route::get('paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
+
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
+Route::post('/webhook', [PaymentController::class, 'handleWebhook']);
 
 
 // AdminAccess
