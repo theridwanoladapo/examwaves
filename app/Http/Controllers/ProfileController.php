@@ -41,13 +41,14 @@ class ProfileController extends Controller
     /**
      *  Go to quiz page
      *
-     * @param $id $id
+     * @param  $id
      *
      */
     public function tryQuiz($id, $test_id)
     {
+        $tests = Test::where('certification_id', $id)->get();
         $test = Test::find($test_id);
 
-        return view('user.take-quiz', compact('test'));
+        return view('user.take-quiz', compact('test', 'tests'));
     }
 }

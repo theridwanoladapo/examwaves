@@ -2,26 +2,19 @@
 
 use App\Models\Test;
 
+use App\Models\OrderItem;
+
 use function Livewire\Volt\{state};
 
 $getTests = fn () => $this->tests = Test::where('certification_id', $this->certification->id)->get();
 
-state(['certification', 'tests' => $getTests]);
-
-$deleteTest = function (Test $test) {
-    $test->delete();
-
-    $this->getTests();
-}
+state(['user_id' => auth()->user()->id, 'certification', 'tests' => $getTests]);
 
 ?>
 
 <div>
     <div class="dash-wrapsw card py-0 px-lg-5 px-4 pb-4 border-0 rounded-4 mb-4">
         <div class="position-absolute start-0 end-0 top-0 bg-primary ht-120"></div>
-        <div class="position-absolute end-0 top-0 mt-5 pt-3 me-4 z-1">
-            <a href="{{ route('admin.certifications.edit', $this->certification->id) }}" class="btn btn-sm btn-whites fw-medium">Edit Certification</a>
-        </div>
         <div class="dash-y44 position-relative mb-3">
             <div class="dash-user-thumb mt-5 pt-2">
                 @if ($this->certification->image_path)
@@ -35,18 +28,6 @@ $deleteTest = function (Test $test) {
                 <div class="lios-parts-starts col-sm-12">
                     <p class="text-muted mb-0">Description:</p>
                     <p class="m-0 text-dark fw-medium"> {!! $this->certification->description ? $this->certification->description : 'Nil' !!} </p>
-                </div>
-                <div class="lios-parts-starts col-sm-4">
-                    <p class="text-muted mb-0">Exam:</p>
-                    <p class="m-0 text-dark fw-medium"> {{ $this->certification->exam->name }} </p>
-                </div>
-                <div class="lios-parts-starts col-sm-4">
-                    <p class="text-muted mb-0">Price:</p>
-                    <p class="m-0 text-dark fw-medium"> ${{ $this->certification->price }} </p>
-                </div>
-                <div class="lios-parts-starts col-sm-4">
-                    {{-- <p class="text-muted mb-0">Price:</p>
-                    <p class="m-0 text-dark fw-medium"> ${{ $this->certification->price }} </p> --}}
                 </div>
             </div>
         </div>
@@ -76,11 +57,8 @@ $deleteTest = function (Test $test) {
                             <td>{{ $test->certification->title }}</td>
                             <td>{{ $test->time_limit }}</td>
                             <td>
-                                <a href="{{ route('admin.tests.view', $test->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="javascript:void(0)" class="square--30 circle text-light bg-danger d-inline-flex ms-2">
-                                    <i class="fa-solid fa-trash"></i>
+                                <a href="{{ route('exam.quiz', [$certification->id, $test->id]) }}" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-eye me-2"></i> View Test
                                 </a>
                             </td>
                         </tr>
