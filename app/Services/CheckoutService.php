@@ -25,8 +25,10 @@ class CheckoutService
     public function processCheckout($data)
     {
         $cartItems = $this->getCartItemsForCheckout();
-        $order = $this->orderRepository->createOrder($data, $cartItems);
+        $order = $this->orderRepository->createOrder($data, $cartItems, 'success');
         Session::forget('cart');
+        Session::forget('cartCount');
+        Session::forget('cartTotal');
         return $order;
     }
 }

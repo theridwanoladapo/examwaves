@@ -38,18 +38,6 @@ $removeFromCart = function (int $id) {
     $this->dispatch('cartUpdated');
 };
 
-/* $clearCart = function () {
-    $this->cart = [];
-    $this->cartCount = 0;
-    $this->cartTotal = 0;
-
-    session()->put('cart', $this->cart);
-    session()->put('cartCount', $this->cartCount);
-    session()->put('cartTotal', $this->cartTotal);
-
-    $this->dispatch('cartUpdated');
-} */
-
 ?>
 
 <div>
@@ -89,24 +77,6 @@ $removeFromCart = function (int $id) {
         @endif
 
     </div>
-
-    <!-- Coupon Code -->
-    {{-- <div class="pb-3">
-        <div class="d-sm-flex align-items-center border-top pt-4">
-            <div class="input-group input-group-sm mb-3 mb-sm-0 me-sm-4 me-md-5 p-2 border rounded-3">
-                <input class="form-control form-control-md text-uppercase border-0" type="text"
-                    placeholder="Your coupon code">
-                <button class="btn btn-md btn-primary rounded-2" type="button">Apply coupon</button>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Total Price & GST -->
-    {{-- <ul class="list-unstyled py-3 mb-0">
-        <li class="d-flex justify-content-between mb-2">Subtotal:<span class="fw-semibold ms-2">$172.00</span></li>
-        <li class="d-flex justify-content-between mb-2">GST:<span class="fw-semibold ms-2">$22.00</span></li>
-        <li class="d-flex justify-content-between mb-2">Shipping Cost:<span class="fw-semibold ms-2">$12.00</span></li>
-    </ul> --}}
 
     <div class="d-flex align-items-center justify-content-between border-top pt-4 px-3">
         <span class="fs-xl font--bold">Total:</span>

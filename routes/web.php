@@ -38,11 +38,6 @@ Route::middleware(['auth', 'user-access'])->group(function () {
         ->name('profile');
     Route::view('user/settings', 'user.settings')
         ->name('settings');
-
-    Route::get('/cart', [CheckoutController::class, 'index'])
-        ->name('cart');
-    Route::get('/checkout/{type}', [CheckoutController::class, 'store'])
-    ->name('checkout');
 });
 
 Route::get('paypal/checkout', [PayPalController::class, 'checkout'])->name('paypal.checkout');
