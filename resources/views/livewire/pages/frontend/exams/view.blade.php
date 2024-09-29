@@ -65,6 +65,12 @@ $removeFromCart = function (int $id) {
     $this->dispatch('cartUpdated');
 };
 
+$buyNow = function () {
+    $this->addToCart($this->certification->id);
+
+    $this->redirectRoute('cart', navigate: true);
+};
+
 ?>
 
 <div>
@@ -144,7 +150,7 @@ $removeFromCart = function (int $id) {
                                 @endif
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary full-width font-sm">Buy Now</button>
+                                <button wire:click="buyNow()" type="button" class="btn btn-primary full-width font-sm">Buy Now</button>
                             </div>
                         </div>
                     </div>
