@@ -20,4 +20,14 @@ class OrderItem extends Model
         'price',
         'isActive',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function certification()
+    {
+        return $this->belongsTo(Certification::class);
+    }
 }
