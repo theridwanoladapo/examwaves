@@ -3,7 +3,7 @@
 
         <div class="user-prfl text-center mx-auto">
             <div class="position-relative mb-2">
-                <img src="{{ asset('assets/img/favicon.png') }}" class="img-fluid circle" width="120" alt="img">
+                <img src="{{ asset('assets/img/user-5.png') }}" class="img-fluid circle" width="120" alt="img">
             </div>
             <div class="user-caps">
                 <h5 class="mb-0">{{ auth()->user()->name }}</h5>

@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <!-- Account Dashboard Start -->
     <section>
         <div class="container">
@@ -28,4 +28,4 @@
         </div>
     </section>
 
-</x-admin-layout>
+</x-app-layout>
