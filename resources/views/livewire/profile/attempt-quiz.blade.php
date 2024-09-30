@@ -33,11 +33,11 @@ mount(function () {
         $correct_options = Str::lower($question->correct_options);
 
         if ($question->answer_type == "multi_opt") {
-            $this->quiz[$question->id] = ['answer' => []];
-            $this->quiz[$question->id] = ['correct' => explode(',', $correct_options)];
+            $this->quiz[$question->id]['answer'] = [];
+            $this->quiz[$question->id]['correct'] = explode(',', $correct_options);
         } else {
-            $this->quiz[$question->id] = ['answer' => null];
-            $this->quiz[$question->id] = ['correct' => $correct_options];
+            $this->quiz[$question->id]['answer'] = null;
+            $this->quiz[$question->id]['correct'] = $correct_options;
         }
     }
 });
@@ -378,7 +378,9 @@ $submitQuiz = function ()
                                                                 <i class="far fa-circle text-dark pe-3 py-1"></i>
                                                             @endif
                                                         @elseif ($k === $review[$question->id]['correct'])
-                                                                <i class="fas fa-circle-check text-success pe-3 py-1"></i>
+                                                            <i class="fas fa-circle-check text-success pe-3 py-1"></i>
+                                                        @else
+                                                            <i class="far fa-circle text-dark pe-3 py-1"></i>
                                                         @endif
                                                         <h6 class="ms-1 fw-semibold mb-0" style="color: {{$status}}">
                                                             {!! $question->$option !!}

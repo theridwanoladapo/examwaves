@@ -28,11 +28,11 @@ mount(function () {
         $correct_options = Str::lower($question->correct_options);
 
         if ($question->answer_type == "multi_opt") {
-            $this->quiz[$question->id] = ['answer' => []];
-            $this->quiz[$question->id] = ['correct' => explode(',', $correct_options)];
+            $this->quiz[$question->id]['answer'] = [];
+            $this->quiz[$question->id]['correct'] = explode(',', $correct_options);
         } else {
-            $this->quiz[$question->id] = ['answer' => null];
-            $this->quiz[$question->id] = ['correct' => $correct_options];
+            $this->quiz[$question->id]['answer'] = null;
+            $this->quiz[$question->id]['correct'] = $correct_options;
         }
     }
 
@@ -195,27 +195,23 @@ $submitQuiz = function ()
                                         <div>
                                             <h5 class="text-dark fw-semibold h6 mb-3">
 
-                                                @if (isset($quiz[$question->id]['answer']))
-                                                    @if (is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
-                                                        <i class="fa fa-circle text-muted"></i>
+                                                @if (!isset($quiz[$question->id]['answer']) || is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
+                                                    <i class="fa fa-circle text-muted"></i>
+                                                @else
+                                                    @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
+                                                    <i class="fa fa-circle-check text-success"></i>
                                                     @else
-                                                        @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
-                                                        <i class="fa fa-circle-check text-success"></i>
-                                                        @else
-                                                        <i class="fa fa-circle-exclamation text-danger"></i>
-                                                        @endif
+                                                    <i class="fa fa-circle-exclamation text-danger"></i>
                                                     @endif
                                                 @endif
                                                 Question {{ $key + 1 }}
-                                                @if (isset($quiz[$question->id]['answer']))
-                                                    @if (is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
-                                                        <span class="text-muted fw-medium h6 ms-3 mb-1">Skipped</span>
+                                                @if (!isset($quiz[$question->id]['answer']) || is_null($quiz[$question->id]['answer']) || empty($quiz[$question->id]['answer']))
+                                                    <span class="text-muted fw-medium h6 ms-3 mb-1">Skipped</span>
+                                                @else
+                                                    @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
+                                                    <span class="text-success fw-medium h6 ms-3 mb-1">Correct</span>
                                                     @else
-                                                        @if ($quiz[$question->id]['correct'] === $quiz[$question->id]['answer'])
-                                                        <span class="text-success fw-medium h6 ms-3 mb-1">Correct</span>
-                                                        @else
-                                                        <span class="text-danger fw-medium h6 ms-3 mb-1">Wrong</span>
-                                                        @endif
+                                                    <span class="text-danger fw-medium h6 ms-3 mb-1">Wrong</span>
                                                     @endif
                                                 @endif
                                             </h5>
@@ -269,7 +265,7 @@ $submitQuiz = function ()
                                                             <i class="far fa-square text-dark pe-3 py-1"></i>
                                                             @endif
                                                         @elseif (in_array($k, $quiz[$question->id]['correct']))
-                                                            <span class="badge bg-light-success text-success p-1 mb-2">Correct answer</span>
+                                                            <i class="fas fa-square-check text-success pe-3 py-1"></i>
                                                         @endif
                                                         <h6 class="ms-1 fw-semibold mb-0" style="color: {{$status}}">
                                                             {!! $question->$option !!}
@@ -329,7 +325,9 @@ $submitQuiz = function ()
                                                                 <i class="far fa-circle text-dark pe-3 py-1"></i>
                                                             @endif
                                                         @elseif ($k === $quiz[$question->id]['correct'])
-                                                                <i class="fas fa-circle-check text-success pe-3 py-1"></i>
+                                                            <i class="fas fa-circle-check text-success pe-3 py-1"></i>
+                                                        @else
+                                                            <i class="far fa-circle text-dark pe-3 py-1"></i>
                                                         @endif
                                                         <h6 class="ms-1 fw-semibold mb-0" style="color: {{$status}}">
                                                             {!! $question->$option !!}
