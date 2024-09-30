@@ -39,19 +39,19 @@ with(fn () => [
             <ul class="no-ul-list row g-4">
                 <li class="col-sm-4">
                     <p class="text-muted mb-0">Firstname</p>
-                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->firstname }}</p>
+                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->firstname ?? 'Nil' }}</p>
                 </li>
                 <li class="col-sm-4">
                     <p class="text-muted mb-0">Lastname</p>
-                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->lastname }}</p>
+                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->lastname ?? 'Nil' }}</p>
                 </li>
                 <li class="col-sm-5">
                     <p class="text-muted mb-0">Headline</p>
-                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->headline }}</p>
+                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->headline ?? 'Nil' }}</p>
                 </li>
                 <li class="col-sm-10">
                     <p class="text-muted mb-0">Biography</p>
-                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->biography }}</p>
+                    <p class="m-0 text-dark fw-medium">{{ auth()->user()->profile->biography ?? 'Nil' }}</p>
                 </li>
             </ul>
         </div>

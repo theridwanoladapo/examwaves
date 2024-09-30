@@ -16,6 +16,7 @@ $logout = function (Logout $logout) {
 };
 
 ?>
+
 <div>
     <div class="header header-light shadow">
         <div class="container">
@@ -41,8 +42,8 @@ $logout = function (Logout $logout) {
                                         <ul>
                                             <li><a href="{{ route('dashboard') }}" wire:navigate><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
                                             <li><a href="{{ route('profile') }}" wire:navigate><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
+                                            <li><a href="{{ route('exams') }}" wire:navigate><i class="fa-solid fa-pen-fancy me-2"></i>My Exams</a></li>
                                             <li><a href="{{ route('settings') }}" wire:navigate><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
-                                            {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
                                         </ul>
                                     </div>
                                 </div>
@@ -51,7 +52,7 @@ $logout = function (Logout $logout) {
                         @else
                         <ul>
                             <li>
-                                <a href="JavaScript:Void(0);" class="btn btn-info"><i class="fas fa-sign-in-alt me-2"></i> Log in</a>
+                                <a href="{{{ route('login') }}}" class="btn btn-info"><i class="fas fa-sign-in-alt me-2"></i> Log in</a>
                             </li>
                         </ul>
                         @endauth
@@ -106,7 +107,6 @@ $logout = function (Logout $logout) {
                                         <li><a href="{{ route('profile') }}" wire:navigate><i class="fa fa-user-tie me-2"></i>My Profile</a></li>
                                         <li><a href="{{ route('exams') }}" wire:navigate><i class="fa-solid fa-pen-fancy me-2"></i>My Exams</a></li>
                                         <li><a href="{{ route('settings') }}" wire:navigate><i class="fa-solid fa-gear me-2"></i>Account Settings</a></li>
-                                        {{-- <li><a href=""><i class="fa fa-envelope me-2"></i>My Exams</a></li> --}}
                                     </ul>
                                 </div>
                             </div>

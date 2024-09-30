@@ -11,27 +11,27 @@ class UserProfileForm extends Form
     public ?UserProfile $userProfile;
 
     #[Validate('nullable|string')]
-    public string $firstname = '';
+    public ?string $firstname = null;
 
     #[Validate('nullable|string')]
-    public string $lastname = '';
+    public ?string $lastname = null;
 
     #[Validate('nullable|string')]
-    public string $headline = '';
+    public ?string $headline = null;
 
     #[Validate('nullable|string')]
-    public string $biography = '';
+    public ?string $biography = null;
 
     public function setUserProfile()
     {
-        $userProfile = UserProfile::where('user_id', auth()->user()->id)->first();
+        $userProfile = UserProfile::firstOrCreate(['user_id' => auth()->user()->id]);
 
         $this->userProfile = $userProfile;
 
-        $this->firstname = $userProfile->firstname;
-        $this->lastname = $userProfile->lastname;
-        $this->headline = $userProfile->headline;
-        $this->biography = $userProfile->biography;
+        $this->firstname = $userProfile->firstname ?? null;
+        $this->lastname = $userProfile->lastname ?? null;
+        $this->headline = $userProfile->headline ?? null;
+        $this->biography = $userProfile->biography ?? null;
     }
 
     public function update()
