@@ -25,6 +25,11 @@ class ProfileController extends Controller
         return view('user.settings');
     }
 
+    public function exams()
+    {
+        return view('user.exams');
+    }
+
     /**
      * View exam page
      *

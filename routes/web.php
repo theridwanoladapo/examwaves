@@ -41,6 +41,8 @@ Route::middleware(['auth', 'user-access'])
         ->name('profile');
     Route::get('/user/settings', [ProfileController::class, 'settings'])
         ->name('settings');
+    Route::get('/user/exams', [ProfileController::class, 'exams'])
+        ->name('exams');
     Route::get('/user/exam/{id}', [ProfileController::class, 'exam'])
         ->name('exam');
     Route::get('/user/exam/{id}/quiz/{test_id}', [ProfileController::class, 'tryQuiz'])
