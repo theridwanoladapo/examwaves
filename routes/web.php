@@ -39,8 +39,11 @@ Route::middleware(['auth', 'user-access'])
 ->group(function () {
     Route::get('/user/profile', [ProfileController::class, 'profile'])
         ->name('profile');
+    Route::get('/user/profile/edit', [ProfileController::class, 'profileEdit'])
+        ->name('profile.edit');
     Route::get('/user/settings', [ProfileController::class, 'settings'])
         ->name('settings');
+
     Route::get('/user/exams', [ProfileController::class, 'exams'])
         ->name('exams');
     Route::get('/user/exam/{id}', [ProfileController::class, 'exam'])

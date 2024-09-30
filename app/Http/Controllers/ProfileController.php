@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Test;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -14,6 +15,13 @@ class ProfileController extends Controller
     public function profile()
     {
         return view('user.profile');
+    }
+
+    public function profileEdit()
+    {
+        // $user_profile = UserProfile::where('user_id', auth()->user()->id);
+
+        return view('user.profile-edit');
     }
 
     /**

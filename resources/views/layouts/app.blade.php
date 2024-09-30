@@ -14,6 +14,10 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ asset('assets/css/Jost.css') }}" type="text/css">
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset('assets/js/summernote/summernote-lite.min.css') }}">
+
+        @livewireStyles
     </head>
     <body>
         <!-- Preloader -->
@@ -237,6 +241,7 @@
 		<script src="{{ asset('assets/js/shuffle.min.js') }}"></script>
 		<script src="{{ asset('assets/js/wow.js') }}"></script>
 		<script src="{{ asset('assets/js/lunar.js') }}"></script>
+        <script src="{{ asset('assets/js/summernote/summernote-lite.min.js') }}"></script>
 
 		<script src="{{ asset('assets/js/custom.js') }}"></script>
 
@@ -245,5 +250,9 @@
 		<script src="{{ asset('assets/js/morris.js/morris.min.js') }}"></script>
 		<!-- Custom Chart JavaScript -->
 		<script src="{{ asset('assets/js/custom/dashboard.js') }}"></script>
+
+        @stack('scripts')
+
+        @livewireScripts
     </body>
 </html>

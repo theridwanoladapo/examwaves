@@ -60,4 +60,9 @@ class User extends Authenticatable
             set: fn (string $value) => strtolower($value),
         );
     }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
 }
