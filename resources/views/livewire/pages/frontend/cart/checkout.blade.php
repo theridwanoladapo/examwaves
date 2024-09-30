@@ -38,9 +38,8 @@ $proceedToCheckout = function () {
             @csrf
             <input type="hidden" name="email" value="{{ auth()->user()->email }}"> {{-- required --}}
             <input type="hidden" name="orderID" value="1234">
-            <input type="hidden" name="amount" value="{{ $cartTotal * 100 }}"> {{-- amount in kobo --}}
+            <input type="hidden" name="amount" value="{{ $cartTotal * 1600 * 100 }}"> {{-- amount in kobo --}}
             <input type="hidden" name="currency" value="NGN">
-            {{-- <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value']) }}" > --}}
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
             <button class="btn btn-lg btn-success w-100 px-xl-5 mb-4" type="submit">Checkout with Paystack</button>
         </form>
