@@ -37,25 +37,50 @@ $sendPasswordResetLink = function () {
 ?>
 
 <div>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+    <section class="position-relative">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-lg-6 com-md-9">
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+                    <!-- Signup Form -->
+                    <div class="position-relative">
 
-    <form wire:submit="sendPasswordResetLink">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        <div class="card border-0 rounded-5 p-xl-4 p-lg-4 p-3">
+
+                            <div class="square--80 circle bg-light-primary text-primary d-flex mb-4 mx-auto">
+                                <i class="fa-solid fa-key fs-1"></i>
+                            </div>
+
+                            <div class="card-wrap text-center mb-4">
+                                <h1 class="fs-2">Forgot Password?</h1>
+                                <p>No worries, we'll send you reset instructions.</p>
+                            </div>
+
+                            <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                            <form wire:submit="sendPasswordResetLink">
+
+                                <div class="form-floating position-relative mb-4">
+                                    <i class="fa-regular fa-envelope position-absolute top-50 start-0 translate-middle-y ms-3 text-info"></i>
+                                    <input wire:model="email" id="email" name="email" type="email" class="form-control form-control-lg ps-5" placeholder="Email address" required autofocus>
+                                    <label for="floatingInput" class="ms-4">Email address</label>
+                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                </div>
+
+                                <button class="btn btn-lg btn-info w-100" type="submit">Reset Password</button>
+
+                                <p class="pt-4 text-center">
+                                    <a class="text-muted" href="{{ route('login') }}">
+                                        <i class="fa-solid fa-arrow-left me-2"></i> Back To Login
+                                    </a>
+                                </p>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
+    </section>
 </div>

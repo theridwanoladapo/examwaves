@@ -21,13 +21,13 @@ $login = function () {
 
     switch ($userRole) {
         case 1:
-            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('admin.dashboard', absolute: false));
             break;
         case 0:
-            $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('home', absolute: false));
             break;
         default:
-            return redirect('/', navigate: true);
+            return redirect('/');
             break;
     }
 };
@@ -35,9 +35,6 @@ $login = function () {
 ?>
 
 <div>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
     <section class="position-relative">
         <div class="container">
             <div class="row justify-content-center">
@@ -53,6 +50,9 @@ $login = function () {
                                 <h1 class="fs-2">Log in</h1>
                                 <p>Welcome Back! Log in To Your Account</p>
                             </div>
+
+                            <!-- Session Status -->
+                            <x-auth-session-status class="mb-4" :status="session('status')" />
 
                             <form wire:submit="login">
 
