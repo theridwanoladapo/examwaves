@@ -8,7 +8,7 @@ use App\Models\Question;
 
 use function Livewire\Volt\{state};
 
-$countUser = fn () => $this->countUser = User::count();
+$countUser = fn () => $this->countUser = User::where('role', 0)->count();
 $countExam = fn () => $this->countExam = Exam::count();
 $countCertification = fn () => $this->countCertification = Certification::count();
 $countTest = fn () => $this->countTest = Test::count();
