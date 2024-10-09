@@ -17,8 +17,14 @@ Route::get('/', function () {
     $exams = \App\Models\Exam::limit(6)->get();
     $certifications = \App\Models\Certification::limit(6)->get();
 
-    return view('/home', compact(['exams','certifications']));
-})->name('home');
+    return view('homepage', compact(['exams','certifications']));
+})->middleware(['auth', 'verified', 'user-access'])
+->name('home');
+
+Route::get('/contact-us', function () {
+    return view('contact');
+})->name('contact');
+
 
 Route::get('/providers', [HomeController::class, 'allProviders'])
     ->name('providers');
