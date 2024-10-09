@@ -43,13 +43,13 @@ $register = function () {
 
 <div>
     <div class="d-lg-flex position-relative h-100 bg-white">
-        <a class="circle bg-white text-primary border square--40 position-absolute top-0 end-0 mt-3 me-3" href="index.html" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Back to home" data-bs-original-title="Back to home"><i class="fa-solid fa-house-user"></i></a>
+        <a class="circle bg-white text-primary border square--40 position-absolute top-0 end-0 mt-3 me-3" href="{{ route('home') }}" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Back to home" data-bs-original-title="Back to home"><i class="fa-solid fa-house-user"></i></a>
 
         <!-- Signup Form -->
         <div class="d-flex flex-column align-items-center w-50 h-100 px-4 px-md-5 py-5">
             <div class="w-100 mt-auto py-4 px-xl-4 px-lg-3">
                 <div class="d-flex mb-3">
-                    <img src="assets/img/logo.png" class="img-fluid" width="120" alt="logo">
+                    <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" width="120" alt="logo">
                 </div>
 
                 <h1 class="fs-1">Create An Account</h1>

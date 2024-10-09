@@ -189,7 +189,7 @@
 		<div class="clearfix"></div>
 		<!-- Latest Exams End -->
 
-        <!-- What Our Customaer Says Start -->
+        <!-- What Our Customer Says Start -->
 		<section>
 			<div class="container">
 
@@ -311,7 +311,7 @@
 
 			</div>
 		</section>
-		<!-- What Our Customaer Says End -->
+		<!-- What Our Customer Says End -->
 
         <!-- Call To Action -->
 		<section class="bg-cover call-action-container bg-primary position-relative">
@@ -420,6 +420,8 @@
 			</div>
 		</footer>
 		<!-- Footer End -->
+
+        <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
     </div>
 
     <!-- All Jquery -->
