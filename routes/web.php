@@ -18,8 +18,7 @@ Route::get('/', function () {
     $certifications = \App\Models\Certification::limit(6)->get();
 
     return view('homepage', compact(['exams','certifications']));
-})->middleware(['auth', 'verified', 'user-access'])
-->name('home');
+})->name('home');
 
 Route::get('/contact-us', function () {
     return view('contact');
