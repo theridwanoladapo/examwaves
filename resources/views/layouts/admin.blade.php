@@ -31,6 +31,22 @@
 
             {{ $slot }}
 
+            <!-- Footer Start -->
+            <footer class="footer skin-light-footer">
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-between">
+
+                            <div class="col-xl-4 col-lg-5 col-md-5">
+                                <p class="mb-0">© 2024 Powered by ExamWaves - Developed by <a href="genuineict.com">Genuine ICT</a>.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer End -->
+
             <button type="button" class="d-lg-none btn btn-md btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#Sidebaruser">
                 <i class="fa-solid fa-bars me-2"></i> Dashboard Navigation
             </button>
