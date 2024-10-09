@@ -30,11 +30,13 @@ $register = function () {
 
     $validated['password'] = Hash::make($validated['password']);
 
-    event(new Registered($user = User::create($validated)));
+    $user = User::create($validated);
+
+    event(new Registered($user));
 
     Auth::login($user);
 
-    $this->redirect(route('dashboard', absolute: false), navigate: true);
+    $this->redirect(route('home', absolute: false));
 };
 
 ?>
