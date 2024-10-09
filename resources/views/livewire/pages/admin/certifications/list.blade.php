@@ -12,11 +12,16 @@ $deleteCertification = function (Certification $certification) {
     $certification->delete();
 
     $this->resetPage();
+
+    session()->flash('success', 'Exam has been deleted successfully!');
 }
 
 ?>
 
 <div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('success')" />
+
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>

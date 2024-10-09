@@ -17,6 +17,9 @@ with(fn () => [
 ?>
 
 <div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('success')" />
+
     @if ($items)
     <div class="table-responsive">
         <table class="table">

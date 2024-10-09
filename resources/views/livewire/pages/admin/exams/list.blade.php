@@ -12,6 +12,8 @@ $deleteExam = function (Exam $exam) {
     $exam->delete();
 
     $this->resetPage();
+
+    session()->flash('success', 'Exam Provider has been deleted successfully!');
 };
 
 $addToMenu = function (Exam $exam) {
@@ -20,6 +22,8 @@ $addToMenu = function (Exam $exam) {
     ]);
 
     $this->resetPage();
+
+    session()->flash('success', 'Exam Provider has been added to menu successfully!');
 };
 
 $removeFromMenu = function (Exam $exam) {
@@ -28,11 +32,16 @@ $removeFromMenu = function (Exam $exam) {
     ]);
 
     $this->resetPage();
+
+    session()->flash('success', 'Exam Provider has been removed from menu successfully!');
 };
 
 ?>
 
 <div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('success')" />
+
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>

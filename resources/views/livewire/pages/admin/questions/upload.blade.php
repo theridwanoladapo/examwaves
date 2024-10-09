@@ -51,12 +51,16 @@ $uploadQuestions = function () {
 
     $this->form->import();
 
+    session()->flash('success', 'Questions has been uploaded successfully!');
+
     return $this->redirectRoute('admin.questions.upload', navigate: true);
 };
 
 ?>
 
 <div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('success')" />
 
     <div class="dash-wrapsw card border-0 rounded-4 py-4 mb-4">
         <div class="card-headers border-0 py-4 px-4 pb-0 pt-1">
@@ -107,7 +111,7 @@ $uploadQuestions = function () {
                     </div>
 
                 </div>
-                
+
                 <div class="mb-3">
                     <div class="mb-3">
                         <label for="file" class="form-label">File <span class="text-danger fw-bold">*</span></label>

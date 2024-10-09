@@ -12,11 +12,16 @@ $deleteTest = function (Test $test) {
     $test->delete();
 
     $this->getTests();
+
+    session()->flash('success', 'Test has been deleted successfully!');
 }
 
 ?>
 
 <div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('success')" />
+
     <div class="dash-wrapsw card py-0 px-lg-5 px-4 pb-4 border-0 rounded-4 mb-4">
         <div class="position-absolute start-0 end-0 top-0 bg-primary ht-120"></div>
         <div class="position-absolute end-0 top-0 mt-5 pt-3 me-4 z-1">

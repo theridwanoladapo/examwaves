@@ -14,11 +14,16 @@ $deleteQuestion = function (Question $question) {
     $question->delete();
 
     $this->resetPage();
+
+    session()->flash('success', 'Question has been deleted successfully!');
 }
 
 ?>
 
 <div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('success')" />
+
     <div class="table-responsive">
         <table class="table">
             <thead>
