@@ -17,13 +17,14 @@ rules([
 
 $submit = function () {
     $this->validate();
-        // Process the email or save data to the database
-        Mail::to('support@examwaves.com')->send(new ContactFormMail($this->name, $this->email, $this->phone, $this->subject, $this->message));
 
-        session()->flash('status', 'Your message has been sent successfully!');
+    // Send the email
+    Mail::to('support@examwaves.com')->send(new ContactFormMail($this->name, $this->email, $this->phone, $this->subject, $this->message));
 
-        // Optionally, clear the form fields
-        $this->reset();
+    session()->flash('status', 'Your message has been sent successfully!');
+
+    // clear the form fields
+    $this->reset();
 }
 
 ?>
