@@ -14,7 +14,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $exams = \App\Models\Exam::limit(6)->get();
+    $exams = \App\Models\Exam::where('isMenu', true)->limit(6)->get();
     $certifications = \App\Models\Certification::limit(6)->get();
 
     return view('homepage', compact(['exams','certifications']));

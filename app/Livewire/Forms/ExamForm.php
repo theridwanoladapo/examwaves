@@ -16,6 +16,8 @@ class ExamForm extends Form
     #[Validate('nullable|string')]
     public string $description = '';
 
+    public string $isMenu = '';
+
     #[Validate('nullable|string')]
     public string $image_path = '';
 
@@ -28,6 +30,7 @@ class ExamForm extends Form
 
         $this->name = $exam->name;
         $this->description = $exam->description;
+        $this->isMenu = $exam->isMenu;
         $this->image_path = $exam->image_path ?? '';
     }
 
@@ -42,7 +45,7 @@ class ExamForm extends Form
         $this->image_path = $img ?? '';
 
         Exam::create($this->only([
-            'image_path', 'name', 'description'
+            'image_path', 'name', 'description', 'isMenu'
         ]));
 
         $this->reset();
@@ -59,7 +62,7 @@ class ExamForm extends Form
         $this->image_path = $img ?? $this->image_path;
 
         $this->exam->update($this->only([
-            'image_path', 'name', 'description'
+            'image_path', 'name', 'description', 'isMenu'
         ]));
     }
 }

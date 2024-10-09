@@ -18,6 +18,7 @@ class Exam extends Model
     protected $fillable = [
         'name',
         'description',
+        'isMenu',
         'image_path',
     ];
 

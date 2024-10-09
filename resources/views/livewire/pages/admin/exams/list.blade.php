@@ -12,7 +12,23 @@ $deleteExam = function (Exam $exam) {
     $exam->delete();
 
     $this->resetPage();
-}
+};
+
+$addToMenu = function (Exam $exam) {
+    $exam->update([
+        'isMenu' => true
+    ]);
+
+    $this->resetPage();
+};
+
+$removeFromMenu = function (Exam $exam) {
+    $exam->update([
+        'isMenu' => false
+    ]);
+
+    $this->resetPage();
+};
 
 ?>
 
@@ -23,7 +39,7 @@ $deleteExam = function (Exam $exam) {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    {{-- <th scope="col">Description</th> --}}
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -32,7 +48,17 @@ $deleteExam = function (Exam $exam) {
                 <tr>
                     <th scope="row">{{ $k+1 }}</th>
                     <td>{{ $exam->name }}</td>
-                    {{-- <td>{!! Str::limit($exam->description, 120) !!}</td> --}}
+                    <td>
+                        @if ($exam->isMenu)
+                        <span wire:click="removeFromMenu({{$exam->id}})"
+                        wire:confirm="Are you sure you want to remove {{ $exam->name }} from menu list?"
+                        class="label text-success bg-light-success" title="Remove from menu list">On menu list</span>
+                        @else
+                        <span wire:click="addToMenu({{$exam->id}})"
+                        wire:confirm="Are you sure you want to add {{ $exam->name }} to menu list?"
+                        class="label text-info bg-light-info cursor-pointer" title="Add to menu list">Add to menu list</span>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.exams.view', $exam->id) }}" class="square--30 circle text-light bg-seegreen d-inline-flex">
                             <i class="fa-solid fa-eye"></i>

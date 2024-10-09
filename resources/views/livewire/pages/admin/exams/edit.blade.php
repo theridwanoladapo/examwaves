@@ -8,7 +8,7 @@ use function Livewire\Volt\layout;
 
 usesFileUploads();
 
-state(['image', 'exam', 'description']);
+state(['image', 'exam', 'description', 'isMenu' => false]);
 
 form(ExamForm::class);
 
@@ -17,12 +17,14 @@ layout('layouts.admin');
 mount(function () {
     $this->form->setExam($this->exam);
     $this->description = $this->form->description;
+    $this->isMenu = $this->form->isMenu;
 });
 
 $updateExam = function () {
 
     $this->form->image =  $this->image;
     $this->form->description =  $this->description ?? '';
+    $this->form->isMenu =  $this->isMenu;
 
     $this->form->update();
 
@@ -65,6 +67,12 @@ $updateExam = function () {
                         <label for="name" class="form-label">Name <span class="text-danger fw-bold">*</span></label>
                         <input wire:model="form.name" name="name" id="name" type="text" class="form-control" placeholder="Exam name">
                         @error('form.name') <span class="text-danger mt-3">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input wire:model="isMenu" class="form-check-input" type="checkbox" id="is-menu">
+                            <label class="form-check-label text-dark fw-medium ms-1" for="is-menu">Add to main menu</label>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>

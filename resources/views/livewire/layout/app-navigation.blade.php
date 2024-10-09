@@ -5,7 +5,7 @@ use App\Models\Exam;
 use App\Livewire\Actions\Logout;
 use function Livewire\Volt\{state};
 
-$getExams = fn () => $this->exams = Exam::all();
+$getExams = fn () => $this->exams = Exam::where('isMenu', true)->get();
 
 state(['exams' => $getExams]);
 
