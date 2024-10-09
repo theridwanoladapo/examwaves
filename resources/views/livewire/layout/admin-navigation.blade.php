@@ -21,7 +21,7 @@ $logout = function (Logout $logout) {
                             <li>
                                 <div class="btn-group account-drop">
                                     <button type="button" class="btn btn-order-by-filt" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ asset('assets/img/user-5.png') }}" class="img-fluid circle" alt="">
+                                        <img src="{{ asset('assets/img/user-img.png') }}" class="img-fluid circle" alt="">
                                     </button>
                                     <div class="dropdown-menu pull-right animated flipInX">
                                         <div class="drp_menu_headr">
