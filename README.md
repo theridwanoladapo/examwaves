@@ -3,4 +3,4 @@
 
 ## About Examwaves
 
-Examwaves is an IT Certification Practice Tests Web App
+Examwaves is an IT Certification Practice Tests Web Application where users get to pay for an exam and have access to practice tests the exam. 
