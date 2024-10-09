@@ -34,6 +34,8 @@ $proceedToCheckout = function () {
         <h1 class="fs-2 pb-3">Checkout</h1>
 
         @if ($cart)
+        <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-primary w-100 px-xl-5">Checkout with PayPal</a>
+
         <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
             @csrf
             <input type="hidden" name="email" value="{{ auth()->user()->email }}"> {{-- required --}}
@@ -41,10 +43,8 @@ $proceedToCheckout = function () {
             <input type="hidden" name="amount" value="{{ $cartTotal * 1600 * 100 }}"> {{-- amount in kobo --}}
             <input type="hidden" name="currency" value="NGN">
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
-            <button class="btn btn-lg btn-success w-100 px-xl-5 mb-4" type="submit">Checkout with Paystack</button>
+            <button class="btn btn-lg btn-success w-100 px-xl-5 mb-4" type="submit">Checkout with Paystack (Africa Users)</button>
         </form>
-
-        <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-primary w-100 px-xl-5">Checkout with PayPal</a>
         @else
         <div class="d-flex align-items-center justify-content-center py-5 border rounded bg-white">
             <span class="h6 font--bold">Your cart is empty</span>
