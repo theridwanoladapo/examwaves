@@ -14,7 +14,7 @@ class QuestionForm extends Form
     public string $question = '';
 
     #[Validate('nullable|string')]
-    public string $question_img = '';
+    public string $question_img = null;
 
     #[Validate('required|string')]
     public string $answer_type = '';
@@ -48,8 +48,8 @@ class QuestionForm extends Form
 
     #[Validate('required|exists:tests,id')]
     public string $test_id = '';
-    public string $exam_id = '';
-    public string $certification_id = '';
+    public string $exam_id = null;
+    public string $certification_id = null;
 
     #[Validate('nullable|image|max:2048')]
     public $image = '';
@@ -83,7 +83,7 @@ class QuestionForm extends Form
             $img = $this->image->store(path: 'image/questions');
         }
 
-        $this->question_img = $img ?? '';
+        $this->question_img = $img ?? null;
 
         Question::create($this->only(
             'question', 'question_img', 'answer_type',

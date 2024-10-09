@@ -17,13 +17,13 @@ class CertificationForm extends Form
     public string $code = '';
 
     #[Validate('nullable|string')]
-    public string $description = '';
+    public string $description = null;
 
     #[Validate('nullable|string')]
-    public string $image_path = '';
+    public string $image_path = null;
 
     #[Validate('nullable|string')]
-    public string $rating = '';
+    public string $rating = null;
 
     #[Validate('required|numeric')]
     public string $price = '';
@@ -55,7 +55,7 @@ class CertificationForm extends Form
             $img = $this->image->store(path: 'image/certifications');
         }
 
-        $this->image_path = $img ?? '';
+        $this->image_path = $img ?? null;
 
         Certification::create($this->only([
             'title',

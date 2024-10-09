@@ -13,10 +13,10 @@ class TestForm extends Form
     #[Validate('required|string|max:255')]
     public string $name = '';
 
-    #[Validate('nullable|integer')]
+    #[Validate('required|integer')]
     public string $time_limit = '';
 
-    #[Validate('nullable|integer')]
+    #[Validate('required|integer')]
     public string $pass_percent = '';
 
     #[Validate('required|exists:certifications,id')]

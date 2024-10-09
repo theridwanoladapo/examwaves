@@ -14,12 +14,12 @@ class ExamForm extends Form
     public string $name = '';
 
     #[Validate('nullable|string')]
-    public string $description = '';
+    public string $description = null;
 
-    public string $isMenu = '';
+    public string $isMenu = false;
 
     #[Validate('nullable|string')]
-    public string $image_path = '';
+    public string $image_path = null;
 
     #[Validate('nullable|image|max:2048')]
     public $image = '';
@@ -42,7 +42,7 @@ class ExamForm extends Form
             $img = $this->image->store(path: 'image/exams');
         }
 
-        $this->image_path = $img ?? '';
+        $this->image_path = $img ?? null;
 
         Exam::create($this->only([
             'image_path', 'name', 'description', 'isMenu'
