@@ -84,7 +84,7 @@ $logout = function (Logout $logout) {
 
                         <li><a href="">How it works</a></li>
 
-                        <li><a href="">Contact Us</a></li>
+                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
 
                     </ul>
 
