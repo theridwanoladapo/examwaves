@@ -22,4 +22,14 @@
 
     <livewire:pages.frontend.exams.view :certification="$certification" />
 
+    <section class="bg-light">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-8 col-lg-8 col-md-12">
+                    <livewire:pages.frontend.exam-comments :certification="$certification" />
+                </div>
+            </div>
+        </div>
+    </section>
+
 </x-app-layout>

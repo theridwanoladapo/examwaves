@@ -79,6 +79,15 @@ $logout = function (Logout $logout) {
                                     </a>
                                 </li>
                                 @endforeach
+                                <li>
+                                    <a href="{{ route('providers') }}" wire:navigate>
+                                        <div class="mega-advance-menu">
+                                            <div class="mega-last ps-2">
+                                                <h6 class="lh-base fs-6 font--bold m-0">{{ __('View all') }}</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -130,4 +139,22 @@ $logout = function (Logout $logout) {
     </div>
     <!-- End Navigation -->
     <div class="clearfix"></div>
+
+    <div class="bg-primary">
+        <div class="container">
+            <div class="d-flex justify-content-start">
+                <div class="text-light bg-info py-3 px-3">
+                    POPULAR EXAM PROVIDERS:
+                </div>
+                <div class="d-flex justify-content-start">
+                    @foreach ($this->exams as $exam)
+                    <a href="{{ route('providers.view', $exam->id) }}" class="text-white py-3 px-3">
+                        <span>{{ $exam->name }}</span>
+                    </a>
+                    @endforeach
+                    <a href="{{ route('providers') }}" class="text-white py-3 px-3"><span>View all</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

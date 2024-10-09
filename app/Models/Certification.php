@@ -47,4 +47,14 @@ class Certification extends Model
     {
         return $this->hasMany(Test::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->comments()->avg('rating');
+    }
 }
