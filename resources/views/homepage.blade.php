@@ -356,7 +356,7 @@
 							<div class="footer-widget">
 								<img src="{{ asset('assets/img/logo.png') }}" class="img-footer" alt="">
 								<div class="footer-add">
-									<p>Address 1<br>Address 2</p>
+									<p>A subsidiary of Complete IT Solutions Ltd.</p>
 								</div>
 								<div class="foot-socials">
 									<ul>
@@ -412,7 +412,7 @@
 					<div class="row align-items-center justify-content-between">
 
 						<div class="col-xl-4 col-lg-5 col-md-5">
-							<p class="mb-0">© 2024 ExamWaves - Designed by <a href="genuineict.com">Genuine ICT</a>.</p>
+							<p class="mb-0">© 2024 Powered by ExamWaves - Developed by <a href="genuineict.com">Genuine ICT</a>.</p>
 						</div>
 
 					</div>
