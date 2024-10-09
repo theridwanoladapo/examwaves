@@ -24,7 +24,7 @@ with(fn () => [
         </div>
         <div class="dash-y44 position-relative mb-3">
             <div class="dash-user-thumb mt-5 pt-2">
-                <img src="{{ asset('assets/img/user-5.png') }}" class="img-fluid circle border border-3" width="100" alt="User">
+                <img src="{{ asset('assets/img/user-img.png') }}" class="img-fluid circle border border-3" width="100" alt="User">
             </div>
             <div class="dash-y45 row align-items-center justify-content-between gy-3">
                 <div class="lios-parts-starts col-sm-7">
