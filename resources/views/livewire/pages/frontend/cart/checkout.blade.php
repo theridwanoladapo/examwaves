@@ -20,12 +20,12 @@ $proceedToCheckout = function () {
 <div>
     <!-- Session Status -->
     @if(session()->has('success'))
-    <div class="font-medium text-success">
+    <div class="font--bold fs-6 text-success ms-4">
         {{ session()->get('success') }}
     </div>
     @endif
     @if(session()->has('error'))
-    <div class="font-medium text-danger">
+    <div class="font--bold fs-6 text-danger ms-4">
         {{ session()->get('error') }}
     </div>
     @endif
@@ -34,7 +34,7 @@ $proceedToCheckout = function () {
         <h1 class="fs-2 pb-3">Checkout</h1>
 
         @if ($cart)
-        <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-primary w-100 px-xl-5">Checkout with PayPal</a>
+        <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-primary w-100 px-xl-5 mb-4">Checkout with PayPal</a>
 
         <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
             @csrf
