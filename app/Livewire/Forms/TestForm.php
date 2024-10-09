@@ -39,9 +39,6 @@ class TestForm extends Form
         Test::create($this->only([
             'name', 'time_limit', 'pass_percent', 'certification_id'
         ]));
-
-        session()->flash('status', 'Test successfully added.');
-
         $this->reset();
     }
 
@@ -52,8 +49,6 @@ class TestForm extends Form
         $this->test->update($this->only([
             'name', 'time_limit', 'pass_percent', 'certification_id'
         ]));
-
-        session()->flash('status', 'Test successfully updated.');
 
         $this->reset();
     }

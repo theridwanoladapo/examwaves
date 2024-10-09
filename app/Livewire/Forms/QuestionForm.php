@@ -92,8 +92,6 @@ class QuestionForm extends Form
             'correct_options', 'explanation', 'test_id'
         ));
 
-        session()->flash('status', 'Questions successfully added.');
-
         $this->reset();
     }
 
@@ -113,7 +111,5 @@ class QuestionForm extends Form
             'option_d', 'option_e', 'option_f', 'option_g',
             'correct_options', 'explanation', 'test_id'
         ));
-
-        session()->flash('status', 'Questions successfully updated.');
     }
 }

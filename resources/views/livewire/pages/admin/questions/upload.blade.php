@@ -51,7 +51,7 @@ $uploadQuestions = function () {
 
     $this->form->import();
 
-    session()->flash('success', 'Questions has been uploaded successfully!');
+    session()->flash('success', 'Questions has been uploaded to test successfully!');
 
     return $this->redirectRoute('admin.questions.upload', navigate: true);
 };

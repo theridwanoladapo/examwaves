@@ -71,7 +71,7 @@ $storeQuestion = function () {
 
     $this->form->store();
 
-    session()->flash('success', 'Question has been added successfully!');
+    session()->flash('success', 'Question has been added to test successfully!');
 
     return $this->redirectRoute('admin.questions.create', navigate: true);
 }
@@ -79,9 +79,6 @@ $storeQuestion = function () {
 ?>
 
 <div>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('success')" />
-
     <div class="dash-wrapsw card border-0 rounded-4 py-4 mb-4">
         <div class="card-headers border-0 py-4 px-4 pb-0 pt-1">
             <h4><i class="fa-solid fa-plus text-primary me-2"></i>Add Questions</h4>
@@ -89,7 +86,7 @@ $storeQuestion = function () {
 
         <div class="card-body px-4">
             <!-- Session Status -->
-            <x-auth-session-status class="h6 mb-4" :status="session('status')" />
+            <x-auth-session-status class="h6 mb-4" :status="session('success')" />
 
             <form wire:submit.prevent="storeQuestion">
 

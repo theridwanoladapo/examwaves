@@ -30,8 +30,6 @@ class UploadForm extends Form
 
         Question::insert($questions);
 
-        session()->flash('status', 'Questions successfully added to test.');
-
         $this->reset();
     }
 }

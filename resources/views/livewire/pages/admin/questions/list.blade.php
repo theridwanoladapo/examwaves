@@ -22,7 +22,7 @@ $deleteQuestion = function (Question $question) {
 
 <div>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('success')" />
+    <x-auth-session-status class="h6 mb-4" :status="session('success')" />
 
     <div class="table-responsive">
         <table class="table">
