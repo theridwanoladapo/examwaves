@@ -2,9 +2,9 @@
 
 use App\Models\Comment;
 
-use function Livewire\Volt\{state, rules};
+use function Livewire\Volt\{state, rules, mount, on};
 
-$getReviews = fn () => $this->reviews = Comment::where('certification_id', $this->certification->id)->get();
+$getReviews = fn () => $this->reviews = Comment::where('certification_id', $this->certification->id)->latest()->get();
 
 state([
     'certification',
@@ -18,6 +18,10 @@ rules([
     'comment' => 'required|string|min:25',
     'rating' => 'required|integer|min:1|max:5'
 ]);
+
+on(['commentAdded' => function () {
+    $this->reviews = Comment::where('certification_id', $this->certification->id)->latest()->get();
+}]);
 
 $submitComment = function () {
     $this->validate();
@@ -33,7 +37,9 @@ $submitComment = function () {
     session()->flash('status', 'Your message has been sent successfully!');
 
     // clear the form fields
-    $this->reset();
+    $this->reset(['comment', 'rating']);
+
+    $this->dispatch('commentAdded');
 }
 
 ?>
@@ -41,7 +47,10 @@ $submitComment = function () {
 <div>
     <div class="pt-4 mt-4" id="comments">
         <h2 class="h2 text-dark py-lg-1 py-xl-3">{{ count($reviews) }} review(s)</h2>
+
         @if ($reviews)
+        <div class="card border-0 mb-4 pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-0 overflow-y-auto" style="height: 500px">
+            <div class="card-body">
             @foreach ($reviews as $review)
             <!-- Comment-->
             <div class="border-bottom py-4 mt-2 mb-4">
@@ -54,16 +63,18 @@ $submitComment = function () {
                 <p class="pb-2 mb-0">{{ $review->comment }}</p>
             </div>
             @endforeach
+            </div>
+        </div>
         @endif
 
         @auth
         <!-- Comment form-->
         <div class="card border-0 gray-simple pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-0">
             <div class="card-body">
+                <h2 class="pb-2 pb-lg-3 pb-xl-4">Leave a review</h2>
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                <h2 class="pb-2 pb-lg-3 pb-xl-4">Leave a review</h2>
                 <form wire:submit="submitComment" class="row needs-validation g-4" novalidate="">
                     <div class="col-12">
                         <label class="form-label" for="comment">Comment</label>

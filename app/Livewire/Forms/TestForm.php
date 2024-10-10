@@ -39,6 +39,7 @@ class TestForm extends Form
         Test::create($this->only([
             'name', 'time_limit', 'pass_percent', 'certification_id'
         ]));
+
         $this->reset();
     }
 
