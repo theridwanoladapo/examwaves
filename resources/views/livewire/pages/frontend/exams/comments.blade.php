@@ -49,7 +49,7 @@ $submitComment = function () {
         <h2 class="h2 text-dark py-lg-1 py-xl-3">{{ count($reviews) }} review(s)</h2>
 
         @if ($reviews)
-        <div class="card border-0 mb-4 pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-0 overflow-y-auto" style="height: 500px">
+        <div class="card border-0 mb-4 pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-0 overflow-y-auto" style="max-height: 500px">
             <div class="card-body">
             @foreach ($reviews as $review)
             <!-- Comment-->
