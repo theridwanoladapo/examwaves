@@ -48,8 +48,8 @@ class QuestionForm extends Form
 
     #[Validate('required|exists:tests,id')]
     public string $test_id = '';
-    public string $exam_id = null;
-    public string $certification_id = null;
+    public ?string $exam_id = null;
+    public ?string $certification_id = null;
 
     #[Validate('nullable|image|max:2048')]
     public $image = '';
