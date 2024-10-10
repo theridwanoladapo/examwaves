@@ -38,7 +38,7 @@
                         <div class="row align-items-center justify-content-between">
 
                             <div class="col-xl-4 col-lg-5 col-md-5">
-                                <p class="mb-0">© 2024 Powered by ExamWaves - Developed by <a href="genuineict.com">Genuine ICT</a>.</p>
+                                <p class="mb-0">© 2024 Powered by ExamWaves - Developed by <a href="https://genuineict.com">Genuine ICT</a>.</p>
                             </div>
 
                         </div>
