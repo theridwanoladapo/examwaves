@@ -53,8 +53,17 @@ class Certification extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function countComments()
+    {
+        return $this->comments()->distinct('user_id')->count();
+    }
+
     public function averageRating()
     {
-        return $this->comments()->avg('rating');
+        $avg_rating = $this->comments()->avg('rating');
+        if ($this->countComments() == 0) {
+            return "Nil";
+        }
+        return number_format($avg_rating, 1);
     }
 }

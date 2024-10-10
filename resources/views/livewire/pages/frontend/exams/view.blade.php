@@ -92,6 +92,13 @@ $buyNow = function () {
                                     style="background-color: currentColor; height: 1px;"></span>
                             </a>
                         </div>
+                        <div class="d-flex align-items-baseline mb-4 me-4">
+                            <span class="fs-sm me-2">Rating:</span>
+                            <span class="fs-sm me-1 h5 text-dark font--bold mb-0">
+                                {{ $certification->averageRating() }}
+                            </span>
+                            <span class="fs-sm me-2">by {{ $certification->countComments() }} users</span>
+                        </div>
                         <div>{!! $certification->description !!}</div>
                     </div>
 

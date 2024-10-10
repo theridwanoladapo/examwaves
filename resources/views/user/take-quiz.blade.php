@@ -66,14 +66,14 @@
 
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h2 class="pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-2">{{ $test->certification->title }} ({{ $test->certification->code }})</h2>
-                        {{-- <div class="row row-cols-3 my-3">
+                        <div class="row row-cols-3 my-3">
                             <div class="col">
-                                <div class="h4 text-dark font--bold mb-0">
-                                    <span class="ctr">{{ test_question_count($test->id) }}</span>
+                                <div class="font--bold">
+                                    <span class="h4 text-dark font--bold mb-0">{{ $test->certification->averageRating() }}</span>
+                                    <span class="fs-sm mb-0">Rated by {{ $test->certification->countComments() }} users</span>
                                 </div>
-                                <p class="fs-sm mb-0">Total Questions</p>
                             </div>
-                        </div> --}}
+                        </div>
                         <h6>Description</h6>
                         @if ($test->certification->description)
                         <p class="fs-6">
@@ -85,7 +85,9 @@
 
                 <div class="row">
                     <div class="col-xl-8 col-lg-8 col-md-12">
+
                         <livewire:pages.frontend.exams.comments :certification="$test->certification" />
+
                     </div>
                 </div>
 

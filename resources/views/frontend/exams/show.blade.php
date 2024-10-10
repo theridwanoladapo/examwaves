@@ -26,9 +26,7 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-xl-8 col-lg-8 col-md-12">
-                    @php
-                        // dd($certification);
-                    @endphp
+
                     <livewire:pages.frontend.exams.comments :certification="$certification" />
 
                 </div>
