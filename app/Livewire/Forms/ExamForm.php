@@ -14,12 +14,12 @@ class ExamForm extends Form
     public string $name = '';
 
     #[Validate('nullable|string')]
-    public string $description = null;
+    public ?string $description = null;
 
     public string $isMenu = false;
 
     #[Validate('nullable|string')]
-    public string $image_path = null;
+    public ?string $image_path = null;
 
     #[Validate('nullable|image|max:2048')]
     public $image = '';

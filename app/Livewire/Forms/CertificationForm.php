@@ -17,13 +17,13 @@ class CertificationForm extends Form
     public string $code = '';
 
     #[Validate('nullable|string')]
-    public string $description = null;
+    public ?string $description = null;
 
     #[Validate('nullable|string')]
-    public string $image_path = null;
+    public ?string $image_path = null;
 
-    #[Validate('nullable|string')]
-    public string $rating = null;
+    #[Validate('nullable|integer')]
+    public ?string $rating = null;
 
     #[Validate('required|numeric')]
     public string $price = '';
