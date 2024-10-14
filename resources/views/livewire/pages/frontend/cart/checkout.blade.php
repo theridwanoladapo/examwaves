@@ -34,7 +34,10 @@ $proceedToCheckout = function () {
         <h1 class="fs-2 pb-3">Checkout</h1>
 
         @if ($cart)
-        <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-primary w-100 px-xl-5 mb-4">Checkout with PayPal</a>
+        <a href="{{ route('paypal.checkout') }}" class="btn btn-lg btn-warning w-100 px-xl-5 mb-4">
+            <img src="{{ asset('assets/img/paypal.png') }}" alt="PayPal Logo" class="w-8 me-3 bg-light rounded p-1">
+            Checkout with PayPal
+        </a>
 
         <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
             @csrf
@@ -43,7 +46,10 @@ $proceedToCheckout = function () {
             <input type="hidden" name="amount" value="{{ $cartTotal * 1600 * 100 }}"> {{-- amount in kobo --}}
             <input type="hidden" name="currency" value="NGN">
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
-            <button class="btn btn-lg btn-success w-100 px-xl-5 mb-4" type="submit">Checkout with Paystack (Africa Users)</button>
+            <button class="btn btn-lg btn-success w-100 px-xl-5 mb-4" type="submit">
+                <img src="{{ asset('assets/img/paystack.png') }}" alt="Paystack Logo" class="w-8 me-3 bg-light rounded p-1">
+                Checkout with Paystack (Africa Users)
+            </button>
         </form>
         @else
         <div class="d-flex align-items-center justify-content-center py-5 border rounded bg-white">

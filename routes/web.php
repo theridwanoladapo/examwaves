@@ -14,6 +14,9 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    if (Auth::check() && !Auth::user()->hasVerifiedEmail()) {
+        return redirect()->route('verification.notice');
+    }
     $exams = \App\Models\Exam::where('isMenu', true)->limit(6)->get();
     $certifications = \App\Models\Certification::limit(6)->get();
 
