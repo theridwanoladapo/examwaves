@@ -18,18 +18,7 @@
 
                 <div class="col-xl-9 col-lg-8">
                     <!-- Dashboard Info -->
-                    <div class="dash-wrapsw card border-0 rounded-4 py-4 mb-4">
-                        <div class="card-body px-4">
-                            <div class="d-sm-flex align-items-center mb-4">
-                                <h1 class="h4 text-dark mb-4 mb-sm-0 me-4">
-                                    <i class="fa-solid fa-pen-fancy text-primary me-2"></i> Users
-                                </h1>
-                            </div>
-
-                            <livewire:pages.admin.users.list />
-
-                        </div>
-                    </div>
+                    <livewire:pages.admin.users.list />
                     <!-- End Dashboard -->
                 </div>
 
