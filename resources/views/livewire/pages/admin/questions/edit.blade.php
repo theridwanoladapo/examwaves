@@ -130,7 +130,9 @@ $updateQuestion = function () {
                             <option>Select</option>
                             @if ($this->certifications)
                             @foreach ($this->certifications as $certification)
-                            <option value="{{ $certification->id }}">{{ $certification->title }}</option>
+                            <option value="{{ $certification->id }}">{{ $certification->title }}
+                                {{ $certification->code ? '('.$certification->code.')' : null }}
+                            </option>
                             @endforeach
                             @endif
                         </select>

@@ -37,7 +37,9 @@
                                 <h5 class="m-0">{{ $test->name }} <i class="fa-solid fa-circle-check fs-sm text-success ms-2"></i></h5>
                                 <div class="lios-parts-starts col-sm-6">
                                     <p class="text-muted mb-0">Certification:</p>
-									<p class="m-0 text-dark fw-medium"> {{ $test->certification->title }} </p>
+									<p class="m-0 text-dark fw-medium"> {{ $test->certification->title }}
+                                        {{ $test->certification->code ? '('.$test->certification->code.')' : null }}
+                                    </p>
                                 </div>
                                 <div class="lios-parts-starts col-sm-6">
                                     <p class="text-muted mb-0">Exam Provider:</p>

@@ -76,7 +76,8 @@
                             <div class="d-flex">
                                 <h5 class="lh-base fw-semibold mb-0">
                                     <a href="{{ route('certifications.view', $certification->id) }}" class="jbl-detail">
-                                        {{ $certification->title }} ({{ $certification->code }})
+                                        {{ $certification->title }}
+                                        {{ $certification->code ? '('.$certification->code.')' : null }}
                                     </a>
                                 </h5>
                             </div>

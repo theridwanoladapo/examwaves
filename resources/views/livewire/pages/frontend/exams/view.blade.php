@@ -81,7 +81,9 @@ $buyNow = function () {
                 <div class="col-xl-8 col-lg-8 col-md-12">
 
                     <!-- Exam Title -->
-                    <h4 class="pb-2 pb-lg-3">{{ $certification->title }} ({{ $certification->code }})</h4>
+                    <h4 class="pb-2 pb-lg-3">{{ $certification->title }}
+                        {{ $certification->code ? '('.$certification->code.')' : null }}
+                    </h4>
                     <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
                         <div class="d-flex align-items-center mb-4 me-4">
                             <span class="fs-sm me-2">Exam Provider:</span>

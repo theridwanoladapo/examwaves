@@ -36,7 +36,9 @@ $deleteTest = function (Test $test) {
                 @endif
             </div>
             <div class="dash-y45 row align-items-center justify-content-between gy-3 mt-3">
-                <h5 class="m-0">{{ $this->certification->title }} ({{ $this->certification->code }}) <i class="fa-solid fa-circle-check fs-sm text-success ms-2"></i></h5>
+                <h5 class="m-0">{{ $this->certification->title }}
+                    {{ $this->certification->code ? '('.$this->certification->code.')' : null }}
+                    <i class="fa-solid fa-circle-check fs-sm text-success ms-2"></i></h5>
                 <div class="lios-parts-starts col-sm-12">
                     <p class="text-muted mb-0">Description:</p>
                     <p class="m-0 text-dark fw-medium"> {!! $this->certification->description ? $this->certification->description : 'Nil' !!} </p>

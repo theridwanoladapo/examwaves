@@ -64,7 +64,9 @@ $updateTest = function () {
                         <select wire:model="form.certification_id" name="certification_id" id="certification_id" class="form-select" placeholder="Certification">
                             <option>Select</option>
                             @foreach ($certifications as $certification)
-                            <option value="{{ $certification->id }}">{{ $certification->title }}</option>
+                            <option value="{{ $certification->id }}">{{ $certification->title }}
+                                {{ $certification->code ? '('.$certification->code.')' : null }}
+                            </option>
                             @endforeach
                         </select>
                         @error('form.certification_id') <span class="text-danger mt-3">{{ $message }}</span> @enderror
