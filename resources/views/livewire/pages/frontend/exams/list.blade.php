@@ -2,57 +2,56 @@
 
 use App\Models\Certification;
 
-use function Livewire\Volt\{state, with, usesPagination};
+use function Livewire\Volt\{state, with, usesPagination, computed};
 
 state(['searchQuery', 'perPage' => 10]);
+state(['search'])->url();
+
+$exams = computed(function () {
+    $query = Certification::query();
+
+    if ($search = $this->search) {
+        $query->where('title', 'like', "%{$search}%")
+                ->orWhere('code', 'like', "%{$search}%");
+    }
+
+    return $query;
+});
 
 usesPagination(theme: 'bootstrap');
 
-with(fn () => ['certifications' => $this->getSearch()]);
+with(fn () => ['certifications' => $this->exams->paginate($this->perPage)]);
 
-$getSearch = function () {
-    if (!empty($this->searchQuery)) {
-        return Certification::where('title', 'like', '%'.$this->searchQuery,'%')->paginate($this->perPage);
-    }
+// $getSearch = function () {
+//     if (!empty($this->searchQuery)) {
+//         return Certification::where('title', 'like', '%'.$this->searchQuery,'%')->paginate($this->perPage);
+//     }
 
-    return Certification::paginate($this->perPage);
-};
+//     return Certification::paginate($this->perPage);
+// };
 
 ?>
 
 <div>
+    <section class="bg-primary mb-3 py-4">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12">
 
-    {{-- <section class="bg-cover call-action-container bg-primary position-relative mb-3">
-        <div class="position-absolute top-0 end-0 z-0">
-            <img src="{{ asset('assets/img/alert-bg.png') }}" alt="SVG" width="300">
-        </div>
-        <div class="position-absolute bottom-0 start-0 me-10 z-0">
-            <img src="{{ asset('assets/img/circle.png') }}" alt="SVG" width="150">
-        </div>
-
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12">
-
-                    <div class="call-action-wrap">
-                        <div class="call-action-caption">
-                            <h5 class="text-light">Search for exams</h5>
-                        </div>
-                        <div class="call-action-form">
-                            <form>
-                                <div class="newsltr-form rounded-3">
-                                    <input type="text" wire:model="searchQuery" class="form-control" placeholder="Search for your certification exam...">
-                                    <button wire:click="search" class="btn btn-dark">Search</button>
-                                </div>
-                            </form>
+                <div class="text-center">
+                    <div class="">
+                        <h5 class="text-light">Search for exams</h5>
+                    </div>
+                    <div class="">
+                        <div class="newsltr-form rounded-3">
+                            <input type="text" wire:model.live="search" class="form-control" placeholder="Search for your certification exams...">
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
-    </section> --}}
-
+    </section>
+    @if (count($certifications) > 0)
     <div class="row justify-content-center g-lg-4 g-3">
         @foreach ($certifications as $certification)
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
@@ -68,7 +67,8 @@ $getSearch = function () {
                     <div class="d-flex">
                         <h5 class="lh-base fw-semibold mb-0">
                             <a href="javascript:void(0)" class="jbl-detail">
-                                {{ $certification->title }} ({{ $certification->code }})
+                                {{ $certification->title }}
+                                {{ $certification->code ? '('.$certification->code.')' : null }}
                             </a>
                         </h5>
                     </div>
@@ -86,6 +86,13 @@ $getSearch = function () {
         </div>
         @endforeach
     </div>
+    @else
+    <div class="row align-items-center justify-content-center mt-5">
+        <div class="col-xl-7 col-lg-7 col-md-11 mb-3 text-center wow animated fadeInUp">
+            <h5>No results found..</h5>
+        </div>
+    </div>
+    @endif
 
     {{ $certifications->links('components.pagination-links') }}
 </div>

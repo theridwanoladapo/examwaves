@@ -2,11 +2,44 @@
 
 use App\Models\Test;
 
-use function Livewire\Volt\{with, usesPagination};
+use function Livewire\Volt\{with, usesPagination, state, computed};
+
+state(['search'])->url();
+state(['sortField' => 'tests.name'])->url();
+state(['sortDirection' => 'asc'])->url();
+
+$tests = computed(function () {
+    $query = Test::query();
+
+    if ($search = $this->search) {
+        $query->with('certification')
+            ->where(function ($que) {
+                $que->where('tests.name', 'like', "%{$this->search}%")
+                    ->orWhereHas('certification', function ($q) {
+                        $q->where('title', 'like', "%{$this->search}%");
+                    });
+            })
+            ->join('certifications', 'certifications.id', '=', 'tests.certification_id')
+            ->orderBy($this->sortField, $this->sortDirection);
+    }
+
+    return $query;
+});
+
+$sortBy = function ($field) {
+    $this->resetPage();
+
+    if ($this->sortField === $field) {
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        $this->sortField = $field;
+        $this->sortDirection = 'asc';
+    }
+};
 
 usesPagination(theme: 'bootstrap');
 
-with(fn () => ['tests' => Test::paginate(10)]);
+with(fn () => ['tests' => $this->tests->paginate(10)]);
 
 $deleteTest = function (Test $test) {
     $test->delete();
@@ -22,13 +55,31 @@ $deleteTest = function (Test $test) {
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('success')" />
 
+    <div class="col-md-6">
+        <input type="text" wire:model.live="search" class="form-control" placeholder="Search exams or certifications...">
+    </div>
+
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Certification</th>
+                    <th scope="col">
+                        <a href="javascript:void(0)" wire:click.prevent="sortBy('tests.name')">
+                            Name
+                            @if($sortField == 'tests.name')
+                                <span>{!! $sortDirection === 'asc' ? '&#8593;' : '&#8595;' !!}</span>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col">
+                        Certification
+                        {{-- <a href="javascript:void(0)" wire:click.prevent="sortBy('certification_title')">
+                            @if($sortField == 'certification_title')
+                                <span>{!! $sortDirection === 'asc' ? '&#8593;' : '&#8595;' !!}</span>
+                            @endif
+                        </a> --}}
+                    </th>
                     <th scope="col">Time (in mins)</th>
                     <th scope="col">Pass Score (%)</th>
                     <th scope="col">Action</th>
@@ -39,7 +90,9 @@ $deleteTest = function (Test $test) {
                 <tr>
                     <th scope="row">{{ $k+1 }}</th>
                     <td>{{ $test->name }}</td>
-                    <td>{{ $test->certification->title }}</td>
+                    <td>{{ $test->certification->title }}
+                        {{ $test->certification->code ? '('.$test->certification->code.')' : null }}
+                    </td>
                     <td>{{ $test->time_limit }}</td>
                     <td>{{ $test->pass_percent }}</td>
                     <td>
