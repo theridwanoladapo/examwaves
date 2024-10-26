@@ -21,11 +21,21 @@ Route::get('/', function () {
     $certifications = \App\Models\Certification::limit(6)->get();
 
     return view('homepage', compact(['exams','certifications']));
-})->name('home');
+})->middleware(['check-suspended'])
+->name('home');
 
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+Route::get('/about-us', function () {
+    return view('about');
+})->name('about');
 Route::get('/contact-us', function () {
     return view('contact');
 })->name('contact');
+Route::get('/request-exam', function () {
+    return view('request-exam');
+})->name('request-exam');
 
 
 Route::get('/providers', [HomeController::class, 'allProviders'])
