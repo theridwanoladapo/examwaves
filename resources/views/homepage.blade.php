@@ -50,11 +50,12 @@
 				<div class="row justify-content-center align-items-center">
 					<div class="col-xl-9 col-lg-11 col-md-12 col-sm-12">
 						<div class="elcoss-excort text-center ">
-							<h1 class="mb-4">Pass Your Next Certification <br> Exam Fast</h1>
+							<h1 class="mb-4">Fast-Track Your Next Certification <br> Exam Success</h1>
 							<p class="fs-5 fw-normal fs-mob">
-                                Real IT Certification Practice Tests. Instant Access. <br>
-                                Accurate & Verified Exam Questions & Answers by IT Experts. <br>
-                                99.6% Exam Pass Rate.
+                                Updated Actual Exam Materials. <br>
+                                Instant Access - No NEED for VCE or ETE test engine. <br>
+                                Expert-Crafted Answers. <br>
+                                Achieve a 99.6% Success Rate.
                             </p>
 						</div>
 					</div>
@@ -62,13 +63,15 @@
 					<div class="col-xl-7 col-lg-9 col-md-12 col-sm-12">
 						<div class="search-from-clasic mt-5 mb-3">
 							<div class="hero-search-content">
-                                {{-- <form action="" method="POST"> --}}
+                                <form action="{{ route('certifications') }}" method="GET">
+                                    {{-- @csrf --}}
+
                                     <div class="row">
                                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
                                             <div class="classic-search-box">
                                                 <div class="form-group full">
                                                     <div class="input-with-icon">
-                                                        <input type="text" class="form-control" placeholder="Search for your certification exam...">
+                                                        <input type="text" name="search" class="form-control" placeholder="Search for your certification exam...">
                                                         <span class="svg-icon text-primary svg-icon-2hx">
                                                             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path opacity="0.3" d="M21 11H18.9C18.5 7.9 16 5.49998 13 5.09998V3C13 2.4 12.6 2 12 2C11.4 2 11 2.4 11 3V5.09998C7.9 5.49998 5.50001 8 5.10001 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H5.10001C5.50001 16.1 8 18.4999 11 18.8999V21C11 21.6 11.4 22 12 22C12.6 22 13 21.6 13 21V18.8999C16.1 18.4999 18.5 16 18.9 13H21C21.6 13 22 12.6 22 12C22 11.4 21.6 11 21 11ZM12 17C9.2 17 7 14.8 7 12C7 9.2 9.2 7 12 7C14.8 7 17 9.2 17 12C17 14.8 14.8 17 12 17Z" fill="currentColor"/>
@@ -81,11 +84,12 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-primary full-width">Search</button>
+                                                <button class="btn btn-primary full-width">Search</button>
                                             </div>
                                         </div>
                                     </div>
-                                {{-- </form> --}}
+                                </form>
+
 							</div>
 						</div>
 					</div>
@@ -105,25 +109,50 @@
                             <div class="d-inline-flex px-4 py-1 rounded-5 text-primary bg-light-primary font--medium mb-2">
                                 <span>Exam Providers</span>
                             </div>
-                            <h2>Top Exam Providers</h2>
+                            <h2>Popular Certification Exams</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="row align-items-center justify-content-center row-cols-xl-5 row-cols-lg-4 row-cols-md-4 row-cols-2 g-4">
                     @foreach ($exams as $exam)
-                    <div class="col">
-                        <div class="d-flex align-items-center justify-content-start p-3 rounded-3 border">
-                            {{-- <div class="flex-shrink-0"><img src="assets/img/l-1.png" class="img-fluid" width="60" alt=""></div> --}}
-                            <div class="ps-3">
-                                <h6 class="mb-0">
-                                    <a href="{{ route('providers.view', $exam->id) }}" wire:navigate>{{ $exam->name }}</a>
-                                </h6>
+                    <div class="col-xl-3">
+                        <div class="verticle-blog-wrap bg-white p-2 rounded-2 h-100">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <article>
+                                        <a href="{{ route('providers.view', $exam->id) }}">
+                                            @if ($exam->image_path)
+                                            <img src="{{ asset($exam->image_path) }}" class="img-fluid bg-white p-2" width="100" alt="IMG">
+                                            @else
+                                            <img src="{{ asset('assets/img/icon.png') }}" class="img-fluid bg-white p-2" width="100" alt="IMG">
+                                            @endif
+                                        </a>
+                                    </article>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="article-caption py-2 ps-2">
+                                        <div class="article-heads mb-3">
+                                            <h4 class="font--bold mb-1">{{ $exam->name }}</h4>
+                                        </div>
+                                        <div class="article-links">
+                                            <a href="{{ route('providers.view', $exam->id) }}" class="text-seegreen font--bold">
+                                                Explore <i class="fa-solid fa-arrow-right ms-1"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     @endforeach
 
+                </div>
+
+                <div class="row align-items-center justify-content-center mt-5">
+                    <div class="col-xl-7 col-lg-7 col-md-11 mb-3 text-center wow animated fadeInUp">
+                        <a href="{{ route('providers') }}" class="btn btn-outline-primary rounded-5">View All <i class="fa-solid fa-chevron-right ms-2"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -159,7 +188,8 @@
 								<div class="d-flex">
 									<h5 class="lh-base fw-semibold mb-0">
                                         <a href="{{ route('certifications.view', $certification->id) }}" class="jbl-detail">
-                                            {{ $certification->title }} ({{ $certification->code }})
+                                            {{ $certification->title }}
+                                            {{ $certification->code ? '('.$certification->code.')' : null }}
                                         </a>
                                     </h5>
 								</div>
@@ -180,7 +210,7 @@
 
                 <div class="row align-items-center justify-content-center mt-5">
                     <div class="col-xl-7 col-lg-7 col-md-11 mb-3 text-center wow animated fadeInUp">
-                        <a href="{{ route('certifications') }}" class="btn btn-outline-primary rounded-5">Explore More Exams</a>
+                        <a href="{{ route('certifications') }}" class="btn btn-outline-primary rounded-5">Explore More Exams <i class="fa-solid fa-chevron-right ms-2"></i></a>
                     </div>
                 </div>
 
@@ -191,126 +221,147 @@
 
         <!-- What Our Customer Says Start -->
 		<section>
-			<div class="container">
+            <div class="container">
 
-				<div class="row justify-content-center">
-					<div class="col-xl-6 col-lg-7 col-md-10">
-						<div class="sec-heading center">
-							<div class="label text-primary bg-light-primary d-inline-flex rounded-4 mb-2 font--medium"><span>Our Reviews</span></div>
-							<h2>Our Customers Love & Says</h2>
-						</div>
-					</div>
-				</div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-7 col-lg-7 col-md-11 mb-3">
+                        <div class="sec-heading text-center">
+                            <div class="label text-success bg-light-success d-inline-flex rounded-4 mb-2 font--medium"><span>Our Reviews</span></div>
+                            <h2 class="mb-1">What Our Clients Say's</h2>
+                            {{-- <p class="test-muted fs-6">At vero eos et accusamus et iusto odio dignissimos ducimus</p> --}}
+                        </div>
+                    </div>
+                </div>
 
-				<div class="row justify-content-center">
-					<div class="col-xl-9 col-lg-12 col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-9 col-md-12 col-sm-12">
+                        <div class="single-slice" id="single-reviews">
 
-						<div class="tab-content py-5" id="pills-tabContent">
-							<div class="tab-pane fade show active" id="pills-track-1" role="tabpanel" aria-labelledby="pills-track-1-tab" tabindex="0">
-								<div class="text-center">
-									<div class="mb-3">
-										<p class="m-0 fw-light fs-5">The wise man therefore always circumstances and owing to the claims of duty or the obligations holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-									</div>
-									<div class="position-relative">
-										<h5 class="fw-semibold mb-0 lh-base">Chad B. Werner</h5>
-										<p class="fw-medium text-primary m-0">Web Designer</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="pills-track-2" role="tabpanel" aria-labelledby="pills-track-2-tab" tabindex="0">
-								<div class="text-center">
-									<div class="mb-3">
-										<p class="m-0 fw-light fs-5">The wise man therefore always circumstances and owing to the claims of duty or the obligations holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-									</div>
-									<div class="position-relative">
-										<h5 class="fw-semibold mb-0 lh-base">Melvin D. Fowler</h5>
-										<p class="fw-medium text-primary m-0">Team Manager</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="pills-track-3" role="tabpanel" aria-labelledby="pills-track-3-tab" tabindex="0">
-								<div class="text-center">
-									<div class="mb-3">
-										<p class="m-0 fw-light fs-5">The wise man therefore always circumstances and owing to the claims of duty or the obligations holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-									</div>
-									<div class="position-relative">
-										<h5 class="fw-semibold mb-0 lh-base">Chad B. Werner</h5>
-										<p class="fw-medium text-primary m-0">Web Designer</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="pills-track-4" role="tabpanel" aria-labelledby="pills-track-4-tab" tabindex="0">
-								<div class="text-center">
-									<div class="mb-3">
-										<p class="m-0 fw-light fs-5">The wise man therefore always circumstances and owing to the claims of duty or the obligations holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-									</div>
-									<div class="position-relative">
-										<h5 class="fw-semibold mb-0 lh-base">Sylvester B. Blevins</h5>
-										<p class="fw-medium text-primary m-0">WordPress Developer</p>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="tab-pane fade" id="pills-track-5" role="tabpanel" aria-labelledby="pills-track-5-tab" tabindex="0">
-								<div class="text-center">
-									<div class="mb-3">
-										<p class="m-0 fw-light fs-5">The wise man therefore always circumstances and owing to the claims of duty or the obligations holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-									</div>
-									<div class="position-relative">
-										<h5 class="fw-semibold mb-0 lh-base">Jacob R. Haynes</h5>
-										<p class="fw-medium text-primary m-0">Sr. PHP Developer</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<ul class="nav nav-pills mt-3 text-center align-items-center justify-content-center" id="pills-tab" role="tablist">
-							<li class="nav-item p-2" role="presentation">
-								<a class="m-0 active" href="#" id="pills-track-1-tab" data-bs-toggle="pill" data-bs-target="#pills-track-1" type="button" role="tab" aria-controls="pills-track-1" aria-selected="true">
-                                    <div class="p-2 border border-3 circle licroobr">
-                                        <img src="{{ asset('assets/img/team-1.jpg') }}" class="img-fluid circle" width="80" alt="">
+                            <div class="sng-revs-wrap text-center mb-4">
+                                <div class="sng-revs-thumber mb-4">
+                                    <div class="sng-revs-usrs mb-3">
+                                        <figure class="border p-2 mb-0 circle d-inline-flex"><img src="assets/img/user-1.png" class="img-fluid circle" width="90" alt=""></figure>
                                     </div>
-                                </a>
-							</li>
-							<li class="nav-item p-2" role="presentation">
-								<a class="m-0" href="#" id="pills-track-2-tab" data-bs-toggle="pill" data-bs-target="#pills-track-2" type="button" role="tab" aria-controls="pills-track-2" aria-selected="false">
-                                    <div class="p-2 border border-3 circle licroobr">
-                                        <img src="{{ asset('assets/img/team-2.jpg') }}" class="img-fluid circle" width="80" alt="">
+                                    <div class="sng-revs-usrcaps">
+                                        <h5 class="mb-1">John M.</h5>
+                                        {{-- <p class="mb-0 text-muted">CEO of Apple</p> --}}
                                     </div>
-                                </a>
-							</li>
-							<li class="nav-item p-2" role="presentation">
-								<a class="m-0" href="#" id="pills-track-3-tab" data-bs-toggle="pill" data-bs-target="#pills-track-3" type="button" role="tab" aria-controls="pills-track-3" aria-selected="false">
-                                    <div class="p-2 border border-3 circle licroobr">
-                                        <img src="{{ asset('assets/img/team-3.jpg') }}" class="img-fluid circle" width="80" alt="">
+                                </div>
+                                <div class="sng-revs-desc">
+                                    <div class="d-flex justify-content-center fs-6 mb-3">
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
                                     </div>
-                                </a>
-							</li>
-							<li class="nav-item p-2" role="presentation">
-								<a class="m-0" href="#" id="pills-track-4-tab" data-bs-toggle="pill" data-bs-target="#pills-track-4" type="button" role="tab" aria-controls="pills-track-4" aria-selected="false">
-                                    <div class="p-2 border border-3 circle licroobr">
-                                        <img src="{{ asset('assets/img/team-5.jpg') }}" class="img-fluid circle" width="80" alt="">
+                                    <div class="text-center">
+                                        <p class="text-center fs-5 fw-light mb-0">"This platform was a game-changer for me! The practice questions were spot on, and I passed my certification on the first try. Highly recommended for anyone serious about passing fast."</p>
                                     </div>
-                                </a>
-							</li>
-							<li class="nav-item p-2" role="presentation">
-								<a class="m-0" href="#" id="pills-track-5-tab" data-bs-toggle="pill" data-bs-target="#pills-track-5" type="button" role="tab" aria-controls="pills-track-5" aria-selected="false">
-                                    <div class="p-2 border border-3 circle licroobr">
-                                        <img src="{{ asset('assets/img/team-6.jpg') }}" class="img-fluid circle" width="80" alt="">
-                                    </div>
-                                </a>
-							</li>
-						</ul>
+                                </div>
+                            </div>
 
-					</div>
-				</div>
+                            <div class="sng-revs-wrap text-center mb-4">
+                                <div class="sng-revs-thumber mb-4">
+                                    <div class="sng-revs-usrs mb-3">
+                                        <figure class="border p-2 mb-0 circle d-inline-flex"><img src="assets/img/user-2.png" class="img-fluid circle" width="90" alt=""></figure>
+                                    </div>
+                                    <div class="sng-revs-usrcaps">
+                                        <h5 class=" mb-1">Sarah L.</h5>
+                                        {{-- <p class="mb-0 text-muted">CEO of Slack</p> --}}
+                                    </div>
+                                </div>
+                                <div class="sng-revs-desc">
+                                    <div class="d-flex justify-content-center fs-6 mb-3">
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-center fs-5 fw-light mb-0">"I was nervous about my exam, but the accurate and up-to-date questions here gave me the confidence I needed. I aced my test, and the explanations were super helpful!"</p>
+                                    </div>
+                                </div>
+                            </div>
 
-			</div>
-		</section>
+                            <div class="sng-revs-wrap text-center mb-4">
+                                <div class="sng-revs-thumber mb-4">
+                                    <div class="sng-revs-usrs mb-3">
+                                        <figure class="border p-2 mb-0 circle d-inline-flex"><img src="assets/img/user-3.png" class="img-fluid circle" width="90" alt=""></figure>
+                                    </div>
+                                    <div class="sng-revs-usrcaps">
+                                        <h5 class="mb-1">Michael R.</h5>
+                                        {{-- <p class="mb-0 text-muted">Founder of Sloover</p> --}}
+                                    </div>
+                                </div>
+                                <div class="sng-revs-desc">
+                                    <div class="d-flex justify-content-center fs-6 mb-3">
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-center fs-5 fw-light mb-0">"Fantastic resource! The instant download feature saved me so much time, and the questions were exactly what I saw on the exam. Can't thank the team enough for helping me pass."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sng-revs-wrap text-center mb-4">
+                                <div class="sng-revs-thumber mb-4">
+                                    <div class="sng-revs-usrs mb-3">
+                                        <figure class="border p-2 mb-0 circle d-inline-flex"><img src="assets/img/user-4.png" class="img-fluid circle" width="90" alt=""></figure>
+                                    </div>
+                                    <div class="sng-revs-usrcaps">
+                                        <h5 class="mb-1">Emma K.</h5>
+                                        {{-- <p class="mb-0 text-muted">CEO of Microtech</p> --}}
+                                    </div>
+                                </div>
+                                <div class="sng-revs-desc">
+                                    <div class="d-flex justify-content-center fs-6 mb-3">
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-center fs-5 fw-light mb-0">"I’ve tried other exam prep sites, but this one was by far the best. The expert-verified answers and detailed explanations made all the difference. I passed with flying colors!"</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sng-revs-wrap text-center mb-4">
+                                <div class="sng-revs-thumber mb-4">
+                                    <div class="sng-revs-usrs mb-3">
+                                        <figure class="border p-2 mb-0 circle d-inline-flex"><img src="assets/img/user-5.png" class="img-fluid circle" width="90" alt=""></figure>
+                                    </div>
+                                    <div class="sng-revs-usrcaps">
+                                        <h5 class="mb-1">David S.</h5>
+                                        {{-- <p class="mb-0 text-muted">Founder of Bookerg</p> --}}
+                                    </div>
+                                </div>
+                                <div class="sng-revs-desc">
+                                    <div class="d-flex justify-content-center fs-6 mb-3">
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                        <i class="fa-solid fa-star text-warning mx-2"></i>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-center fs-5 fw-light mb-0">"This site is the real deal! The practice exams are incredibly accurate, and the 99.6% pass rate isn’t just a claim—it worked for me too. I’ll definitely be using this again for my next certification."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 		<!-- What Our Customer Says End -->
 
         <!-- Call To Action -->
@@ -327,16 +378,14 @@
 
 						<div class="call-action-wrap">
 							<div class="call-action-caption">
-								<h2 class="text-light">Are You Already Working With Us?</h2>
-								<p class="text-light fs-5 fw-light">Deleniti corrupti quos dolores et quas molestias</p>
+								<h2 class="text-light">We'd love to hear about your experience!</h2>
+								<p class="text-light fs-5 fw-light">Leave a comment and let us know your thoughts — we always enjoy hearing from our customers.</p>
 							</div>
 							<div class="call-action-form">
-								<form>
-									<div class="newsltr-form rounded-3">
-										<input type="text" class="form-control" placeholder="Search for your certification exam...">
-										<button type="button" class="btn btn-dark">Search</button>
-									</div>
-								</form>
+                                <div class="newsltr-form rounded-3">
+                                    <input type="text" class="form-control" id="comment" placeholder="Leave a comment...">
+                                    <button type="button" onclick="submitComment()" class="btn btn-dark">Submit</button>
+                                </div>
 							</div>
 						</div>
 
@@ -368,6 +417,15 @@
     <script src="{{ asset('assets/js/lunar.js') }}"></script>
 
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script>
+        function submitComment() {
+            let comment = document.querySelector("#comment");
+            if (comment.value != '') {
+                alert('Your comment has been submitted successfully.');
+            }
+            comment.value = '';
+        }
+    </script>
 
     @livewireScripts
 </body>

@@ -37,7 +37,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-10 col-md-12 text-center">
                         <h1>Lets Talk<span class="text-danger">.</span></h1>
-                        <p class="m-0">Cicero famously orated against his political voluptatem accusantium doloremque laudantium opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens</p>
+                        <p class="m-0">Contact us to make request for exams, Or any other questions.</p>
                     </div>
                 </div>
             </div>
