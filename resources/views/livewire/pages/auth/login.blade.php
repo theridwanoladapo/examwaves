@@ -53,6 +53,11 @@ $login = function () {
 
                             <!-- Session Status -->
                             <x-auth-session-status class="mb-4" :status="session('status')" />
+                            @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                            @endif
 
                             <form wire:submit="login">
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,6 +32,7 @@ $register = function () {
     $validated['password'] = Hash::make($validated['password']);
 
     $user = User::create($validated);
+    UserProfile::create(['user_id' => $user->id]);
 
     event(new Registered($user));
 
