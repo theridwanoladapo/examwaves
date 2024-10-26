@@ -134,6 +134,9 @@ Route::middleware(['auth', 'admin-access'])
         ->name('users.index');
     Route::get('/users/view/{id}', [UserController::class, 'show'])
         ->name('users.view');
+
+    Route::get('/profile', [HomeController::class, 'profile'])
+        ->name('profile');
 });
 
 require __DIR__.'/auth.php';

@@ -17,6 +17,11 @@ class HomeController extends Controller
         return view('admin.dashboard');
     }
 
+    public function profile()
+    {
+        return view('admin.profile');
+    }
+
     public function allExams()
     {
         return view('frontend.exams.index');
