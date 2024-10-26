@@ -49,7 +49,7 @@ Route::get('/exams/{id}', [HomeController::class, 'viewExam'])
     ->name('certifications.view');
 
 // UserAccess
-Route::middleware(['auth', 'verified', 'user-access'])
+Route::middleware(['auth', 'verified', 'user-access', 'check-suspended'])
 ->get('/user/dashboard', function () {
     return view('user.dashboard');
 })->name('dashboard');
@@ -57,7 +57,7 @@ Route::middleware(['auth', 'verified', 'user-access'])
 //     ->middleware(['auth', 'verified', 'user-access'])
 //     ->name('dashboard');
 
-Route::middleware(['auth', 'verified', 'user-access'])
+Route::middleware(['auth', 'verified', 'user-access', 'check-suspended'])
 ->group(function () {
     Route::get('/user/profile', [ProfileController::class, 'profile'])
         ->name('profile');
