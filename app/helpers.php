@@ -30,14 +30,18 @@ if (! function_exists('answer_type_human')) {
 if (! function_exists('exam_question_count')) {
     function exam_question_count($exam_id)
     {
-        $test = Test::where('certification_id', $exam_id)->first();
+        $tests = Test::where('certification_id', $exam_id)->get();
 
-        if (! $test) return 0;
+        if (! $tests) return 0;
 
-        $test_id = $test->id;
-        $count = Question::where('test_id', $test_id)->count();
+        $q_count = 0;
+        foreach ($tests as $test) {
+            $test_id = $test->id;
+            $count = Question::where('test_id', $test_id)->count();
+            $q_count += $count;
+        }
 
-        return $count;
+        return $q_count;
     }
 }
 
