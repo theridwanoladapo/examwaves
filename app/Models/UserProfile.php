@@ -26,32 +26,32 @@ class UserProfile extends Model
     public function firstname(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            get: fn ($value) => $value ? ucwords($value) : null,
+            set: fn ($value) => $value ? strtolower($value) : null,
         );
     }
 
     public function lastname(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            get: fn ($value) => $value ? ucwords($value) : null,
+            set: fn ($value) => $value ? strtolower($value) : null,
         );
     }
 
     public function headline(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            get: fn ($value) => $value ? ucwords($value) : null,
+            set: fn ($value) => $value ? strtolower($value) : null,
         );
     }
 
     public function biography(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
+            get: fn ($value) => $value ? ucfirst($value) : null,
+            set: fn ($value) => $value ? strtolower($value) : null,
         );
     }
 

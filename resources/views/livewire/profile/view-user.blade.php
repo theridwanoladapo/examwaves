@@ -11,7 +11,7 @@ usesPagination(theme: 'bootstrap');
 with(fn () => [
     'items' => OrderItem::whereHas('order', function ($query) {
         $query->where('user_id', $this->user_id);
-    })->where('isActive', 1)->limit(3)->get()
+    })->where('isActive', 1)->paginate(10)
 ]);
 
 ?>
@@ -103,9 +103,7 @@ with(fn () => [
                     </tbody>
                 </table>
 
-                <a href="{{ route('exams') }}" class="btn btn-md btn-outline-primary rounded-5">
-                    View all my exams <i class="fas fa-chevron-right ms-2"></i>
-                </a>
+                {{ $items->links('components.pagination-links') }}
             </div>
             @else
             <div class="d-flex align-items-center justify-content-center py-5 border rounded bg-white">
