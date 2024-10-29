@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->longText('description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('rating');

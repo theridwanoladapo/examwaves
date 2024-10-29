@@ -13,8 +13,8 @@ class CertificationForm extends Form
     #[Validate('required|string|max:255')]
     public string $title = '';
 
-    #[Validate('required|string|max:255')]
-    public string $code = '';
+    #[Validate('nullable|string|max:255')]
+    public ?string $code = null;
 
     #[Validate('nullable|string')]
     public ?string $description = null;
@@ -39,7 +39,7 @@ class CertificationForm extends Form
         $this->certification = $certification;
 
         $this->title = $certification->title;
-        $this->code = $certification->code;
+        $this->code = $certification->code ;
         $this->description = $certification->description;
         $this->image_path = $certification->image_path ?? '';
         $this->rating = $certification->rating;
