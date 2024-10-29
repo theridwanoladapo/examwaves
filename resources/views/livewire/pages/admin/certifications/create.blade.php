@@ -64,7 +64,7 @@ $storeCertification = function () {
                         @error('form.title') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="code" class="form-label">Code <span class="text-danger fw-bold">*</span></label>
+                        <label for="code" class="form-label">Code</label>
                         <input wire:model="form.code" name="code" id="code" type="text" class="form-control" placeholder="Exam Certification code (e.g A1-900)">
                         @error('form.code') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
@@ -88,7 +88,7 @@ $storeCertification = function () {
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price <span class="text-danger fw-bold">*</span></label>
-                        <input wire:model="form.price" name="price" id="price" type="number" class="form-control" placeholder="Exam Certification price">
+                        <input wire:model="form.price" name="price" id="price" type="text" class="form-control" placeholder="Exam Certification price">
                         @error('form.price') <span class="text-danger mt-3">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
