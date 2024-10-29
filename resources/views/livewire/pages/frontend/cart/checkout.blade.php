@@ -48,7 +48,7 @@ $proceedToCheckout = function () {
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
             <button class="btn btn-lg btn-success w-100 px-xl-5 mb-4" type="submit">
                 <img src="{{ asset('assets/img/paystack.png') }}" alt="Paystack Logo" class="w-8 me-3 bg-light rounded p-1">
-                Checkout with Paystack (Africa Users)
+                Checkout with Paystack
             </button>
         </form>
         @else

@@ -16,7 +16,7 @@ class ExamForm extends Form
     #[Validate('nullable|string')]
     public ?string $description = null;
 
-    public string $isMenu = false;
+    public bool $isMenu = false;
 
     #[Validate('nullable|string')]
     public ?string $image_path = null;

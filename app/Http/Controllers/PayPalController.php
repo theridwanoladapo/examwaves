@@ -46,7 +46,7 @@ class PayPalController extends Controller
                 }
             }
         }
-
+        dd($response);
         return redirect()->route('paypal.cancel');
     }
 
