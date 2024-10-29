@@ -17,6 +17,9 @@
 
         <link rel="stylesheet" href="{{ asset('assets/js/summernote/summernote-lite.min.css') }}">
 
+        <!-- CSS for RateYo -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
         @livewireStyles
     </head>
 
@@ -60,6 +63,9 @@
 		<script src="{{ asset('assets/js/morris.js/morris.min.js') }}"></script>
 		<!-- Custom Chart JavaScript -->
 		<script src="{{ asset('assets/js/custom/dashboard.js') }}"></script>
+
+        <!-- JS for RateYo -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
         @stack('scripts')
 

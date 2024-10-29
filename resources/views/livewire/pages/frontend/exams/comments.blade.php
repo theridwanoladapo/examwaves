@@ -61,6 +61,15 @@ $submitComment = function () {
                     </div>
                 </div>
                 <p class="pb-2 mb-0">{{ $review->comment }}</p>
+                <div class="d-flex align-items-baseline mb-4 me-4">
+                    <span class="fs-sm h6">Rated:</span>
+                    <span class="fs-sm me-1 h5 text-dark font--bold mb-0">
+                        <div class="rateyo"
+                        data-rateyo-rating="{{ $review->rating ?? 0 }}"
+                        data-rateyo-num-stars="5"
+                        data-rateyo-score="{{ $review->rating ?? 0 }}"></div>
+                    </span>
+                </div>
             </div>
             @endforeach
             </div>
