@@ -30,11 +30,11 @@ use function Livewire\Volt\{state};
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="footer-widget">
                             <h4 class="widget-title">The Company</h4>
                             <ul class="footer-menu">
-                                <li><a href="JavaScript:Void(0);">About Us</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
                                 <li><a href="{{ route('contact') }}">Contact us</a></li>
                             </ul>
                         </div>
@@ -44,8 +44,8 @@ use function Livewire\Volt\{state};
                         <div class="footer-widget">
                             <h4 class="widget-title font--bold">For Clients</h4>
                             <ul class="footer-menu">
-                                <li><a href="JavaScript:Void(0);">How it works</a></li>
-                                <li><a href="JavaScript:Void(0);">FAQs</a></li>
+                                <li><a href="{{ route('request-exam') }}">Request Exam</a></li>
+                                <li><a href="{{ route('faq') }}">FAQs</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,8 +58,15 @@ use function Livewire\Volt\{state};
             <div class="container">
                 <div class="row align-items-center justify-content-between">
 
-                    <div class="col-xl-4 col-lg-5 col-md-5">
-                        <p class="mb-0">© 2024 Powered by ExamWaves - Developed by <a href="https://genuineict.com">Genuine ICT</a>.</p>
+                    <div class="col-12 text-center">
+                        Examwaves.com materials do not contain actual questions and answers from Microsoft or any other certification exams provider.</p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p class="mb-0 justify-between">
+                            <span>© 2024 Powered by ExamWaves</span>
+                            {{-- <span class="ms-3">|</span>  --}}
+                            {{-- <span class="ms-3">Developed by <a href="https://genuineict.com">Genuine ICT</a></span>. --}}
+                        </p>
                     </div>
 
                 </div>
