@@ -75,6 +75,9 @@ Route::middleware(['auth', 'verified', 'user-access', 'check-suspended'])
 
     Route::get('/cart', [CartController::class, 'index'])
         ->name('cart');
+    Route::get('/order-success', function () {
+        return view('user.order-success');
+    })->name('order-success');
 });
 
 Route::get('/paypal/checkout', [PayPalController::class, 'checkout'])->name('paypal.checkout');

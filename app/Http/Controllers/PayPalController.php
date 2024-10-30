@@ -66,7 +66,7 @@ class PayPalController extends Controller
                 'total' => $total,
             ]);
 
-            return redirect()->route('cart')->with('success', 'Order placed successfully!');
+            return redirect()->route('order-success')->with('success', 'Order placed successfully!');
         }
 
         return redirect()->route('cart')->with('error', 'Payment Failed!');

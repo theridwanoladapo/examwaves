@@ -18,14 +18,10 @@ $proceedToCheckout = function () {
 ?>
 
 <div>
+
     <!-- Session Status -->
-    @if(session()->has('success'))
-    <div class="font--bold fs-6 text-success ms-4">
-        {{ session()->get('success') }}
-    </div>
-    @endif
     @if(session()->has('error'))
-    <div class="font--bold fs-6 text-danger ms-4">
+    <div class="alert alert-danger">
         {{ session()->get('error') }}
     </div>
     @endif

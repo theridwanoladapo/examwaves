@@ -37,7 +37,7 @@ class PaymentController extends Controller
                 'total' => $total,
             ]);
 
-            return redirect()->route(route: 'cart')->with('success', 'Order placed successfully!');
+            return redirect()->route('order-success')->with('success', 'Order placed successfully!');
         } else {
             return redirect()->route('cart')->with('error', 'Payment failed.');
         }
