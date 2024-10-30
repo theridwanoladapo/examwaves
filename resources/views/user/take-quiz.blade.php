@@ -65,7 +65,9 @@
                     <livewire:profile.attempt-quiz :test="$test" />
 
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h2 class="pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-2">{{ $test->certification->title }} ({{ $test->certification->code }})</h2>
+                        <h2 class="pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-2">{{ $test->certification->title }}
+                            {{ $test->certification->code ? '('.$test->certification->code.')' : null }}
+                        </h2>
                         <div class="row row-cols-3 my-3">
                             <div class="col">
                                 <div class="font--bold">

@@ -39,7 +39,8 @@ with(fn () => [
                     <th>{{ $k+1 }}</th>
                     <td>
                         <a class="font--bold " href="{{ route('exam', $item->certification->id) }}" wire:navigate>
-                            {{ $item->certification->title }} ({{ $item->certification->code }})
+                            {{ $item->certification->title }}
+                            {{ $item->certification->code ? '('.$item->certification->code.')' : null }}
                         </a>
                     </td>
                     <td>{{ $item->certification->exam->name }}</td>

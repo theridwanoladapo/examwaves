@@ -81,7 +81,7 @@ $clearCart = function () {
                             <div class="me-3">
                                 <h6 class="">
                                     <a href="{{ route('admin.certifications.view', $item['id']) }}">
-                                        {{ $item['title'] }} ({{ $item['code'] }})</a>
+                                        {{ $item['title'] }} {{ $item['code'] ? '('.$item['code'].')' : null }}</a>
                                 </h6>
                                 <div class="text-muted fs-sm me-3">Exam Provider: <span class="text-dark fw-medium">{{ exam_provider_name($item['exam_id']) }}</span></div>
                             </div>

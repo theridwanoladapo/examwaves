@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->integer('score');
             $table->enum('status', ['passed', 'failed'])->default('passed');
-            $table->integer('correct_ans');
-            $table->integer('wrong_ans');
-            $table->integer('skipped_ans');
+            $table->text('correct_ans');
+            $table->text('wrong_ans');
+            $table->text('skipped_ans');
             $table->integer('time_spent');
             $table->timestamps();
         });
