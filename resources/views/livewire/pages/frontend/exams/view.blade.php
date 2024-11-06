@@ -148,14 +148,8 @@ $buyNow = function () {
                 <div class="col-xl-4 col-lg-4 col-md-12">
                     <div class="detail-side-block border overflow-hidden rounded-3 mt-md-0 mt-4">
                         <div class="detail-side-head d-flex align-items-center gray-simple p-3">
-                            <div class="side-flex-thumb">
-                                <img src="assets/img/l-12.png" class="img-fluid" width="55" alt="">
-                            </div>
                             <div class="side-flex-caption ps-3">
                                 <div class="jbs-title-iop"><h4 class="m-0">${{ $certification->price }}</h4></div>
-                                {{-- <div class="jbs-locat-oiu text-sm-muted">
-                                    <span><i class="fa-solid fa-location-dot me-1"></i>California, USA</span>
-                                </div> --}}
                             </div>
                         </div>
                         <div class="detail-side-middle py-3 px-3">
@@ -169,7 +163,7 @@ $buyNow = function () {
                                 @endif
                             </div>
                             <div class="form-group">
-                                <button wire:click="buyNow()" type="button" class="btn btn-primary full-width font-sm">Buy Now</button>
+                                <a href="{{ route('buy-now', $certification->id) }}" type="button" class="btn btn-primary full-width font-sm">Buy Now</a>
                             </div>
                         </div>
                     </div>
