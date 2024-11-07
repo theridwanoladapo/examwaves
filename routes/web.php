@@ -82,15 +82,15 @@ Route::middleware(['auth', 'verified', 'user-access', 'check-suspended'])
     })->name('order-success');
 });
 
-Route::get('/paypal/create-payment', [PayPalController::class, 'createPayment'])->name('paypal.create');
-Route::get('/paypal/success', [PayPalController::class, 'executePayment'])->name('paypal.success');
-Route::get('/paypal/cancel', function () {
-    return 'Payment was cancelled';
-})->name('paypal.cancel');
+// Route::get('/paypal/create-payment', [PayPalController::class, 'createPayment'])->name('paypal.create');
+// Route::get('/paypal/success', [PayPalController::class, 'executePayment'])->name('paypal.success');
+// Route::get('/paypal/cancel', function () {
+//     return 'Payment was cancelled';
+// })->name('paypal.cancel');
 
-// Route::get('/paypal/checkout', [PayPalController::class, 'checkout'])->name('paypal.checkout');
-// Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
-// Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
+Route::get('/paypal/checkout', [PayPalController::class, 'checkout'])->name('paypal.checkout');
+Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
+Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
 
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');

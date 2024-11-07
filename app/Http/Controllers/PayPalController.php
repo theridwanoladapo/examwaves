@@ -3,101 +3,78 @@
 namespace App\Http\Controllers;
 
 use App\Services\CheckoutService;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Http\Request;
-use PayPal\Auth\OAuthTokenCredential;
-use PayPal\Rest\ApiContext;
-use PayPal\Api\Payer;
-use PayPal\Api\Item;
-use PayPal\Api\ItemList;
-use PayPal\Api\Amount;
-use PayPal\Api\Transaction;
-use PayPal\Api\RedirectUrls;
-use PayPal\Api\Payment;
-use PayPal\Api\PaymentExecution;
 
 class PayPalController extends Controller
 {
     protected $checkoutService;
-    private $apiContext;
 
     public function __construct(CheckoutService $checkoutService)
     {
         $this->checkoutService = $checkoutService;
-
-        $this->apiContext = new ApiContext(
-            new OAuthTokenCredential(
-                config('services.paypal.client_id'),
-                config('services.paypal.secret')
-            )
-        );
-
-        $this->apiContext->setConfig(config('services.paypal.settings'));
     }
 
-    public function createPayment()
+    public function checkout()
     {
-        $payer = new Payer();
-        $payer->setPaymentMethod('paypal');
+        $amount = session()->get('cartTotal', 0);
 
-        $cartItems = $this->checkoutService->getCartItemsForCheckout();
-        dd($cartItems);
-        $items = [];  // List of items from the cart
+        $provider = new PayPalClient;
+        $provider->setApiCredentials(config('paypal'));
+        $provider->getAccessToken();
 
-        // Example item (replace this with items from your cart)
-        $item = new Item();
-        $item->setName('Product 1')
-             ->setCurrency('USD')
-             ->setQuantity(1)
-             ->setPrice(price: 100);  // price per item
-        $items[] = $item;
+        $response = $provider->createOrder([
+            "intent" => "CAPTURE",
+            "application_context" => [
+                "return_url" => route('paypal.success'),
+                "cancel_url" => route('paypal.cancel')
+            ],
+            "purchase_units" => [
+                [
+                    "amount" => [
+                        "currency_code" => "USD",
+                        "value" => $amount
+                    ]
+                ]
+            ]
+        ]);
 
-        $itemList = new ItemList();
-        $itemList->setItems($items);
-
-        $amount = new Amount();
-        $amount->setCurrency('USD')
-               ->setTotal(100);  // total amount
-
-        $transaction = new Transaction();
-        $transaction->setAmount($amount)
-                    ->setItemList($itemList)
-                    ->setDescription('Purchase from Your Store');
-
-        $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(route('paypal.success'))
-                     ->setCancelUrl(route('paypal.cancel'));
-
-        $payment = new Payment();
-        $payment->setIntent('sale')
-                ->setPayer($payer)
-                ->setRedirectUrls($redirectUrls)
-                ->setTransactions([$transaction]);
-
-        try {
-            $payment->create($this->apiContext);
-            return redirect()->away($payment->getApprovalLink());
-        } catch (\Exception $ex) {
-            // Log or handle error
-            return back()->withErrors('Error processing PayPal payment.');
+        if (isset($response['id'])) {
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] === 'approve') {
+                    return redirect($link['href']);
+                }
+            }
         }
+        dd($response);
+        return redirect()->route('paypal.cancel');
     }
 
-    public function executePayment(Request $request)
+    public function success(Request $request)
     {
-        $paymentId = $request->get('paymentId');
-        $payerId = $request->get('PayerID');
+        $total = session()->get('cartTotal', 0);
+        $provider = new PayPalClient;
+        $provider->setApiCredentials(config('paypal'));
+        $provider->getAccessToken();
 
-        $payment = Payment::get($paymentId, $this->apiContext);
-        $execution = new PaymentExecution();
-        $execution->setPayerId($payerId);
+        $response = $provider->capturePaymentOrder($request['token']);
 
-        try {
-            $result = $payment->execute($execution, $this->apiContext);
-            // Update order status to 'paid' or proceed with further order processing
-            return redirect()->route('payment.success');
-        } catch (\Exception $ex) {
-            // Log or handle error
-            return redirect()->route('payment.cancel');
+        if (isset($response['status']) && $response['status'] === 'COMPLETED') {
+            // Payment successful, you can handle your business logic here
+            $this->checkoutService->processCheckout([
+                'user_id' => auth()->id(),
+                'total' => $total,
+            ]);
+
+            return redirect()->route('order-success')->with('success', 'Order placed successfully!');
         }
+
+        return redirect()->route('cart')->with('error', 'Payment Failed!');
+    }
+
+    public function cancel()
+    {
+        // Payment was cancelled, redirect or show message
+        return redirect()->route('cart')->with('error', 'Payment Cancelled!');
     }
 }

@@ -24,9 +24,20 @@ class CartController extends Controller
         return view('user.cart', compact('cartItems'));
     }
 
-    public function buyNow($id)
+    public function buyNow($itemid)
     {
-        $item = Certification::find($id);
+        $item = Certification::find($itemid);
+
+        $cart[$item->id] = [
+            'id' => $item->id,
+            'title' => $item->title,
+            'code' => $item->code,
+            'price' => $item->price,
+            'exam_id' => $item->exam_id
+        ];
+
+        session()->put('cart', $cart);
+        session()->put('cartTotal', $item->price);
 
         return view('user.buy-now', compact('item'));
     }
