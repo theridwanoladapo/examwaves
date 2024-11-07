@@ -34,7 +34,7 @@ mount(function () {
 
         if ($question->answer_type == "multi_opt") {
             $this->quiz[$question->id]['answer'] = [];
-            $this->quiz[$question->id]['correct'] = explode(',', $correct_options);
+            $this->quiz[$question->id]['correct'] = array_map('trim', explode(',', $correct_options));
         } else {
             $this->quiz[$question->id]['answer'] = null;
             $this->quiz[$question->id]['correct'] = $correct_options;
@@ -143,7 +143,7 @@ $reviewAttempt = function ($id) {
             } else {
                 $this->review[$question->id]['answer'] = [];
             }
-            $this->review[$question->id]['correct'] = explode(',', $correct_options);
+            $this->review[$question->id]['correct'] = array_map('trim', explode(',', $correct_options));
         } else {
             if (array_key_exists($question->id, $correct_ans)) {
                 $this->review[$question->id]['answer'] = $correct_ans[$question->id]['answer'];
@@ -221,9 +221,52 @@ $submitQuiz = function ()
 <div>
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="row">
-            <div class="col-md-9">
-                <div class="ps-md-4 ps-lg-3 overflow-y-auto border border-3 rounded" style="height: 450px">
+            <div class="col-md-12">
+                <div class="d-flex d-md-block flex-wrap position-sticky top-0 border border-3 p-2">
+                    <div class="card card-primary">
+                        <div class="card-body">
+                            @if ($isStarted && !$isSubmitted)
+                            <div class="w-auto m-0 p-0">
+                                <span>{{ $currentQuestionIndex + 1 }}/{{ count($questions) }}</span>
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{ $currentQuestionIndex + 1 }}" aria-valuemin="1" aria-valuemax="{{ count($questions) }}">
+                                    <div class="progress-bar" style="width: {{ ($currentQuestionIndex + 1) / count($questions) * 100  }}%"></div>
+                                </div>
+                            </div>
+                            @endif
 
+                            <div class="d-flex justify-content-between align-items-end">
+                                @if ($isStarted && !$isSubmitted)
+
+                                <div class="text-left">
+                                    <h5 class="text-primary">Timer:
+                                        <span class="bg-light px-2 rounded w-100">
+                                            {{ $timeLeft ? gmdate('H:i:s', $timeLeft) : null }}
+                                        </span>
+                                    </h5>
+                                </div>
+                                @endif
+
+                                <div>
+                                    @if ($isStarted && !$isSubmitted && !$isFinished)
+                                    <div class="mt-3">
+                                        <button wire:click="finishQuiz" type="button" class="btn btn-outline-success btn-md" id="submit">Finish Exam</button>
+                                    </div>
+                                    @endif
+                                    @if (!$isStarted)
+                                    <div>
+                                        <button wire:click="startQuiz" type="button" class="btn btn-primary btn-md" id="submit">Attempt Exam</button>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="ps-md-4 ps-lg-3 overflow-y-auto border border-3 rounded" style="height: 450px">
                     @if ($onReview)
                     {{-- Questions Review --}}
                     <div class="card-body px-4 py-4">
@@ -526,9 +569,9 @@ $submitQuiz = function ()
                             <h5 class="mb-2">{{ $test->certification->title }} {{ $test->name }} - Attempts</h5>
                             <hr>
                             <div style="height: 100%" class="w-100 d-flex flex-column justify-content-start">
-                                <h2 class="mt-3">Welcome to the Quiz!</h2>
+                                <h2 class="mt-3">Welcome to the Practise Exam!</h2>
                                 <div>
-                                    <p>Press the button below to take the quiz. You will have {{ $this->test->time_limit }} minutes to complete it.</p>
+                                    <p>Press the button below to attempt the exam. You will have {{ $this->test->time_limit }} minutes to complete it.</p>
                                 </div>
                                 <div class="mt-2">
                                     <button type="button" wire:click="startQuiz" class="btn btn-primary btn-md px-4">
@@ -572,39 +615,6 @@ $submitQuiz = function ()
                         @endif
                     @endif
 
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="d-flex d-md-block flex-wrap position-sticky top-0 border border-3 p-2">
-                    <div class="card card-primary">
-                        <div class="card-body">
-                            @if ($isStarted && !$isSubmitted)
-                            <span>{{ $currentQuestionIndex + 1 }}/{{ count($questions) }}</span>
-                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{ $currentQuestionIndex + 1 }}" aria-valuemin="1" aria-valuemax="{{ count($questions) }}">
-                                <div class="progress-bar" style="width: {{ ($currentQuestionIndex + 1) / count($questions) * 100  }}%"></div>
-                            </div>
-                            <div class="text-left mb-3">
-                                <h5 class="text-primary">Timer:
-                                    <span class="bg-light py-2 px-3 rounded w-100">
-                                        {{ $timeLeft ? gmdate('H:i:s', $timeLeft) : null }}
-                                    </span>
-                                </h5>
-                            </div>
-                            @endif
-                            @if ($isStarted && !$isSubmitted && !$isFinished)
-                            <div class="mt-3">
-                                <button wire:click="finishQuiz" type="button" class="btn btn-outline-success w-100" id="submit">Finish Exam</button>
-                            </div>
-                            @endif
-                            @if (!$isStarted)
-                            <div>
-                                <button wire:click="startQuiz" type="button" class="btn btn-primary w-100" id="submit">Attempt Exam</button>
-                            </div>
-                            @endif
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
