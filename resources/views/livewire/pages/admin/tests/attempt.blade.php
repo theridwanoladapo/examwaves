@@ -498,9 +498,9 @@ $submitQuiz = function ()
                         {{-- Welcome Welcome --}}
                         <div class="card card-body">
                             <div style="height: 100%" class="w-100 d-flex flex-column justify-content-start">
-                                <h2 class="mt-3">Welcome to the Quiz!</h2>
+                                <h2 class="mt-3">Welcome to the Practise Exam!</h2>
                                 <div>
-                                    <p>Press the button below to start the quiz. You will have {{ $this->test->time_limit }} minutes to complete it.</p>
+                                    <p>Press the button below to attempt the exam. You will have {{ $this->test->time_limit }} minutes to complete it.</p>
                                 </div>
                                 <div class="mt-3">
                                     <button type="button" wire:click="startQuiz" class="btn btn-primary px-4">
