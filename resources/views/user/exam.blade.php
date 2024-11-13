@@ -18,9 +18,9 @@
                 </div>
 
                 <div class="col-xl-9 col-lg-8">
-
-                    <livewire:profile.exam-view :certification="$certification" />
-
+                    <div>
+                        <livewire:profile.exam-view :certification="$certification" />
+                    </div>
                 </div>
 
             </div>
