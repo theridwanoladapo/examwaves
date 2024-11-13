@@ -28,4 +28,9 @@ class UserController extends Controller
 
         return view('admin.users.show', compact('user'));
     }
+
+    public function orders()
+    {
+        return view('admin.orders');
+    }
 }

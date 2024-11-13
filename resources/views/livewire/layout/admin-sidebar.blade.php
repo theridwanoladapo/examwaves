@@ -49,6 +49,11 @@
                     </a>
                 </li>
                 <li class="py-2">
+                    <a href="{{ route('admin.orders') }}" class="fw-medium @if(request()->routeIs('admin.orders')) {{'text-primary'}} @endif">
+                        <i class="fa-solid fa-file me-2"></i> Orders
+                    </a>
+                </li>
+                <li class="py-2">
                     <a href="{{ route('admin.profile') }}" class="fw-medium @if(request()->routeIs('admin.profile')) {{'text-primary'}} @endif">
                         <i class="fa-solid fa-gear me-2"></i> Security
                     </a>

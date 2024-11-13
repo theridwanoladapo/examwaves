@@ -145,6 +145,8 @@ Route::middleware(['auth', 'admin-access'])
         ->name('users.index');
     Route::get('/users/view/{id}', [UserController::class, 'show'])
         ->name('users.view');
+    Route::get('/orders', [UserController::class, 'orders'])
+        ->name('orders');
 
     Route::get('/profile', [HomeController::class, 'profile'])
         ->name('profile');
