@@ -90,6 +90,8 @@ $activateUser = function (User $user) {
                     <p class="m-0 text-dark fw-medium">{{ $user->profile->biography ?? 'Nil' }}</p>
                 </li>
             </ul>
+
+            <a href="{{ route('admin.assign-exam', $user->id) }}" class="btn btn-info fw-medium">Assign Exam to User</a>
         </div>
 
     </div>

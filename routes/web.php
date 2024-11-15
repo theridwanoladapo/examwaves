@@ -147,6 +147,8 @@ Route::middleware(['auth', 'admin-access'])
         ->name('users.view');
     Route::get('/orders', [UserController::class, 'orders'])
         ->name('orders');
+    Route::get('/assign-exam/{id}', [UserController::class, 'assignExam'])
+        ->name('assign-exam');
 
     Route::get('/profile', [HomeController::class, 'profile'])
         ->name('profile');

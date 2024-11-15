@@ -33,4 +33,11 @@ class UserController extends Controller
     {
         return view('admin.orders');
     }
+
+    public function assignExam($id)
+    {
+        $user_id = $id;
+
+        return view('admin.users.assign-exam', compact('user_id'));
+    }
 }
