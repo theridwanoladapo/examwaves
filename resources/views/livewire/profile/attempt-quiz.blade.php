@@ -126,7 +126,25 @@ $returnToAttempts = function () {
     $this->review = [];
 };
 
-$reviewAttempt = function ($id) {
+$reviewExam = function ()
+{
+    foreach ($this->quizzes as $key => $question) {
+        $correct_options = Str::lower($question->correct_options);
+
+        if ($question->answer_type == "multi_opt") {
+            $this->review[$question->id]['answer'] = [];
+            $this->review[$question->id]['correct'] = array_map('trim', explode(',', $correct_options));
+        } else {
+            $this->review[$question->id]['answer'] = null;
+            $this->review[$question->id]['correct'] = $correct_options;
+        }
+    }
+
+    $this->onReview = true;
+};
+
+$reviewAttempt = function ($id)
+{
     $attempt = TestAttempt::find($id);
     $correct_ans = json_decode($attempt->correct_ans, true);
     $wrong_ans = json_decode($attempt->wrong_ans, true);
@@ -274,11 +292,11 @@ $submitQuiz = function ()
                         <hr>
                         @if ($isSubmitted)
                         <button wire:click="returnToAttempts" type="button" class="btn btn-sm btn-light mb-3">
-                            <i class="fas fa-chevron-left me-2"></i> Back to Result Overview
+                            <i class="fas fa-chevron-left me-2"></i> Back to result overview
                         </button>
                         @else
                         <button wire:click="returnToAttempts" type="button" class="btn btn-sm btn-light mb-3">
-                            <i class="fas fa-chevron-left me-2"></i> Go Back
+                            <i class="fas fa-chevron-left me-2"></i> Back to attempts
                         </button>
                         @endif
 
@@ -571,11 +589,14 @@ $submitQuiz = function ()
                             <div style="height: 100%" class="w-100 d-flex flex-column justify-content-start">
                                 <h2 class="mt-3">Welcome to the Practise Exam!</h2>
                                 <div>
-                                    <p>Press the button below to attempt the exam. You will have {{ $this->test->time_limit }} minutes to complete it.</p>
+                                    <p>Press the button below to attempt the exam. You will have {{ $this->test->time_limit }} minutes to complete it.</p>
                                 </div>
                                 <div class="mt-2">
                                     <button type="button" wire:click="startQuiz" class="btn btn-primary btn-md px-4">
                                         Attempt Exam
+                                    </button>
+                                    <button wire:click="reviewExam" type="button" class="btn btn-outline-dark" >
+                                        Review Questions
                                     </button>
                                 </div>
                             </div>

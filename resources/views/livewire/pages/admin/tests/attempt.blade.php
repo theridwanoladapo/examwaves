@@ -29,7 +29,7 @@ mount(function () {
 
         if ($question->answer_type == "multi_opt") {
             $this->quiz[$question->id]['answer'] = [];
-            $this->quiz[$question->id]['correct'] = explode(',', $correct_options);
+            $this->quiz[$question->id]['correct'] = array_map('trim', explode(',', $correct_options));
         } else {
             $this->quiz[$question->id]['answer'] = null;
             $this->quiz[$question->id]['correct'] = $correct_options;
