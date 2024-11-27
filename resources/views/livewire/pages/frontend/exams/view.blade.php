@@ -164,7 +164,6 @@ $buyNow = function () {
                             </div>
                             <div class="form-group">
                                 <button wire:click="buyNow()" type="button" class="btn btn-primary full-width font-sm">Buy Now</button>
-                                {{-- <a href="{{ route('buy-now', $certification->id) }}" type="button" class="btn btn-primary full-width font-sm">Buy Now</a> --}}
                             </div>
                         </div>
                     </div>
